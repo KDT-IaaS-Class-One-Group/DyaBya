@@ -114,8 +114,6 @@
 
         // 선택된 요소에 대한 처리 (예: 스타일 변경 등)
         if (selectedElement) {
-          // 선택된 요소의 배경색 변경
-          selectedElement.style.backgroundColor = "lightblue";
 
           // 선택된 멤버의 정보를 표시한다
           const info = membersInfo[currentHash];
@@ -142,25 +140,8 @@
         }
       });
 
-      // 초기 로딩 시 해시값에 따라 처리
-      window.addEventListener("load", () => {
-        const currentHash = window.location.hash.substring(1);
-        const selectedElement = document.querySelector(
-          `[data-hash="${currentHash}"]`
-        );
-
-        // 선택된 멤버의 정보 표시
-        const info = membersInfo[currentHash];
-        if (info) {
-          infoContainer.innerHTML = `
-            <div style="font-size: 32px; font-weight: bold;">${selectedElement.textContent}</div>
-            <div style="font-size: 16px; margin-top: 10px;">
-              각오: ${info.각오}<br/>
-              취미: ${info.취미}
-            </div>
-          `;
-        }
-      });
+    
+  
     </script>
   </body>
 </html>

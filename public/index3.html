@@ -24,10 +24,20 @@
         background-color: gray;
         border-radius: 20px;
       }
+      #root {
+        display: flex;
+        justify-content: space-around;
+        align-items: start;
+      }
+      .name {
+        margin-top: 1vh;
+        font-size: 20px;
+      }
     </style>
   </head>
   <body>
     <div id="Top">
+      <!-- 카테고리 레이아웃(간단한 스타일 작업 완료) -->
       <div id="CategoryBox">
         <input type="button" name="home" id="Home" value="Home" />
         <input
@@ -39,54 +49,40 @@
         <input type="button" name="Team" id="Team" value="Team" />
         <input type="button" name="Target" id="Target" value="Target" />
       </div>
-      <div id="root"></div>
+      <div id="root">
+        <div id="kim" class="name" data-hash="kim">김우진</div>
+        <div id="bang" class="name" data-hash="bang">방승희</div>
+        <div id="jung" class="name" data-hash="jung">정영식</div>
+        <div id="choi" class="name" data-hash="choi">최성민</div>
+      </div>
     </div>
     <script>
-      function createEleement(type, props, ...children) {
-        return { type, props, children };
-      }
-      function component(stateData) {
-        const menuItems = [];
-        for (let i = 0; i < stateData.length; i++) {
-          const item = stateData[i];
-          const menuItem = createEleement(
-            "li",
-            {},
-            createEleement("a", { href: item.hash }, item.text)
-          );
-          menuItems.push(menuItem);
-        }
-        const menu = createEleement("ul", {}, ...menuItems);
-        const content = createEleement("div", {}, "Hello React");
-        return createEleement("div", {}, menu, content);
-      }
-      function render(virtualDom) {
-        if (typeof virtualDom === "string") {
-          return document.createTextNode(virtualDom);
-        }
-        const element = document.createElement(virtualDom.type);
-        if (virtualDom.props) {
-          for (const [key, value] of Object.entries(virtualDom.props)) {
-            element.setAttribute(key, value);
-          }
-        }
-        for (let i = 0; i < virtualDom.children.length; i++) {
-          const child = virtualDom.children[i];
-          element.appendChild(render(child));
-        }
-        return element;
-      }
+      // 해시 변경 시 이벤트 처리
+      window.addEventListener("hashchange", () => {
+        const currentHash = window.location.hash.substring(1); // 현재 해시값 가져오기
+        const selectedElement = document.querySelector(
+          `[data-hash="${currentHash}"]`
+        );
 
-      const stateData = [
-        { hash: "#clack", text: "clack" },
-        { hash: "#callinder", text: "callinder" },
-        { hash: "#bookshelf", text: "bookshelf" },
-        { hash: "#paper", text: "paper" },
-        { hash: "#picture", text: "picture" },
-      ];
-      const virtualDom = component(stateData);
-      const container = document.getElementById("root");
-      container.appendChild(render(virtualDom));
+        // 선택된 요소에 대한 처리 (예: 스타일 변경 등)
+        if (selectedElement) {
+          // 예: 선택된 요소의 배경색 변경
+          selectedElement.style.backgroundColor = "lightblue";
+        }
+      });
+
+      // 초기 로딩 시 해시값에 따라 처리
+      window.addEventListener("load", () => {
+        const currentHash = window.location.hash.substring(1);
+        const selectedElement = document.querySelector(
+          `[data-hash="${currentHash}"]`
+        );
+
+        // 선택된 요소에 대한 처리 (예: 스타일 변경 등)
+        if (selectedElement) {
+          selectedElement.style.backgroundColor = "lightblue";
+        }
+      });
     </script>
   </body>
 </html>

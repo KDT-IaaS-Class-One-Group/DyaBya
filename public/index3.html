@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #CategoryBox {
+        width: 100vw;
+        height: 10vh;
+        background-color: gray;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+      input {
+        width: 20vw;
+        height: 8vh;
+        background-color: gray;
+        border-radius: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="Top">
+      <div id="CategoryBox">
+        <input type="button" name="home" id="Home" value="Home" />
+        <input
+          type="button"
+          name="Teamplayer"
+          id="Teamplayer"
+          value="Teamplayer"
+        />
+        <input type="button" name="Team" id="Team" value="Team" />
+        <input type="button" name="Target" id="Target" value="Target" />
+      </div>
+      <div id="root"></div>
+    </div>
+    <script>
+      function createEleement(type, props, ...children) {
+        return { type, props, children };
+      }
+      function component(stateData) {
+        const menuItems = [];
+        for (let i = 0; i < stateData.length; i++) {
+          const item = stateData[i];
+          const menuItem = createEleement(
+            "li",
+            {},
+            createEleement("a", { href: item.hash }, item.text)
+          );
+          menuItems.push(menuItem);
+        }
+        const menu = createEleement("ul", {}, ...menuItems);
+        const content = createEleement("div", {}, "Hello React");
+        return createEleement("div", {}, menu, content);
+      }
+      function render(virtualDom) {
+        if (typeof virtualDom === "string") {
+          return document.createTextNode(virtualDom);
+        }
+        const element = document.createElement(virtualDom.type);
+        if (virtualDom.props) {
+          for (const [key, value] of Object.entries(virtualDom.props)) {
+            element.setAttribute(key, value);
+          }
+        }
+        for (let i = 0; i < virtualDom.children.length; i++) {
+          const child = virtualDom.children[i];
+          element.appendChild(render(child));
+        }
+        return element;
+      }
+
+      const stateData = [
+        { hash: "#clack", text: "clack" },
+        { hash: "#callinder", text: "callinder" },
+        { hash: "#bookshelf", text: "bookshelf" },
+        { hash: "#paper", text: "paper" },
+        { hash: "#picture", text: "picture" },
+      ];
+      const virtualDom = component(stateData);
+      const container = document.getElementById("root");
+      container.appendChild(render(virtualDom));
+    </script>
+  </body>
+</html>

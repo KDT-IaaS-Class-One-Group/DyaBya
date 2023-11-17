@@ -32,6 +32,10 @@
       .name {
         margin-top: 1vh;
         font-size: 20px;
+        cursor: pointer; /* 추가: 커서를 포인터로 변경하여 클릭 가능한 상태로 만듭니다. */
+      }
+      #infoContainer {
+        margin-top: 20px;
       }
     </style>
   </head>
@@ -55,8 +59,26 @@
         <div id="jung" class="name" data-hash="jung">정영식</div>
         <div id="choi" class="name" data-hash="choi">최성민</div>
       </div>
+      <div id="infoContainer">
+        <p id="infoText"></p>
+      </div>
     </div>
     <script>
+      const infoContainer = document.getElementById("infoText");
+
+      const membersInfo = {
+        kim: {
+          각오: "팀원들의 스트레스를 줄이겠습니다.",
+          취미: "음악 감상, 자전거 타기",
+        },
+        bang: { 각오: "빡세게 하겠습니다.", 취미: "산책, 음악감상" },
+        jung: {
+          각오: "맡은 바 최선을 다하겠습니다.",
+          취미: "독서, 영화 감상, 클래식 감상, 차 마시기",
+        },
+        choi: { 각오: "재밌게 같이 하겠습니다.", 취미: "컴퓨터 하드웨어 조립" },
+      };
+
       // 해시 변경 시 이벤트 처리
       window.addEventListener("hashchange", () => {
         const currentHash = window.location.hash.substring(1); // 현재 해시값 가져오기
@@ -68,6 +90,21 @@
         if (selectedElement) {
           // 예: 선택된 요소의 배경색 변경
           selectedElement.style.backgroundColor = "lightblue";
+
+          // 선택된 멤버의 정보 표시
+          const info = membersInfo[currentHash];
+          if (info) {
+            infoContainer.textContent = `각오: ${info.각오}, 취미: ${info.취미}`;
+          }
+        }
+      });
+
+      // div 클릭 시 이벤트 처리
+      document.getElementById("root").addEventListener("click", (event) => {
+        const clickedElement = event.target;
+        if (clickedElement.classList.contains("name")) {
+          const hashValue = clickedElement.getAttribute("data-hash");
+          window.location.hash = hashValue; // 해시 변경
         }
       });
 
@@ -81,6 +118,12 @@
         // 선택된 요소에 대한 처리 (예: 스타일 변경 등)
         if (selectedElement) {
           selectedElement.style.backgroundColor = "lightblue";
+
+          // 선택된 멤버의 정보 표시
+          const info = membersInfo[currentHash];
+          if (info) {
+            infoContainer.textContent = `각오: ${info.각오}, 취미: ${info.취미}`;
+          }
         }
       });
     </script>

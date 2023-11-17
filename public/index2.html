@@ -27,7 +27,9 @@
       margin: 50px;
       font-size: 0.8rem;
     }
-
+    .team-member p{
+      display: none;
+    }
 
   </style>
 </head>
@@ -36,36 +38,57 @@
     <div>HOME</div>
     <div>TEAM NAME</div>
     <div>TRAM MEMBERS</div>
-    <div>RESOLUTION</div>
+    <div>PREPARE</div>
   </header>
 
   <div class="team-member">
     <h1 id="name">김우진</h>
-      <p>GitHub URL : </p>
+      <p>GitHub URL : https://github.com/kimwoojin123</p>
       <p>취미 : 음악 감상, 자전거타기</p>
       <p>각오 : 팀원들의 스트레스를 줄이겠습니다.</p>
   </div>
   <div class="team-member">
     <h1 id="name">방승희</h>
-      <p>GitHub URL : </p>
+      <p>GitHub URL :  https://github.com/seunghee1108</p>
       <p>취미 : 음악 감상, 산책하기</p>
       <p>각오 : 빡세게 하겠습니다.</p>
   </div>
   <div class="team-member">
     <h1 id="name">정영식</h>
-      <p>GitHub URL : </p>
+      <p>GitHub URL : https://github.com/JungYoungSick</p>
       <p>취미 : 영화 감상, 클래식 감상, 독서, TEA-TIME</p>
       <p>각오 : 맡은 바 최선을 다하겠습니다.</p>
   </div>
   <div class="team-member">
     <h1 id="name">최성민</h>
-    <p>GitHub URL : </p>
+    <p>GitHub URL : https://github.com/csm009177</p>
     <p>취미 : 컴퓨터 하드웨어 조립하기</p>
     <p>각오 : 재미있게 같이 하겠습니다.</p>
   </div>
 
   <script>
-    
+    // DOMContentloaded : 문서 객체를 조작할때 사용하는 이벤트
+    document.addEventListener("DOMContentLoaded", function() {
+      const teamMembers = document.querySelectorAll(".team-member");
+
+      // foreach : 반복문
+      teamMembers.forEach(function (member) {
+        const name = member.querySelector("#name");
+
+        name.addEventListener("click", function() {
+          const details = member.querySelectorAll("p");
+
+          details.forEach(function (p) {
+           // p태그가 화면에 보여지거나 "" 빈칸일 때 p일때 숨긴다.
+            if (p.style.display === "block" | p.style.display === "") {
+              p.style.display = "none";
+            } else {
+              p.style.display = "block";
+            }
+           })
+        })
+      })
+    })
   </script>
 </body>
 </html>

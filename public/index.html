@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    *{margin: 0; padding:0; box-sizing: border-box; background-color: gray;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: gray;
       font-size: 3vh;
     }
+
     #root {
       display: flex;
       flex-direction: column;
       width: 100vw;
       height: 100vh;
     }
-    #head{ 
+
+    #head {
       width: 100vw;
       height: 10vh;
       background-color: gray;
@@ -24,51 +31,74 @@
       justify-content: center;
       align-items: center;
     }
-    #board{
+
+    #board {
       width: 100vw;
       height: 90vh;
       background-color: darkgray;
     }
 
-    #home  {    
+    #home {
       width: 25vw;
       cursor: pointer;
-      margin:auto;
+      margin: auto;
     }
-    #team {    
-      width: 25vw;
-      cursor: pointer;
-    }
-    #member{    
-      width: 25vw;
-      cursor: pointer;
-    }
-    #purpose {    
+
+    #team {
       width: 25vw;
       cursor: pointer;
     }
 
+    #member {
+      width: 25vw;
+      cursor: pointer;
+    }
+
+    #purpose {
+      width: 25vw;
+      cursor: pointer;
+    }
   </style>
 </head>
+
 <body>
   <div id="root">
     <div id="head">
-      <div type="button" id="home">Home</div>
+      <!-- <div type="button" id="home">Home</div>
       <div type="button" id="team">Team</div>
       <div type="button" id="member">Member</div>
-      <div type="button" id="purpose">Purpose</div>
+      <div type="button" id="purpose">Purpose</div> -->
     </div>
     <div id="board"></div>
   </div>
-  <script>
-    // const stateData = [
-    //   { hash: '#home',    text: 'Home' },
-    //   { hash: '#team',    text: 'Team' },
-    //   { hash: '#member',  text: 'Member' },
-    //   { hash: '#purpose', text: 'Purpose' },
+  <script type="module">
 
-    // ];
+    function creMenu(fatag, menu){
+      const head = document.getElementById(fatag)
+      const creHeadElem = document.createElement('div')
+      creHeadElem.setAttribute("id", menu);
+      creHeadElem.setAttribute("type", "button");
+      creHeadElem.style.width = "25vw"
+      const textNode = document.createTextNode(menu);
+      creHeadElem.appendChild(textNode);
+      head.appendChild(creHeadElem)
+    }
+
+    const items=[]
+    for(i=0, i<stateData.length; i++){
+      
+      creMenu()
+    }
+
+    
+    const stateData = [
+      { hash: '#home', text: 'Home' },
+      { hash: '#team', text: 'Team' },
+      { hash: '#member', text: 'Member' },
+      { hash: '#purpose', text: 'Purpose' },
+    ];
 
   </script>
 </body>
+
 </html>

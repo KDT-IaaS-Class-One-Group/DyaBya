@@ -4,8 +4,68 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    #name-list{
+      display:flex;
+    }
+    #name-list > li {
+      list-style-type: none;
+      width:200px;
+      height:150px;
+      cursor: pointer;
+    }
+    #slide-list {
+      display:flex;
+    }
+
+    .slide{
+      display:none;
+      width:100%;
+    }
+    .active-slide{
+      display:block;
+    }
+
+    
+  </style>
 </head>
 <body>
-  <h1>안녕</h1>
+  <div id="root">
+    <ul id="name-list"></ul>
+    <ul id="slide-list"></ul>
+  </div>
+  <script>
+    const nameList = document.getElementById('name-list');
+    const slideList = document.getElementById('slide-list');
+    const names = ["김우진", "방승희", "정영식", "최성민"];
+    const slidesContent = [
+      "김우진 소개",
+      "방승희 소개",
+      "정영식 소개",
+      "최성민 소개"
+    ];
+    names.forEach((name, index) => {
+      const li = document.createElement('li');
+      li.textContent = name;
+      li.addEventListener('click', () => showSlide(index));
+      nameList.appendChild(li)
+    })
+
+    slidesContent.forEach(content => {
+      const slide = document.createElement('li');
+      slide.classList.add('slide');
+      slide.textContent = content;
+      slideList.appendChild(slide);
+    });
+
+    function showSlide(index) {
+      const slides = document.querySelectorAll('.slide');
+      slides.forEach(slide => slide.classList.remove('active-slide'));
+      slides[index].classList.add('active-slide');
+    }
+
+
+
+  </script>
 </body>
 </html>

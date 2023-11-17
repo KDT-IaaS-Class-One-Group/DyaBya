@@ -6,7 +6,7 @@
   <title>Document</title>
   <style>
     *{margin: 0; padding:0; box-sizing: border-box; background-color: gray;
-      font-size: ;
+      font-size: 3vh;
     }
     #root {
       display: flex;
@@ -51,13 +51,22 @@
 <body>
   <div id="root">
     <div id="head">
-      <div type="button" id="home">home</div>
+      <div type="button" id="Home">Home</div>
       <div type="button" id="Team">Team</div>
-      <div type="button" id="member">member</div>
-      <div type="button" id="purpose">purpose</div>
+      <div type="button" id="Member">Member</div>
+      <div type="button" id="Purpose">Purpose</div>
     </div>
     <div id="board"></div>
   </div>
-  <script></script>
+  <script>
+    const stateData = [
+      { hash: '#home',    text: 'Home' },
+      { hash: '#team',    text: 'Team' },
+      { hash: '#member',  text: 'Member' },
+      { hash: '#purpose', text: 'Purpose' },
+
+    ];
+
+  </script>
 </body>
 </html>

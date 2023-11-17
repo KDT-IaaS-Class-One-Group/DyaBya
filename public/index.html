@@ -113,10 +113,10 @@
       // slide 클래스를 가진 li들을 생성
       const slide = document.createElement('li');
       slide.classList.add('slide');
+      slideList.appendChild(slide);
 
       // 해당 슬라이드의 내용을 slidesContent의 객체값들에 접근하여 가져온다.
       slide.innerHTML = `URL: <a href="${slidesContent[name].url}">${slidesContent[name].url}</a><br>취미: ${slidesContent[name].hobby}<br>각오: ${slidesContent[name].resolution}`;
-      slideList.appendChild(slide);
 
       // slidesContent 객체의 이름에 따른 속성들에 slide를 할당한다.
       slidesContent[name].element = slide;

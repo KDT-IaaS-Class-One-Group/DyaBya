@@ -38,7 +38,7 @@
     <div>HOME</div>
     <div>TEAM NAME</div>
     <div>TRAM MEMBERS</div>
-    <div>PREPARE</div>
+    <div>RESOLUTION</div>
   </header>
 
   <div class="team-member">
@@ -76,9 +76,9 @@
         const name = member.querySelector("#name");
 
         name.addEventListener("click", function() {
-          const details = member.querySelectorAll("p");
+          const detail = member.querySelectorAll("p");
 
-          details.forEach(function (p) {
+          detail.forEach(function (p) {
            // p태그가 화면에 보여지거나 "" 빈칸일 때 p일때 숨긴다.
             if (p.style.display === "block" | p.style.display === "") {
               p.style.display = "none";

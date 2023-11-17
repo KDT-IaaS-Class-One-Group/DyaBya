@@ -60,33 +60,55 @@
     const nameList = document.getElementById('name-list');
     const slideList = document.getElementById('slide-list');
     const names = ["김우진", "방승희", "정영식", "최성민"];
-    const slidesContent = [
-      `김우진<br>URL : <a href = "https://github.com/kimwoojin123/ramen-log">https://github.com/kimwoojin123/ramen-log</a><br>취미 : 음악감상, 자전거 타기<br>각오 : 팀원들의 스트레스를 줄이겠습니다!`,
-      `방승희<br>URL : <a href = "https://github.com/seunghee1108/NOTEPAD">https://github.com/seunghee1108/NOTEPAD</a><br>취미 : 음악감상, 산책<br>각오 : 빡세게 하겠습니다!`,
-      `정영식<br>URL : <a href = "https://github.com/JungYoungSick">https://github.com/JungYoungSick</a><br>취미 : 독서, 영화감상, 클래식감상, 자전거타기<br>각오 : 맡은 바 최선을 다 하겠습니다!`,
-      `최성민<br>URL : <a href = "https://github.com/JungYoungSick">https://github.com/JungYoungSick</a><br>취미 : 컴퓨터 하드웨어 조립<br>각오 : 재밌게 같이 하겠습니다!`
-    ];
+
+    const slidesContent = {
+      "김우진": {
+        url: "https://github.com/kimwoojin123/ramen-log",
+        hobby: "음악감상, 자전거 타기",
+        resolution: "팀원들의 스트레스를 줄이겠습니다!"
+      },
+      "방승희": {
+        url: "https://github.com/seunghee1108/NOTEPAD",
+        hobby: "음악감상, 산책",
+        resolution: "빡세게 하겠습니다!"
+      },
+      "정영식": {
+        url: "https://github.com/JungYoungSick",
+        hobby: "독서, 영화감상, 클래식감상, 자전거타기",
+        resolution: "맡은 바 최선을 다 하겠습니다!"
+      },
+      "최성민": {
+        url: "https://github.com/JungYoungSick",
+        hobby: "컴퓨터 하드웨어 조립",
+        resolution: "재밌게 같이 하겠습니다!"
+      }
+    };
+
     names.forEach((name, index) => {
       const li = document.createElement('li');
       li.textContent = name;
-      li.addEventListener('click', () => showSlide(index));
-      nameList.appendChild(li)
-    })
-
-    slidesContent.forEach(content => {
-      const slide = document.createElement('li');
-      slide.classList.add('slide');
-      slide.innerHTML = content;
-      slideList.appendChild(slide);
+      li.addEventListener('click', () => showSlide(name));
+      nameList.appendChild(li);
     });
 
-    function showSlide(index) {
+    function showSlide(name) {
       const slides = document.querySelectorAll('.slide');
       slides.forEach(slide => slide.classList.remove('active-slide'));
-      slides[index].classList.add('active-slide');
+      slidesContent[name] && slidesContent[name].element.classList.add('active-slide');
     }
 
+    names.forEach(name => {
+      const slide = document.createElement('li');
+      slide.classList.add('slide');
+      slide.innerHTML = `URL: <a href="${slidesContent[name].url}">${slidesContent[name].url}</a><br>취미: ${slidesContent[name].hobby}<br>각오: ${slidesContent[name].resolution}`;
+      slideList.appendChild(slide);
+      slidesContent[name].element = slide;
+    });
 
+
+    function getInfo(name, key) {
+      return slidesContent[name][key];
+    }
 
   </script>
 </body>

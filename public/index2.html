@@ -72,10 +72,19 @@
     <div id="board"></div>
   </div>
   <script>
-      document.getElementById('home')        
-      document.getElementById('team')    
-      document.getElementById('member')    
-      document.getElementById('purpose')        
+      const home    = document.getElementById('home')        
+      const team    = document.getElementById('team')    
+      const member  = document.getElementById('member')    
+      const purpose = document.getElementById('purpose')
+      home.addEventListener('click', ()=> {
+        const board = document.getElementById('board')
+        const creDiv = document.createElement('div')
+        creDiv.innerHTML = `now state : ${home}`;
+        creDiv.style.backgroundColor = "darkgray";
+        board.appendChild(creDiv)
+      })
+
+
   </script>
 </body>
 

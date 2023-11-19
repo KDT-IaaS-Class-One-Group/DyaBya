@@ -84,7 +84,7 @@ function createElement(type, props, ...children) {
         const menuItem = createElement('a', {href:item.hash}, item.text)
         menuItems.push(menuItem);
       }
-      return createElement('div', {style:"width:100vw; margin:auto"}, ...menuItems);
+      return createElement('div', {style:"width:100vw; display:flex; justify-content: space-between; "}, ...menuItems);
     }
     
     function render(virtualDom) {
@@ -112,7 +112,7 @@ function createElement(type, props, ...children) {
     ];
 
     const virtualDom = component(stateData);
-    const container = document.getElementById('root');
+    const container = document.getElementById('head');
     container.appendChild(render(virtualDom));
 
     

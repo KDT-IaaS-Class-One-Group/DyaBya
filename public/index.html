@@ -70,9 +70,8 @@
     <div id="head"><!-- Will dynamically add MenuItems here --></div>
     <div id="board"></div>
   </div>
-  <script type="module">
-    // import component from '../module/component.js';
-
+  <script type="module" src="../module/component.mjs">
+    component("div", {}, "test");
     const stateData = [
       { hash: '#home', text: 'Home', name: "Home" },
       { hash: '#team', text: 'Team', name: "Team" },
@@ -103,7 +102,6 @@
       head.appendChild(menuItem); // Append to head
     });
   </script>
-  <!-- <script type="module" src="../module/component.mjs"></script> -->
 </body>
 
 </html>

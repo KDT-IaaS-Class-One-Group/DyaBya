@@ -1,9 +1,9 @@
-const express = require("express");
+import express from "express";
+import router from "./routes.mjs";
+
 const app = express();
-const router = require("./routes");
 
 app.use(express.static("public"));
-
 app.use("/", router);
 
 app.listen(3000, () => {

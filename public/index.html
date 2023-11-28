@@ -67,40 +67,43 @@
 
 <body>
   <div id="root">
-    <div id="head"><!--will dynamically MenuItems add here --></div>
+    <div id="head"><!-- Will dynamically add MenuItems here --></div>
     <div id="board"></div>
   </div>
-  <script>
+  <script type="module">
+    // import component from '../module/component.js';
+
     const stateData = [
-      { hash: '#home',    text: 'Home',    name:"Home"},
-      { hash: '#team',    text: 'Team',    name:"Team"},
-      { hash: '#member',  text: 'Member',  name:"Member"},
-      { hash: '#purpose', text: 'Purpose', name:"Purpose"},
+      { hash: '#home', text: 'Home', name: "Home" },
+      { hash: '#team', text: 'Team', name: "Team" },
+      { hash: '#member', text: 'Member', name: "Member" },
+      { hash: '#purpose', text: 'Purpose', name: "Purpose" },
     ];
-    // find id about tag
+
+    // Find elements by ID
     const root = document.getElementById('root');
     const head = document.getElementById('head');
     const board = document.getElementById('board');
-    stateData.forEach(item => {       // Dynamically create menuItems
-      const menuItem = document.createElement('a');   // createTag
-      menuItem.href = item.hash;      // bording href on createTag 
-      menuItem.innerText = item.text; // bording text on createTag
-      menuItem.id = item.text         // bording id   on createTag
-      menuItem.style.margin = "auto"
-      menuItem.addEventListener('click', () => {       // boarding by click
-        const creDiv = document.createElement('div');   
-        creDiv.innerHTML = `now state : ${item.text}`; // state show
-        creDiv.style.width  = "90vw"
-        creDiv.style.height = "80vh"
-        creDiv.style.margin = "auto"
-        board.innerHTML = '';          // Clear previous content
-        board.appendChild(creDiv);     // append on board
+
+    stateData.forEach(item => { // Dynamically create MenuItems
+      const menuItem = document.createElement('a'); // Create element
+      menuItem.href = item.hash; // Set href attribute
+      menuItem.innerText = item.text; // Set text content
+      menuItem.id = item.text; // Set id attribute
+      menuItem.style.margin = "auto";
+      menuItem.addEventListener('click', () => { // Add click event listener
+        const creDiv = document.createElement('div');
+        creDiv.innerHTML = `now state : ${item.text}`; // Show state
+        creDiv.style.width = "90vw";
+        creDiv.style.height = "80vh";
+        creDiv.style.margin = "auto";
+        board.innerHTML = ''; // Clear previous content
+        board.appendChild(creDiv); // Append to board
       });
-      head.appendChild(menuItem);      // board
+      head.appendChild(menuItem); // Append to head
     });
   </script>
-  <script src="../module/componant.js">
-    componant("div", {}, "test")
-  </script>
+  <!-- <script type="module" src="../module/component.mjs"></script> -->
 </body>
+
 </html>

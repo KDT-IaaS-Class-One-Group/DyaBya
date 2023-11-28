@@ -47,3 +47,5 @@ function component(elementNode, attributes, children) {
 // 문자열로 잘 작동하는지 테스트한 아래 코드
 let test = component('div', { style: 'color:blue;' }, [component('h1', {}, ['this is page1'])]);
 console.log(test);
+
+module.exports = component;

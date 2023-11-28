@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HASH STATE</title>
+  <title>COMOPNENTHASHSTATE</title>
   <style>
     * {
       margin: 0;
@@ -63,12 +63,42 @@
 
 <body>
   <div id="root">
-    <div id="head">
-      <!-- Menu items will be dynamically added here -->
-    </div>
+    <div id="head"></div>
     <div id="board"></div>
   </div>
-  <script>
+  <script type="module">
+
+function createElement(type, props, ...children) {
+      return { type, props, children};
+    }
+
+    function component(stateData) {
+      const menuItems = [];
+      for (let i=0; i<stateData.length; i++){
+        const item = stateData[i];
+        const menuItem = createElement('a', {href:item.hash}, item.text)
+        menuItems.push(menuItem);
+      }
+      return createElement('div', {style:"width:100vw; display:flex; justify-content: space-between; "}, ...menuItems);
+    }
+    
+    function render(virtualDom) {
+      if(typeof virtualDom === 'string') {
+        return document.createTextNode(virtualDom);
+      }
+      const element = document.createElement(virtualDom.type);
+      if(virtualDom.props) {
+        for( const [key,value] of Object.entries(virtualDom.props)) {
+          element.setAttribute(key,value);
+        }
+      }
+      for(let i=0; i<virtualDom.children.length; i++) {
+        const child = virtualDom.children[i];
+        element.appendChild(render(child));
+      }
+      return element;
+    }
+
     const stateData = [
       { hash: '#home', text: 'Home' },
       { hash: '#team', text: 'Team' },
@@ -76,28 +106,11 @@
       { hash: '#purpose', text: 'Purpose' },
     ];
 
-    const root = document.getElementById('root');
-    const head = document.getElementById('head');
-    const board = document.getElementById('board');
+    const virtualDom = component(stateData);
+    const container = document.getElementById('head');
+    container.appendChild(render(virtualDom));
 
-    // Dynamically create menu items
-    stateData.forEach(item => {
-      const menuItem = document.createElement('a');
-      menuItem.href = item.hash;
-      menuItem.innerText = item.text;
-      menuItem.id = item.text
-      menuItem.style.margin = "auto"
-      menuItem.addEventListener('click', () => {
-        const creDiv = document.createElement('div');
-        creDiv.innerHTML = `now state : ${item.text}`;
-        creDiv.style.backgroundColor = "darkgray";
-        // Clear previous content
-        board.innerHTML = ''; 
-        board.appendChild(creDiv);
-      });
-
-      head.appendChild(menuItem);
-    });
+    
   </script>
 </body>
 

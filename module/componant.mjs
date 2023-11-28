@@ -14,7 +14,7 @@
  * );
  */
 
-function component(elementNode, attributes, children) {
+export function component(elementNode, attributes, children) {
   // HTML 요소 문자열로 '조립(assemble)' 하는 패턴
   let elementStr = `<${elementNode}`;
   for (let key in attributes) {
@@ -47,5 +47,3 @@ function component(elementNode, attributes, children) {
 // 문자열로 잘 작동하는지 테스트한 아래 코드
 let test = component('div', { style: 'color:blue;' }, [component('h1', {}, ['this is page1'])]);
 console.log(test);
-
-module.exports = component;

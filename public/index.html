@@ -36,6 +36,10 @@
       width: 100vw;
       height: 90vh;
       background-color: darkgray;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
     }
 
     #home {
@@ -69,6 +73,7 @@
     <div id="board"></div>
   </div>
   <script>
+    
     const stateData = [
       { hash: '#home', text: 'Home' },
       { hash: '#team', text: 'Team' },
@@ -88,14 +93,16 @@
       menuItem.id = item.text
       menuItem.style.margin = "auto"
       menuItem.addEventListener('click', () => {
+        // board
         const creDiv = document.createElement('div');
+        // state show
         creDiv.innerHTML = `now state : ${item.text}`;
-        creDiv.style.backgroundColor = "darkgray";
-        // Clear previous content
-        board.innerHTML = ''; 
+        creDiv.style.width  = "90vw"
+        creDiv.style.height = "80vh"
+        creDiv.style.margin = "auto"
+        board.innerHTML = '';
         board.appendChild(creDiv);
       });
-
       head.appendChild(menuItem);
     });
   </script>

@@ -16,7 +16,7 @@
         align-items: start;
       }
 
-      .categoryBox {
+      #categoryBox {
         width: 100vw;
         height: 10vh;
         background-color: black;
@@ -81,8 +81,8 @@
         const menuItem = createElement('li',{class:"categories"},createElement('a', {href:item.hash, class:"category"}, item.content))
         menuItems.push(menuItem)
       }
-      const menu = createElement('ul', {class:"categoryBox"}, ...menuItems)
-
+      const menu = createElement('ul', {id:"categoryBox"}, ...menuItems)
+      const content = createElement('div', {id:"contentArea"})
       //전체 컴포넌트 구조 반환
       return createElement('div', {}, menu)
     }

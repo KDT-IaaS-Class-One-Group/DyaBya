@@ -10,7 +10,7 @@
         padding: 0;
         box-sizing: border-box;
       }
-      .CategoryBox {
+      .categoryBox {
         width: 100vw;
         height: 10vh;
         background-color: gray;
@@ -18,12 +18,19 @@
         align-items: center;
         justify-content: space-around;
       }
-      input {
+      .categories {
+        list-style-type: none;
+      }
+
+      .category {
         width: 20vw;
         height: 8vh;
         background-color: gray;
         border-radius: 20px;
       }
+
+
+
       #infoTeam {
         display: flex;
         justify-content: space-around;
@@ -46,6 +53,7 @@
         cursor: pointer;
       }
       
+      
     </style>
   </head>
   <body>
@@ -60,10 +68,10 @@
       const menuItems =[];
       for(let i = 0; i<stateData.length; i++){
         const item = stateData[i]
-        const menuItem = createElement('li',{},createElement('a', {href:item.hash}, item.content))
+        const menuItem = createElement('li',{class:"categories"},createElement('a', {href:item.hash, class:"category"}, item.content))
         menuItems.push(menuItem)
       }
-      const menu = createElement('ul', {class:"CategoryBox"}, ...menuItems)
+      const menu = createElement('ul', {class:"categoryBox"}, ...menuItems)
 
       //전체 컴포넌트 구조 반환
       return createElement('div', {}, menu)

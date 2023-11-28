@@ -67,49 +67,40 @@
 
 <body>
   <div id="root">
-    <div id="head">
-      <!-- Menu items will be dynamically added here -->
-    </div>
+    <div id="head"><!--will dynamically MenuItems add here --></div>
     <div id="board"></div>
   </div>
   <script>
-
     const stateData = [
-      { hash: '#home', text: 'Home' },
-      { hash: '#team', text: 'Team' },
-      { hash: '#member', text: 'Member' },
-      { hash: '#purpose', text: 'Purpose' },
+      { hash: '#home',    text: 'Home',    name:"Home"},
+      { hash: '#team',    text: 'Team',    name:"Team"},
+      { hash: '#member',  text: 'Member',  name:"Member"},
+      { hash: '#purpose', text: 'Purpose', name:"Purpose"},
     ];
-
+    // find id about tag
     const root = document.getElementById('root');
     const head = document.getElementById('head');
     const board = document.getElementById('board');
-
-    // Dynamically create menu items
-    stateData.forEach(item => {
-      const menuItem = document.createElement('a');
-      menuItem.href = item.hash;
-      menuItem.innerText = item.text;
-      menuItem.id = item.text
+    stateData.forEach(item => {       // Dynamically create menuItems
+      const menuItem = document.createElement('a');   // createTag
+      menuItem.href = item.hash;      // bording href on createTag 
+      menuItem.innerText = item.text; // bording text on createTag
+      menuItem.id = item.text         // bording id   on createTag
       menuItem.style.margin = "auto"
-      menuItem.addEventListener('click', () => {
-        // board
-        const creDiv = document.createElement('div');
-        // state show
-        creDiv.innerHTML = `now state : ${item.text}`;
+      menuItem.addEventListener('click', () => {       // boarding by click
+        const creDiv = document.createElement('div');   
+        creDiv.innerHTML = `now state : ${item.text}`; // state show
         creDiv.style.width  = "90vw"
         creDiv.style.height = "80vh"
         creDiv.style.margin = "auto"
-        board.innerHTML = ''; // // Clear previous content
-        board.appendChild(creDiv);
+        board.innerHTML = '';          // Clear previous content
+        board.appendChild(creDiv);     // append on board
       });
-      head.appendChild(menuItem);
+      head.appendChild(menuItem);      // board
     });
   </script>
   <script src="../module/componant.js">
     componant("div", {}, "test")
-    
   </script>
 </body>
-
 </html>

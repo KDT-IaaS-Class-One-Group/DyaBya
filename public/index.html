@@ -1,128 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    *{
-      margin:0; padding: 0; box-sizing: border-box;
-    }
-
-    #root{
-      width : 100vw;
-      height: 100vh;
-    }
-
-    #name-list{
-      display:flex;
-      justify-content: space-around;
-      margin-top : 5vh
-    }
-    #name-list > li {
-      line-height: 7.5vh;
-      text-align: center;
-      list-style-type: none;
-      width:10vw;
-      height:8vh;
-      cursor: pointer;
-      background-color:lightsteelblue;
-      font-size: 40px;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .CategoryBox {
+        width: 100vw;
+        height: 10vh;
+        background-color: gray;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+      input {
+        width: 20vw;
+        height: 8vh;
+        background-color: gray;
+        border-radius: 20px;
+      }
+      #infoTeam {
+        display: flex;
+        justify-content: space-around;
+        align-items: start;
+      }
+      .name {
+        margin-top: 1vh;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      #infoContainer {
+        margin-top: 20px;
+        font-size: 16px;
+      }
+      .memberBox {
+        padding: 20px;
+        border: 1px solid #ccc;
+        margin: 10px;
+        text-align: center;
+        cursor: pointer;
+      }
       
+    </style>
+  </head>
+  <body>
+    <div id = "root">
+    </div>
+  </div>
+    <script>
+    function createElement(type,props, ...children){
+      return {type, props, children}
     }
-    #slide-list {
-      display:flex;
-      font-size: 30px;
-      height: 100%;
-      align-items: center;
+    function component(stateData){
+      const menuItems =[];
+      for(let i = 0; i<stateData.length; i++){
+        const item = stateData[i]
+        const menuItem = createElement('li',{},createElement('a', {href:item.hash}, item.content))
+        menuItems.push(menuItem)
+      }
+      const menu = createElement('ul', {class:"CategoryBox"}, ...menuItems)
+
+      //전체 컴포넌트 구조 반환
+      return createElement('div', {}, menu)
     }
 
-    .slide{
-      display:none;
-      position: relative;
-      left: 30vw;
-      bottom : 15vh;
-      background-color: azure;
+
+    function render(virtualDom){
+      // 문자열일 경우 textnode만 생성하여 반환
+      if(typeof virtualDom === 'string'){
+        return document.createTextNode(virtualDom)
+      }
+      
+      // 문자열이 아닐경우 해당요소의 타입에 맞게 실제 DOM요소 생성
+      const element = document.createElement(virtualDom.type)
+      // 순회하며 속성처리
+      if(virtualDom.props){
+        for(const [key,value] of Object.entries(virtualDom.props)){
+          element.setAttribute(key, value)
+        }
+      }
+      // 순회하며 자식요소 처리
+      for(let i=0; i<virtualDom.children.length; i++){
+        const child = virtualDom.children[i]
+        element.appendChild(render(child))
+      }
+      // 완성된 실제 DOM요소 반환
+      return element
     }
-    .active-slide{
-      display:block;
-    }
+
+
+
+
+    const stateData = [
+      {hash : '#home', content: 'Home'},
+      {hash : '#teamMember', content:'TeamMember'},
+      {hash : '#teamName', content:'TeamName'},
+      {hash : '#purpose', content :'Purpose'},
+    ]
+
+
+    const virtualDom = component(stateData)
+
+    const container = document.getElementById('root')
+
+    // 실제DOM에 변경된 가상DOM의 내용 적용
+    container.appendChild(render(virtualDom))
+
+
+
+
 
     
-  </style>
-</head>
-<body>
-  <div id="root">
-    <ul id="name-list"></ul>
-    <ul id="slide-list"></ul>
-  </div>
-  <script>
-    const nameList = document.getElementById('name-list');
-    const slideList = document.getElementById('slide-list');
-
-    // 이름 영역에 표기할 내용 배열 저장
-    const names = ["김우진", "방승희", "정영식", "최성민"];
-
-    // 슬라이드에 작성할 내용들을 객체 형식으로 저장
-    const slidesContent = {
-      "김우진": {
-        url: "https://github.com/kimwoojin123/",
-        hobby: "음악감상, 자전거 타기",
-        resolution: "팀원들의 스트레스를 줄이겠습니다!"
-      },
-      "방승희": {
-        url: "https://github.com/seunghee1108/",
-        hobby: "음악감상, 산책",
-        resolution: "빡세게 하겠습니다!"
-      },
-      "정영식": {
-        url: "https://github.com/JungYoungSick",
-        hobby: "독서, 영화감상, 클래식감상, 자전거타기",
-        resolution: "맡은 바 최선을 다 하겠습니다!"
-      },
-      "최성민": {
-        url: "https://github.com/csm009177",
-        hobby: "컴퓨터 하드웨어 조립",
-        resolution: "재밌게 같이 하겠습니다!"
-      }
-    };
-
-
-    // nameList에 배열내용을 넣어 li로 추가, li들에게 클릭이벤트로 슬라이드 렌더링 함수 추가
-    names.forEach((name) => {
-      const li = document.createElement('li');
-      li.textContent = name;
-      li.addEventListener('click', () => showSlide(name));
-      nameList.appendChild(li);
-    });
-
-
-    // 슬라이드 렌더링함수
-    function showSlide(name) {
-      const slides = document.querySelectorAll('.slide');
-      // 각 슬라이드에 대해 active-slide 클래스를 지워주어 현재 활성화된 클래스라는 속성을 없앤다.
-      slides.forEach(slide => slide.classList.remove('active-slide'));
-      // 단축평가 slidesContent[name]이 존재하면 slidesContent[name].element.classList.add('active-slide')실행
-      // 실행되는 내용은 slidesContent[name]의 html요소에 active-slide 클래스를 추가해준다.
-      slidesContent[name] && slidesContent[name].element.classList.add('active-slide');
-    }
-
-
-    // names를 순회하며 해당 길이만큼 콜백을 반복하여 반환
-    names.forEach(name => {
-      // slide 클래스를 가진 li들을 생성
-      const slide = document.createElement('li');
-      slide.classList.add('slide');
-      slideList.appendChild(slide);
-
-      // 해당 슬라이드의 내용을 slidesContent의 객체값들에 접근하여 가져온다.
-      slide.innerHTML = `URL: <a href="${slidesContent[name].url}">${slidesContent[name].url}</a><br>취미: ${slidesContent[name].hobby}<br>각오: ${slidesContent[name].resolution}`;
-
-      // slidesContent 객체의 이름에 따른 속성들에 slide를 할당한다.
-      slidesContent[name].element = slide;
-    });
-
-
-  </script>
-</body>
+    </script>
+  </body>
 </html>

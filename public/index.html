@@ -73,7 +73,7 @@
     <div id="board"></div>
   </div>
   <script>
-    
+
     const stateData = [
       { hash: '#home', text: 'Home' },
       { hash: '#team', text: 'Team' },
@@ -100,11 +100,15 @@
         creDiv.style.width  = "90vw"
         creDiv.style.height = "80vh"
         creDiv.style.margin = "auto"
-        board.innerHTML = '';
+        board.innerHTML = ''; // // Clear previous content
         board.appendChild(creDiv);
       });
       head.appendChild(menuItem);
     });
+  </script>
+  <script src="../module/componant.js">
+    componant("div", {}, "test")
+    
   </script>
 </body>
 

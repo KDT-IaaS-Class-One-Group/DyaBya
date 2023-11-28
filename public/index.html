@@ -78,13 +78,25 @@
       const menuItems =[];
       for(let i = 0; i<stateData.length; i++){
         const item = stateData[i]
-        const menuItem = createElement('li',{class:"categories"},createElement('a', {href:item.hash, class:"category"}, item.content))
+        const menuItem = createElement('li',{class:"categories"},createElement('a', {href:item.hash, class:"category"}, item.name))
         menuItems.push(menuItem)
+        renderPage(stateData[i].hash)
       }
+
+      
+      function renderPage(pageName){
+        const currentHash = window.location.hash;
+        if(pageName === currentHash){
+          content.innerHTML = pageName.content
+        }
+      }
+
+      
+
       const menu = createElement('ul', {id:"categoryBox"}, ...menuItems)
       const content = createElement('div', {id:"contentArea"})
       //전체 컴포넌트 구조 반환
-      return createElement('div', {}, menu)
+      return createElement('div', {}, menu, content)
     }
 
 
@@ -115,10 +127,10 @@
 
 
     const stateData = [
-      {hash : '#home', content: 'Home'},
-      {hash : '#teamMember', content:'TeamMember'},
-      {hash : '#teamName', content:'TeamName'},
-      {hash : '#purpose', content :'Purpose'},
+      {hash : '#home', name: 'Home', content : `<h1>내용1</h1>`},
+      {hash : '#teamMember', name:'TeamMember', content : `<h1>내용2</h1>`},
+      {hash : '#teamName', name:'TeamName', content : `<h1>내용3</h1>`},
+      {hash : '#purpose', name :'Purpose', content : `<h1>내용4</h1>`},
     ]
 
 

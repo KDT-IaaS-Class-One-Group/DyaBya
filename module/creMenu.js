@@ -10,5 +10,3 @@ function creMenu(fatagid, menu){
   fatag.appendChild(creHeadElem)
   
 }
-
-module.exports = creMenu;

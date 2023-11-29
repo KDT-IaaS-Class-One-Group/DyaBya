@@ -1,3 +1,4 @@
+function runch(){
 /**
  * 주어진 요소(element)를 생성하여 반환하는 함수입니다.
  * 
@@ -14,7 +15,7 @@
  * );
  */
 
-export function component(elementNode, attributes, children) {
+function component(elementNode, attributes, children) {
   // HTML 요소 문자열로 '조립(assemble)' 하는 패턴
   let elementStr = `<${elementNode}`;
   for (let key in attributes) {
@@ -47,3 +48,4 @@ export function component(elementNode, attributes, children) {
 // 문자열로 잘 작동하는지 테스트한 아래 코드
 let test = component('div', { style: 'color:blue;' }, [component('h1', {}, ['this is page1'])]);
 console.log(test);
+}

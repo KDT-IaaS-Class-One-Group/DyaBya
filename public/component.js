@@ -1,4 +1,4 @@
-function runch(){
+
 /**
  * 주어진 요소(element)를 생성하여 반환하는 함수입니다.
  * 
@@ -48,4 +48,3 @@ function component(elementNode, attributes, children) {
 // 문자열로 잘 작동하는지 테스트한 아래 코드
 let test = component('div', { style: 'color:blue;' }, [component('h1', {}, ['this is page1'])]);
 console.log(test);
-}

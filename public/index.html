@@ -33,13 +33,7 @@
     }
 
     #board {
-      width: 100vw;
-      height: 90vh;
-      background-color: darkgray;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
+      width: 100vw;height: 90vh;background-color: darkgray;display: flex;flex-direction: row;justify-content: center;align-items: center;
     }
 
     #home {
@@ -70,7 +64,48 @@
     <div id="head"><!-- Will dynamically add MenuItems here --></div>
     <div id="board"></div>
   </div>
-  <script >
+  <script src="component.js"></script>
+  <script>
+      // Find elements by ID
+    const root = document.getElementById('root');
+    const head = document.getElementById('head');
+    const board = document.getElementById('board');
+
+    // init createElement
+    function createElement(type, props, ...children) {
+      return { type, props, children};
+    }
+    // comoponent
+    function component(stateData) {
+      const menuItems = [];
+      for (let i=0; i<stateData.length; i++){
+        const item = stateData[i];
+        const menuItem = createElement('li', {style:'margin:auto'}, createElement('a', {href:item.hash}, item.text));
+        menuItems.push(menuItem);
+      }
+      const menu = createElement('ul', {
+        style:'width: 100vw; height: 10vh;background-color: gray; display: flex;  flex-direction: row; text-align: center; justify-content: center;      align-items: center;'}, ...menuItems);
+      const content = createElement('div', {}, '');
+      return createElement('div', {}, menu, content);
+    }
+
+    function render(virtualDom) {
+      if(typeof virtualDom === 'string') {
+        return document.createTextNode(virtualDom);
+      }
+      const element = document.createElement(virtualDom.type);
+      if(virtualDom.props) {
+        for( const [key,value] of Object.entries(virtualDom.props)) {
+          element.setAttribute(key,value);
+        }
+      }
+      for(let i=0; i<virtualDom.children.length; i++) {
+        const child = virtualDom.children[i];
+        element.appendChild(render(child));
+      }
+      return element;
+    }
+
     const stateData = [
       { hash: '#home', text: 'Home', name: "Home" },
       { hash: '#team', text: 'Team', name: "Team" },
@@ -78,32 +113,15 @@
       { hash: '#purpose', text: 'Purpose', name: "Purpose" },
     ];
 
-    // Find elements by ID
-    const root = document.getElementById('root');
-    const head = document.getElementById('head');
-    const board = document.getElementById('board');
 
-    stateData.forEach(item => { // Dynamically create MenuItems
-      const menuItem = document.createElement('a'); // Create element
-      menuItem.href = item.hash; // Set href attribute
-      menuItem.innerText = item.text; // Set text content
-      menuItem.id = item.text; // Set id attribute
-      menuItem.style.margin = "auto";
-      menuItem.addEventListener('click', () => { // Add click event listener
-        const creDiv = document.createElement('div');
-        creDiv.innerHTML = `now state : ${item.text}`; // Show state
-        creDiv.style.width = "90vw";
-        creDiv.style.height = "80vh";
-        creDiv.style.margin = "auto";
-        board.innerHTML = ''; // Clear previous content
-        board.appendChild(creDiv); // Append to board
-      });
-      head.appendChild(menuItem); // Append to head
-    });
+  const virtualDom = component(stateData);
+  const container = document.getElementById('head');
+  container.appendChild(render(virtualDom));
+
+
     
 
   </script>
-  <script src="component.js"></script>
 </body>
 
 </html>

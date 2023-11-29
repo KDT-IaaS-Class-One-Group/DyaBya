@@ -10,12 +10,40 @@
       padding: 0;
       box-sizing: border-box;
     }
+    form{
+      background-color: #fff;
+      width: 30vw;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    input, textarea{
+      width: 100%;
+      margin: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    button{
+      padding: 10px 20px;
+      border: none;
+    }
+    #root{
+      text-align: center;
+      padding: 20px;
+    }
+    .container{
+      float: left;
+      width: 50vw;
+      justify-content: center;
+      align-items: center;
+    }
+
   </style>
 </head>
 <body>
-  <div>
-    <div></div>
-    <section>
+  <div id="root">
+    <div>DYABYA</div>
+    <section class="container">
       <form action="/HOME" method="POST" name="memo-Form">
         <input type="text" id="name" placeholder="이름">
         <textarea  id="content" cols="30" rows="10" placeholder="내용"></textarea>

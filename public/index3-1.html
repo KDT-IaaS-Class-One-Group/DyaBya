@@ -79,18 +79,37 @@
       <!-- 카테고리 레이아웃(간단한 스타일 작업 완료) -->
       <div id="CategoryBox">
         <!-- 카테고리 : 부가기능으로 채팅을 할 수 있는 기능을 넣을까 한다. -->
-        <input type="button" name="home" id="Home" value="Home" />
+        <input
+          type="button"
+          name="home"
+          id="Home"
+          value="Home"
+          data-hash="Home"
+        />
         <!-- 팀명의 소개와 팀에 대한 내용들을 소개한다 -->
-        <input type="button" name="Team" id="Team" value="Team" />
+        <input
+          type="button"
+          name="Team"
+          id="Team"
+          value="Team"
+          data-hash="Team"
+        />
         <!-- 카테고리 : 팀원에 대한 소개를 한다. -->
         <input
           type="button"
           name="Teamplayer"
           id="Teamplayer"
           value="Teamplayer"
+          data-hash="Teamplayer"
         />
         <!-- 팀의 목표에 대해 설명한다. -->
-        <input type="button" name="Target" id="Target" value="Target" />
+        <input
+          type="button"
+          name="Target"
+          id="Target"
+          value="Target"
+          data-hash="Target"
+        />
       </div>
     </div>
     <!-- 팀원들의 정보를 소개한다. -->
@@ -107,6 +126,12 @@
       </div>
     </div>
     <script>
+      // 페이지 로드 시 초기 hash 값을 설정
+      window.addEventListener("load", () => {
+        const defaultHash = "home"; // 초기 hash 값을 설정
+        window.location.hash = defaultHash;
+      });
+
       const infoContainer = document.getElementById("infoBox");
       // 팀원들의 성을 사용하여 각오와 취미를 기재한다.
       const membersInfo = {
@@ -158,7 +183,15 @@
           }
         }
       });
-
+      // document
+      //   .getElementById("CategoryBox")
+      //   .addEventListener("click", (event) => {
+      //     const clickedElement = event.target;
+      //     if (clickedElement.classList.contains("input")) {
+      //       const hashValue = clickedElement.getAttribute("data-hash");
+      //       window.location.hash = hashValue;
+      //     }
+      //   });
       // 팀원의 이름을 클릭 시 해시를 핸들링 해주는 역할.
       document.getElementById("root").addEventListener("click", (event) => {
         const clickedElement = event.target;

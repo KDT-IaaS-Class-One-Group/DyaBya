@@ -21,7 +21,7 @@
     export function component2(elementNode, attributes, children) {
       let elementStr = `<${elementNode}`;
       for (let key in attributes) {
-        elementStr += `${key} = "${attributes[key]}"`;
+        elementStr += ` ${key} = "${attributes[key]}"`;
       }
       elementStr += '>';
       if (children) {

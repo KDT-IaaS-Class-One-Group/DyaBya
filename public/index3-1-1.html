@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #CategoryBox {
+        width: 100vw;
+        height: 15vh;
+        background-color: rgb(34, 132, 34);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+      input {
+        width: 20vw;
+        height: 10vh;
+        border-radius: 20px;
+
+        font-size: 30px;
+      }
+
+      #bord {
+        margin-top: 5vh;
+        margin: 5px solid rgb(34, 132, 34);
+
+        display: flex;
+        align-items: end;
+        justify-content: space-around;
+      }
+      #root {
+        width: 20vw;
+        height: 60vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+      }
+      .name {
+        width: 20vw;
+        height: 10vh;
+        border: 2px solid rgb(34, 132, 34);
+        border-radius: 10px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 30px;
+        cursor: pointer;
+      }
+      #infoContainer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+
+        font-size: 16px;
+      }
+      .memberBox {
+        width: 70vw;
+        height: 60vh;
+        border: 2px solid rgb(34, 132, 34);
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="Top">
+      <!-- 카테고리 레이아웃(간단한 스타일 작업 완료) -->
+      <div id="CategoryBox">
+        <!-- 카테고리 : 부가기능으로 채팅을 할 수 있는 기능을 넣을까 한다. -->
+        <input type="button" name="home" id="Home" value="Home" />
+        <!-- 팀명의 소개와 팀에 대한 내용들을 소개한다 -->
+        <input type="button" name="Team" id="Team" value="Team" />
+        <!-- 카테고리 : 팀원에 대한 소개를 한다. -->
+        <input
+          type="button"
+          name="Teamplayer"
+          id="Teamplayer"
+          value="Teamplayer"
+        />
+        <!-- 팀의 목표에 대해 설명한다. -->
+        <input type="button" name="Target" id="Target" value="Target" />
+      </div>
+    </div>
+    <!-- 팀원들의 정보를 소개한다. -->
+    <div id="bord">
+      <div id="root">
+        <div id="kim" class="name" hash="kim">김우진</div>
+        <div id="bang" class="name" hash="bang">방승희</div>
+        <div id="jung" class="name" hash="jung">정영식</div>
+        <div id="choi" class="name" hash="choi">최성민</div>
+      </div>
+      <!-- 멤버 정보 박스 -->
+      <div id="infoContainer">
+        <div id="infoBox" class="memberBox"></div>
+      </div>
+    </div>
+    <script type="module"></script>
+    <script type="module"></script>
+    <script type="module"></script>
+    <script>
+      import { createElement } from "createElement.js";
+      import { component2 } from "component.js";
+      import { render } from "render.js";
+
+      createElement();
+      component2();
+      render();
+    </script>
+  </body>
+</html>

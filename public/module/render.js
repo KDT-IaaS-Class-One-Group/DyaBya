@@ -1,4 +1,4 @@
-function render(virtualDom) {
+export function render(virtualDom) {
   if (typeof virtualDom === 'string') {
     return document.createTextNode(virtualDom);
   }
@@ -15,4 +15,4 @@ function render(virtualDom) {
   return element;
 }
 
-export default render;
+

@@ -10,7 +10,7 @@ import path from "path";  // 이 부분을 추가합니다.
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index3-1.html"));
+  res.sendFile(path.join(__dirname, "public", "index3-1-1.html"));
 });
 
 export default router;

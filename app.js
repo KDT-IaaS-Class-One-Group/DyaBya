@@ -1,5 +1,5 @@
 import express from "express";
-import router from "./routes.mjs";
+import router from "./routes.js";
 const app = express();
 const port = 3101
 

@@ -5,51 +5,119 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HOME</title>
   <style>
-    *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    form{
-      background-color: #fff;
-      width: 30vw;
-      margin: 20px;
-      padding: 20px;
-      border-radius: 10px;
-    }
-    input, textarea{
-      width: 100%;
-      margin: 10px;
-      padding: 10px;
-      border-radius: 5px;
-    }
-    button{
-      padding: 10px 20px;
-      border: none;
-    }
-    #root{
-      text-align: center;
-      padding: 20px;
-    }
-    .container{
-      float: left;
-      width: 50vw;
-      justify-content: center;
-      align-items: center;
-    }
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+
+  div {
+    font-size: 3rem;
+  }
+
+  form {
+    background-color: #fff;
+    width: 80vw;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; 
+  }
+
+  input, textarea {
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+
+  input {
+    width: 5vw;
+    height: 5vh;
+    margin-right: 2px; 
+    vertical-align: top; /* 상단 정렬 추가 */
+  }
+
+  textarea {
+    width: 60vw;
+    height: 5vh;
+    vertical-align: top; /* 상단 정렬 추가 */
+  }
+
+  button {
+    background-color: #4caf50;
+    color: #fff;
+    width: 5vw;
+    height: 5vh;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    vertical-align: top; /* 상단 정렬 추가 */
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+
+  /* id */
+  #root {
+    text-align: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  /* class */
+  .container {
+    width: 80vw;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto; /* 수정된 부분 */
+  }
+
+  .memo-list {
+    width: 80vw;
+    max-height: 70vh;
+    overflow-y: auto; /* 내용이 넘칠 경우 스크롤 생성 */
+    border: 1px solid #ccc;
+    padding: 30px;
+    background-color: #fff; /* 배경색 추가 */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; 
+  }
+
+  .memo-item {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
 
   </style>
 </head>
 <body>
+
   <div id="root">
     <div>DYABYA</div>
+
+    <section class="memo-list"></section>
+
     <section class="container">
-      <form action="/HOME" method="POST" name="memo-Form">
-        <input type="text" id="name" placeholder="이름">
-        <textarea  id="content" cols="30" rows="10" placeholder="내용"></textarea>
-        <button id="saveBtn">저장</button>
+      <form id="memo-Form" method="POST" onsubmit="saveMemo(event)">
+        <input type="text" id="title" placeholder="이름">
+        <textarea id="content" placeholder="내용"></textarea>
+        <button type="submit" id="saveBtn">저장</button>
       </form>
     </section>
   </div>
-</body>
+  
 </html>

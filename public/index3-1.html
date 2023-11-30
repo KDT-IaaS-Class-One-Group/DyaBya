@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #CategoryBox {
+        width: 100vw;
+        height: 15vh;
+        background-color: rgb(34, 132, 34);
+
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+      input {
+        width: 20vw;
+        height: 10vh;
+        border-radius: 20px;
+
+        font-size: 30px;
+      }
+
+      #bord {
+        margin-top: 5vh;
+        margin: 5px solid rgb(34, 132, 34);
+
+        display: flex;
+        align-items: end;
+        justify-content: space-around;
+      }
+      #root {
+        width: 20vw;
+        height: 60vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+      }
+      .name {
+        width: 20vw;
+        height: 10vh;
+        border: 2px solid rgb(34, 132, 34);
+        border-radius: 10px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 30px;
+        cursor: pointer;
+      }
+      #infoContainer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+
+        font-size: 16px;
+      }
+      .memberBox {
+        width: 70vw;
+        height: 60vh;
+        border: 2px solid rgb(34, 132, 34);
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="Top">
+      <!-- 카테고리 레이아웃(간단한 스타일 작업 완료) -->
+      <div id="CategoryBox">
+        <!-- 카테고리 : 부가기능으로 채팅을 할 수 있는 기능을 넣을까 한다. -->
+        <input type="button" name="home" id="Home" value="Home" />
+        <!-- 팀명의 소개와 팀에 대한 내용들을 소개한다 -->
+        <input type="button" name="Team" id="Team" value="Team" />
+        <!-- 카테고리 : 팀원에 대한 소개를 한다. -->
+        <input
+          type="button"
+          name="Teamplayer"
+          id="Teamplayer"
+          value="Teamplayer"
+        />
+        <!-- 팀의 목표에 대해 설명한다. -->
+        <input type="button" name="Target" id="Target" value="Target" />
+      </div>
+    </div>
+    <!-- 팀원들의 정보를 소개한다. -->
+    <div id="bord">
+      <div id="root">
+        <div id="kim" class="name" data-hash="kim">김우진</div>
+        <div id="bang" class="name" data-hash="bang">방승희</div>
+        <div id="jung" class="name" data-hash="jung">정영식</div>
+        <div id="choi" class="name" data-hash="choi">최성민</div>
+      </div>
+      <!-- 멤버 정보 박스 -->
+      <div id="infoContainer">
+        <div id="infoBox" class="memberBox"></div>
+      </div>
+    </div>
+    <script>
+      const infoContainer = document.getElementById("infoBox");
+      // 팀원들의 성을 사용하여 각오와 취미를 기재한다.
+      const membersInfo = {
+        kim: {
+          GitHub: "https://github.com/kimwoojin123",
+          각오: "팀원들의 스트레스를 줄이겠습니다.",
+          취미: "음악 감상, 자전거 타기",
+        },
+        bang: {
+          GitHub: "https://github.com/seunghee1108",
+          각오: "빡세게 하겠습니다.",
+          취미: "산책, 음악감상",
+        },
+        jung: {
+          GitHub: "https://github.com/JungYoungSick",
+          각오: "맡은 바 최선을 다하겠습니다.",
+          취미: "독서, 영화 감상, 클래식 감상, 차 마시기",
+        },
+        choi: {
+          GitHub: "https://github.com/csm009177",
+          각오: "재밌게 같이 하겠습니다.",
+          취미: "컴퓨터 하드웨어 조립",
+        },
+      };
+
+      // 해시 변경 시 이벤트 처리[해시체인지를 사용하여 해시를 핸들링 한다.]
+      window.addEventListener("hashchange", () => {
+        // 해시에 사용된 "#"을 제거하는 역할이다.
+        const currentHash = window.location.hash.substring(1);
+        // 해시의 데이터를 선택하여 위 옵션을 적용한다.
+        const selectedElement = document.querySelector(
+          `[data-hash="${currentHash}"]`
+        );
+
+        // 선택된 요소에 대한 처리 (예: 스타일 변경 등)
+        if (selectedElement) {
+          // 선택된 멤버의 정보를 표시한다
+          const info = membersInfo[currentHash];
+          // 팀원들의 정보 불러오기 및 레이아웃 설정
+          if (info) {
+            infoContainer.innerHTML = `
+            <div style="font-size: 32px; font-weight: bold;">${selectedElement.textContent}</div>
+            <div style="font-size: 23px; margin-top: 10px; text-aline:center;">
+              GitHub: ${info.GitHub}<br/>
+              각오: ${info.각오}<br/>
+              취미: ${info.취미}
+            </div>
+          `;
+          }
+        }
+      });
+
+      // 팀원의 이름을 클릭 시 해시를 핸들링 해주는 역할.
+      document.getElementById("root").addEventListener("click", (event) => {
+        const clickedElement = event.target;
+        if (clickedElement.classList.contains("name")) {
+          const hashValue = clickedElement.getAttribute("data-hash");
+          window.location.hash = hashValue;
+        }
+      });
+    </script>
+  </body>
+</html>

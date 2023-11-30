@@ -2,7 +2,7 @@
     export function createElement(type, props, ...children) {
       return { type, props, children};
     }
-    // comoponent
+    // head comoponent
     export function component(stateData) {
       const menuItems = [];
       for (let i=0; i<stateData.length; i++){
@@ -17,6 +17,25 @@
         
       const content = createElement('div', {}, '');
       return createElement('div', {}, menu, content);
+    }
+    
+    export function component2(elementNode, attributes, children) {
+      let elementStr = `<${elementNode}`;
+      for (let key in attributes) {
+        elementStr += `${key} = "${attributes[key]}"`;
+      }
+      elementStr += '>';
+      if (children) {
+        children.forEach((child)=> {
+          if (typeof child === 'string') {
+            elementStr += child;
+          } else {
+            elementStr += component(child.elementNode, child.attributes, child.children);
+          }
+        });
+      }
+      elementStr += `</${elementNode}>`;
+      return elementStr;
     }
 
     export function render(virtualDom) {

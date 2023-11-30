@@ -11,13 +11,7 @@
         box-sizing: border-box;
       }
       #CategoryBox {
-        width: 100vw;
-        height: 15vh;
-        background-color: rgb(34, 132, 34);
-
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
+        width: 100vw; height: 15vh; background-color: rgb(34, 132, 34); display: flex; align-items: center;justify-content: space-around;
       }
       input {
         width: 20vw;
@@ -79,18 +73,18 @@
       <!-- 카테고리 레이아웃(간단한 스타일 작업 완료) -->
       <div id="CategoryBox">
         <!-- 카테고리 : 부가기능으로 채팅을 할 수 있는 기능을 넣을까 한다. -->
-        <input type="button" name="home" id="Home" value="Home" />
+        <!-- <input type="button" name="home" id="Home" value="Home" /> -->
         <!-- 팀명의 소개와 팀에 대한 내용들을 소개한다 -->
-        <input type="button" name="Team" id="Team" value="Team" />
-        <!-- 카테고리 : 팀원에 대한 소개를 한다. -->
-        <input
+        <!-- <input type="button" name="Team" id="Team" value="Team" /> -->
+        카테고리 : 팀원에 대한 소개를 한다.
+        <!-- <input
           type="button"
           name="Teamplayer"
           id="Teamplayer"
           value="Teamplayer"
-        />
+        /> -->
         <!-- 팀의 목표에 대해 설명한다. -->
-        <input type="button" name="Target" id="Target" value="Target" />
+        <!-- <input type="button" name="Target" id="Target" value="Target" /> -->
       </div>
     </div>
     <!-- 팀원들의 정보를 소개한다. -->
@@ -109,30 +103,21 @@
     <script type="module">
       import { createElement, component, render } from "./index.js";
       // Find elements by ID
+      const root = document.getElementById("Top");
       const CategoryBox = document.getElementById("CategoryBox");
-      const root = document.getElementById("root");
       const infoContainer = document.getElementById("infoContainer");
 
       // head component
       const headstateData = [
-        { hash: "#home", text: "Home", name: "Home" },
-        { hash: "#team", text: "Team", name: "Team" },
-        { hash: "#member", text: "Member", name: "Member" },
-        { hash: "#purpose", text: "Purpose", name: "Purpose" },
+        { id="kim" , class="name", hash = "#kim"},
+        { id="bang", class="name", hash = "#bang"},
+        { id="jung", class="name", hash = "#jungmber" },
+        { id="choi", class="name", hash = "#choiPurpose" },
       ];
       const headvirtualDom = component(headstateData);
-      const headcontainer = document.getElementById("root");
+      const headcontainer = document.getElementById("CategoryBox");
       headcontainer.appendChild(render(headvirtualDom));
 
-      // board component
-      const virtualDom = createElement(
-        "div",
-        { href: "#tst" },
-        createElement("div", {}, "test2"),
-        createElement("div", {}, "lasttest")
-      );
-      const container = document.getElementById("infoContainer");
-      container.appendChild(render(virtualDom));
 
       // const infoContainer = document.getElementById("infoBox");
       // // 팀원들의 성을 사용하여 각오와 취미를 기재한다.

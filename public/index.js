@@ -14,11 +14,10 @@
       const menu = createElement('ul', {
         style:'width: 100vw; height: 10vh;background-color: gray; display: flex;  flex-direction: row; text-align: center; justify-content: center;      align-items: center;'}, ...menuItems);
 
-        
-      const content = createElement('div', {}, '');
-      return createElement('div', {}, menu, content);
+      const content = createElement('div', {}, '');  // 
+      return createElement('div', {}, menu, content); // retrun cont include menu and content 
     }
-    
+
     export function component2(elementNode, attributes, children) {
       let elementStr = `<${elementNode}`;
       for (let key in attributes) {

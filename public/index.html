@@ -58,15 +58,31 @@
     <div id="board"></div>
   </div>
   <script type="module">
-    import {createElement} from './index.js';
+    import {createElement, component, render} from './index.js';
       // Find elements by ID
     const root = document.getElementById('root');
     const head = document.getElementById('head');
     const board = document.getElementById('board');
-    //test 
-    const crec = createElement("div", {}, "test")
-    console.log(crec)
 
+    // head component
+    const headstateData = [
+      { hash: '#home', text: 'Home', name: "Home" },
+      { hash: '#team', text: 'Team', name: "Team" },
+      { hash: '#member', text: 'Member', name: "Member" },
+      { hash: '#purpose', text: 'Purpose', name: "Purpose" },
+    ];
+    const headvirtualDom = component(headstateData);
+    const headcontainer = document.getElementById('head');
+    headcontainer.appendChild(render(headvirtualDom));
+
+    // board component
+    const virtualDom = 
+      createElement("div", {href:"#tst"},
+        createElement("div", {}, "test2"), 
+        createElement("div", {}, "lasttest")) 
+    const container = document.getElementById('board');
+    container.appendChild(render(virtualDom));
+    
   </script>
 </body>
 

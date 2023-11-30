@@ -19,7 +19,7 @@
       return createElement('div', {}, menu, content);
     }
 
-    function render(virtualDom) {
+    export function render(virtualDom) {
       if(typeof virtualDom === 'string') {
         return document.createTextNode(virtualDom);
       }
@@ -36,14 +36,3 @@
       return element;
     }
 
-    const stateData = [
-      { hash: '#home', text: 'Home', name: "Home" },
-      { hash: '#team', text: 'Team', name: "Team" },
-      { hash: '#member', text: 'Member', name: "Member" },
-      { hash: '#purpose', text: 'Purpose', name: "Purpose" },
-    ];
-
-
-  const virtualDom = component(stateData);
-  const container = document.getElementById('head');
-  container.appendChild(render(virtualDom));

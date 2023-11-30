@@ -98,15 +98,17 @@
         case 'home' : 
           board.innerHTML = component2('h1 ', { style: 'color:blue;'}, ["this is Page 1"])
           break;
-          case 'team' :
+        case 'team' :
           board.innerHTML = component2('h1 ', {style:'background-color:cadetblue;'}, [component2('h1', {}, ['this is page2'])]);
           break;
-          case 'page3' :
+        case 'member' :
           board.innerHTML = component2('div', { style: 'display:flex; justifly-content:center; color:#ff2222;'}, [component2('h1', {}, ['this is page3'])])
-          case 'page4' :
+          break;
+        case 'purpose' :
           board.innerHTML = component2('div ', { style: 'display:flex; justifly-content:center; color:#333;'}, [component2('h1', {}, ['this is page4'])])
             break;
-          default : 
+
+        default : 
           // 조건이 모두 다 부합하지 않을때, 즉 false 일때 default가 실행된다. 
           // 최초 접속에는 hash가 없기 때문에 default가 실행된다
           board.innerHTML = component2('h1 ', {}, ["반갑습니다. 접속 할때 보이는 페이지(처럼보이는) element입니다"]);

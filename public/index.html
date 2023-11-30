@@ -102,7 +102,10 @@
           board.innerHTML = component2('h1 ', {style:'background-color:cadetblue;'}, [component2('h1', {}, ['this is page2'])]);
           break;
         case 'member' :
-          board.innerHTML = component2('div', { style: 'display:flex; justifly-content:center; color:#ff2222;'}, [component2('h1', {}, ['this is page3'])])
+          board.innerHTML = 
+          component2('div ', { 
+            style: 'display:flex; justifly-content:center; color:#ff2222; width: 25vw; height: 85vh; color: aliceblue;'}, 
+              [component2('h1 ', {}, ['this is page3'])])
           break;
         case 'purpose' :
           board.innerHTML = component2('div ', { style: 'display:flex; justifly-content:center; color:#333;'}, [component2('h1', {}, ['this is page4'])])

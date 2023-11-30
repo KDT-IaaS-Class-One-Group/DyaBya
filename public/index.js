@@ -1,9 +1,9 @@
     // init createElement
-    function createElement(type, props, ...children) {
+    export function createElement(type, props, ...children) {
       return { type, props, children};
     }
     // comoponent
-    function component(stateData) {
+    export function component(stateData) {
       const menuItems = [];
       for (let i=0; i<stateData.length; i++){
         const item = stateData[i];

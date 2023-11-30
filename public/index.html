@@ -134,22 +134,58 @@
         case 'member' :
           board.innerHTML = 
           // side bar for member
-          component2('div', { id:"side",
+          component2('div', {style:"display:flex; flex-direction:row; width: 100vw; height: 90vh; background-color: darkgray"}, 
+            [ 
+              component2("div", { id:"side",
             style: ' display:flex; flex-direction:column; justifly-content:center; color:#ff2222; width: 25vw; height: 85vh; color: aliceblue;'},
-            // explain member
-              [
-              component2('div', { style : "width:25vw; height:21vh " }, [component2("a", {Object})]), 
-              component2('div', { style : "width:25vw; height:21vh " }, [component2("a", {})]),
-              component2('div', { style : "width:25vw; height:21vh " }, [component2("a", {})]),
-              component2('div', { style : "width:25vw; height:21vh " }, [component2("a", {})]),
+              // member list
+                [
+                component2('div', { style : "width:25vw; height:21vh " }, 
+                  [component2("a", {href:"#kim" }, [`${Object.keys(memberData)[0]}`])]),
+                component2('div', { style : "width:25vw; height:21vh " }, 
+                  [component2("a", {href:"#bang",}, [`${Object.keys(memberData)[1]}`])]),
+                component2('div', { style : "width:25vw; height:21vh " }, 
+                  [component2("a", {href:"#jung",}, [`${Object.keys(memberData)[2]}`])]),
+                component2('div', { style : "width:25vw; height:21vh " }, 
+                  [component2("a", {href:"#choi",}, [`${Object.keys(memberData)[3]}`])]),
+                ]
+                ),
+                component2("div", { id:"boad",
+                style: ' display:flex; flex-direction:row; justifly-content:center; color:#ff2222; width: 75vw; height: 85vh; color: aliceblue;'}),
               ]
-              
-              )
+            )
           break;
         case 'purpose' :
           board.innerHTML = component2('div', { style: 'display:flex; justifly-content:center; color:#333;'}, [component2('h1', {}, ['this is page4'])])
             break;
-
+        case 'kim' : 
+        const kimboad = document.getElementById("boad")
+        kimboad.innerHTML = 
+          component2('div', { id:"cont1", 
+            style: 'color:blue;'}, 
+            ["this is Page kim"])
+          break;
+        case 'bang' : 
+        const bangboad = document.getElementById("boad")
+        bangboad.innerHTML = 
+          component2('div', { id:"cont2", 
+            style: 'color:blue;'}, 
+            ["this is Page bang"])
+          break;
+        case 'jung' : 
+        const jungboad = document.getElementById("boad")
+        jungboad.innerHTML = 
+          component2('div', { id:"cont3", 
+            style: 'color:blue;'}, 
+            ["this is Page jung"])
+          break;
+        case 'choi' : 
+        const choiboad = document.getElementById("boad")
+        choiboad.innerHTML = 
+          component2('div', { id:"cont4", 
+            style: 'color:blue;'}, 
+            ["this is Page choi"])
+          break;
         default : 
           // 조건이 모두 다 부합하지 않을때, 즉 false 일때 default가 실행된다. 
           // 최초 접속에는 hash가 없기 때문에 default가 실행된다

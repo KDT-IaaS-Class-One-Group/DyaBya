@@ -73,6 +73,29 @@
       { hash: '#purpose', text: 'Purpose', name: "Purpose" },
     ];
 
+    const memberData = {
+      "kim": {
+        url: "https://github.com/kimwoojin123/",
+        hobby: "음악감상, 자전거 타기",
+        resolution: "팀원들의 스트레스를 줄이겠습니다!"
+      },
+      "bang": {
+        url: "https://github.com/seunghee1108/",
+        hobby: "음악감상, 산책",
+        resolution: "빡세게 하겠습니다!"
+      },
+      "jung": {
+        url: "https://github.com/JungYoungSick",
+        hobby: "독서, 영화감상, 클래식감상, 자전거타기",
+        resolution: "맡은 바 최선을 다 하겠습니다!"
+      },
+      "choi": {
+        url: "https://github.com/csm009177",
+        hobby: "컴퓨터 하드웨어 조립",
+        resolution: "재밌게 같이 하겠습니다!"
+      }
+    };
+
     const headvirtualDom = component(headstateData);
     const headcontainer = document.getElementById('head');
     headcontainer.appendChild(render(headvirtualDom));
@@ -115,10 +138,10 @@
             style: ' display:flex; flex-direction:column; justifly-content:center; color:#ff2222; width: 25vw; height: 85vh; color: aliceblue;'},
             // explain member
               [
-              component2('div', {}, [component2("a", {})]), 
-              component2('div', {}, [component2("a", {})]),
-              component2('div', {}, [component2("a", {})]),
-              component2('div', {}, [component2("a", {})]),
+              component2('div', { style : "width:25vw; height:21vh " }, [component2("a", {Object})]), 
+              component2('div', { style : "width:25vw; height:21vh " }, [component2("a", {})]),
+              component2('div', { style : "width:25vw; height:21vh " }, [component2("a", {})]),
+              component2('div', { style : "width:25vw; height:21vh " }, [component2("a", {})]),
               ]
               
               )

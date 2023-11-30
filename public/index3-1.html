@@ -106,67 +106,94 @@
         <div id="infoBox" class="memberBox"></div>
       </div>
     </div>
-    <script>
-      const infoContainer = document.getElementById("infoBox");
-      // 팀원들의 성을 사용하여 각오와 취미를 기재한다.
-      const membersInfo = {
-        kim: {
-          GitHub: "https://github.com/kimwoojin123",
-          각오: "팀원들의 스트레스를 줄이겠습니다.",
-          취미: "음악 감상, 자전거 타기",
-        },
-        bang: {
-          GitHub: "https://github.com/seunghee1108",
-          각오: "빡세게 하겠습니다.",
-          취미: "산책, 음악감상",
-        },
-        jung: {
-          GitHub: "https://github.com/JungYoungSick",
-          각오: "맡은 바 최선을 다하겠습니다.",
-          취미: "독서, 영화 감상, 클래식 감상, 차 마시기",
-        },
-        choi: {
-          GitHub: "https://github.com/csm009177",
-          각오: "재밌게 같이 하겠습니다.",
-          취미: "컴퓨터 하드웨어 조립",
-        },
-      };
+    <script type="module">
+      import { createElement, component, render } from "./index.js";
+      // Find elements by ID
+      const CategoryBox = document.getElementById("CategoryBox");
+      const root = document.getElementById("root");
+      const infoContainer = document.getElementById("infoContainer");
 
-      // 해시 변경 시 이벤트 처리[해시체인지를 사용하여 해시를 핸들링 한다.]
-      window.addEventListener("hashchange", () => {
-        // 해시에 사용된 "#"을 제거하는 역할이다.
-        const currentHash = window.location.hash.substring(1);
-        // 해시의 데이터를 선택하여 위 옵션을 적용한다.
-        const selectedElement = document.querySelector(
-          `[data-hash="${currentHash}"]`
-        );
+      // head component
+      const headstateData = [
+        { hash: "#home", text: "Home", name: "Home" },
+        { hash: "#team", text: "Team", name: "Team" },
+        { hash: "#member", text: "Member", name: "Member" },
+        { hash: "#purpose", text: "Purpose", name: "Purpose" },
+      ];
+      const headvirtualDom = component(headstateData);
+      const headcontainer = document.getElementById("root");
+      headcontainer.appendChild(render(headvirtualDom));
 
-        // 선택된 요소에 대한 처리 (예: 스타일 변경 등)
-        if (selectedElement) {
-          // 선택된 멤버의 정보를 표시한다
-          const info = membersInfo[currentHash];
-          // 팀원들의 정보 불러오기 및 레이아웃 설정
-          if (info) {
-            infoContainer.innerHTML = `
-            <div style="font-size: 32px; font-weight: bold;">${selectedElement.textContent}</div>
-            <div style="font-size: 23px; margin-top: 10px; text-aline:center;">
-              GitHub: ${info.GitHub}<br/>
-              각오: ${info.각오}<br/>
-              취미: ${info.취미}
-            </div>
-          `;
-          }
-        }
-      });
+      // board component
+      const virtualDom = createElement(
+        "div",
+        { href: "#tst" },
+        createElement("div", {}, "test2"),
+        createElement("div", {}, "lasttest")
+      );
+      const container = document.getElementById("infoContainer");
+      container.appendChild(render(virtualDom));
 
-      // 팀원의 이름을 클릭 시 해시를 핸들링 해주는 역할.
-      document.getElementById("root").addEventListener("click", (event) => {
-        const clickedElement = event.target;
-        if (clickedElement.classList.contains("name")) {
-          const hashValue = clickedElement.getAttribute("data-hash");
-          window.location.hash = hashValue;
-        }
-      });
+      // const infoContainer = document.getElementById("infoBox");
+      // // 팀원들의 성을 사용하여 각오와 취미를 기재한다.
+      // const membersInfo = {
+      //   kim: {
+      //     GitHub: "https://github.com/kimwoojin123",
+      //     각오: "팀원들의 스트레스를 줄이겠습니다.",
+      //     취미: "음악 감상, 자전거 타기",
+      //   },
+      //   bang: {
+      //     GitHub: "https://github.com/seunghee1108",
+      //     각오: "빡세게 하겠습니다.",
+      //     취미: "산책, 음악감상",
+      //   },
+      //   jung: {
+      //     GitHub: "https://github.com/JungYoungSick",
+      //     각오: "맡은 바 최선을 다하겠습니다.",
+      //     취미: "독서, 영화 감상, 클래식 감상, 차 마시기",
+      //   },
+      //   choi: {
+      //     GitHub: "https://github.com/csm009177",
+      //     각오: "재밌게 같이 하겠습니다.",
+      //     취미: "컴퓨터 하드웨어 조립",
+      //   },
+      // };
+
+      // // 해시 변경 시 이벤트 처리[해시체인지를 사용하여 해시를 핸들링 한다.]
+      // window.addEventListener("hashchange", () => {
+      //   // 해시에 사용된 "#"을 제거하는 역할이다.
+      //   const currentHash = window.location.hash.substring(1);
+      //   // 해시의 데이터를 선택하여 위 옵션을 적용한다.
+      //   const selectedElement = document.querySelector(
+      //     `[data-hash="${currentHash}"]`
+      //   );
+
+      //   // 선택된 요소에 대한 처리 (예: 스타일 변경 등)
+      //   if (selectedElement) {
+      //     // 선택된 멤버의 정보를 표시한다
+      //     const info = membersInfo[currentHash];
+      //     // 팀원들의 정보 불러오기 및 레이아웃 설정
+      //     if (info) {
+      //       infoContainer.innerHTML = `
+      //       <div style="font-size: 32px; font-weight: bold;">${selectedElement.textContent}</div>
+      //       <div style="font-size: 23px; margin-top: 10px; text-aline:center;">
+      //         GitHub: ${info.GitHub}<br/>
+      //         각오: ${info.각오}<br/>
+      //         취미: ${info.취미}
+      //       </div>
+      //     `;
+      //     }
+      //   }
+      // });
+
+      // // 팀원의 이름을 클릭 시 해시를 핸들링 해주는 역할.
+      // document.getElementById("root").addEventListener("click", (event) => {
+      //   const clickedElement = event.target;
+      //   if (clickedElement.classList.contains("name")) {
+      //     const hashValue = clickedElement.getAttribute("data-hash");
+      //     window.location.hash = hashValue;
+      //   }
+      // });
     </script>
   </body>
 </html>

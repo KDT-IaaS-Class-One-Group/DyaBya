@@ -1,11 +1,11 @@
-const express = require("express");
+import express from "express";
+import router from "./routes.js";
 const app = express();
-const router = require("./routes");
+const port = 3101
 
 app.use(express.static("public"));
-
 app.use("/", router);
 
-app.listen(3000, () => {
-  console.log("http://localhost:3000/");
+app.listen(port, () => {
+  console.log(`http://localhost:${port}/`);
 });

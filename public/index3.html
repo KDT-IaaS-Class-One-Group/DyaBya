@@ -12,36 +12,63 @@
       }
       #CategoryBox {
         width: 100vw;
-        height: 10vh;
-        background-color: gray;
+        height: 15vh;
+        background-color: rgb(34, 132, 34);
+
         display: flex;
         align-items: center;
         justify-content: space-around;
       }
-      input {
+      button {
         width: 20vw;
-        height: 8vh;
-        background-color: gray;
+        height: 10vh;
         border-radius: 20px;
+
+        font-size: 30px;
+      }
+
+      #bord {
+        margin-top: 5vh;
+        margin: 5px solid rgb(34, 132, 34);
+
+        display: flex;
+        align-items: end;
+        justify-content: space-around;
       }
       #root {
+        width: 20vw;
+        height: 60vh;
+
         display: flex;
-        justify-content: space-around;
-        align-items: start;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
       }
       .name {
-        margin-top: 1vh;
-        font-size: 20px;
+        width: 20vw;
+        height: 10vh;
+        border: 2px solid rgb(34, 132, 34);
+        border-radius: 10px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 30px;
         cursor: pointer;
       }
       #infoContainer {
-        margin-top: 20px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+
         font-size: 16px;
       }
       .memberBox {
+        width: 70vw;
+        height: 60vh;
+        border: 2px solid rgb(34, 132, 34);
         padding: 20px;
-        border: 1px solid #ccc;
-        margin: 10px;
         text-align: center;
         cursor: pointer;
       }
@@ -52,20 +79,21 @@
       <!-- 카테고리 레이아웃(간단한 스타일 작업 완료) -->
       <div id="CategoryBox">
         <!-- 카테고리 : 부가기능으로 채팅을 할 수 있는 기능을 넣을까 한다. -->
-        <input type="button" name="home" id="Home" value="Home" />
+        <button name="home" id="Home"><a href="index1.html">Home</a></button>
         <!-- 팀명의 소개와 팀에 대한 내용들을 소개한다 -->
-        <input type="button" name="Team" id="Team" value="Team" />
+        <button name="Team" id="Team"><a href="index2.html">Team</a></button>
         <!-- 카테고리 : 팀원에 대한 소개를 한다. -->
-        <input
-          type="button"
-          name="Teamplayer"
-          id="Teamplayer"
-          value="Teamplayer"
-        />
+        <button name="Teamplayer" id="Teamplayer">
+          <a href="index3.html">Teamplayer</a>
+        </button>
         <!-- 팀의 목표에 대해 설명한다. -->
-        <input type="button" name="Target" id="Target" value="Target" />
+        <button name="Target" id="Target">
+          <a href="index4.html">Target</a>
+        </button>
       </div>
-      <!-- 팀원들의 정보를 소개한다. -->
+    </div>
+    <!-- 팀원들의 정보를 소개한다. -->
+    <div id="bord">
       <div id="root">
         <div id="kim" class="name" data-hash="kim">김우진</div>
         <div id="bang" class="name" data-hash="bang">방승희</div>
@@ -78,6 +106,12 @@
       </div>
     </div>
     <script>
+      // 페이지 로드 시 초기 hash 값을 설정
+      window.addEventListener("load", () => {
+        const defaultHash = "home"; // 초기 hash 값을 설정
+        window.location.hash = defaultHash;
+      });
+
       const infoContainer = document.getElementById("infoBox");
       // 팀원들의 성을 사용하여 각오와 취미를 기재한다.
       const membersInfo = {
@@ -114,14 +148,13 @@
 
         // 선택된 요소에 대한 처리 (예: 스타일 변경 등)
         if (selectedElement) {
-
           // 선택된 멤버의 정보를 표시한다
           const info = membersInfo[currentHash];
           // 팀원들의 정보 불러오기 및 레이아웃 설정
           if (info) {
             infoContainer.innerHTML = `
             <div style="font-size: 32px; font-weight: bold;">${selectedElement.textContent}</div>
-            <div style="font-size: 16px; margin-top: 10px;">
+            <div style="font-size: 23px; margin-top: 10px; text-aline:center;">
               GitHub: ${info.GitHub}<br/>
               각오: ${info.각오}<br/>
               취미: ${info.취미}
@@ -130,7 +163,6 @@
           }
         }
       });
-
       // 팀원의 이름을 클릭 시 해시를 핸들링 해주는 역할.
       document.getElementById("root").addEventListener("click", (event) => {
         const clickedElement = event.target;
@@ -139,9 +171,6 @@
           window.location.hash = hashValue;
         }
       });
-
-    
-  
     </script>
   </body>
 </html>

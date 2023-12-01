@@ -309,32 +309,32 @@
         const kimboad = document.getElementById("boad")
         kimboad.innerHTML = 
           component2('div', { id:"cont1", 
-            style: 'color:blue;'}, 
+            style: 'color:black; font-weight:bold '}, 
             [component2('p', {}, [`url : ${memberData.kim.url}<br> 취미 : ${memberData.kim.hobby}<br> 각오 : ${memberData.kim.resolution}`])])
           break;
         case 'bang' : 
         const bangboad = document.getElementById("boad")
         bangboad.innerHTML = 
           component2('div', { id:"cont2", 
-            style: 'color:blue;'}, 
+            style: 'color:black; font-weight:bold '}, 
             [component2('p', {}, [`url : ${memberData.bang.url}<br> 취미 : ${memberData.bang.hobby}<br> 각오 : ${memberData.bang.resolution}`])])
           break;
         case 'jung' : 
         const jungboad = document.getElementById("boad")
         jungboad.innerHTML = 
           component2('div', { id:"cont3", 
-            style: 'color:blue;'}, 
+            style: 'color:black; font-weight:bold '}, 
             [component2('p', {}, [`url : ${memberData.jung.url}<br> 취미 : ${memberData.jung.hobby}<br> 각오 : ${memberData.jung.resolution}`])])
           break;
         case 'choi' : 
         const choiboad = document.getElementById("boad")
         choiboad.innerHTML = 
           component2('div', { id:"cont4", 
-            style: 'color:blue; '}, 
+            style: 'color:black; font-weight:bold '}, 
             [component2('p', {}, [`url : ${memberData.choi.url}<br> 취미 : ${memberData.choi.hobby}<br> 각오 : ${memberData.choi.resolution}`])])
           break;
         default : 
-          board.innerHTML = component2('h1', {}, ["반갑습니다. 접속 할때 보이는 페이지(처럼보이는) element입니다"]);
+          board.innerHTML = component2('h1', {style:"font-weight:bold "}, ["반갑습니다. 저희는 DyaBya 팀 입니다"]);
         }
       });
     

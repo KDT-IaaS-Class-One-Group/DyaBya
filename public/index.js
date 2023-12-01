@@ -12,7 +12,7 @@
       }
 
       const menu = createElement('ul', {
-        style:'width: 100vw; height: 10vh;background-color: gray; display: flex;  flex-direction: row; text-align: center; justify-content: center;      align-items: center;'}, ...menuItems);
+        style:'width: 100vw; height: 10vh;background-color: #00cc33; display: flex;  flex-direction: row; text-align: center; justify-content: center;      align-items: center;'}, ...menuItems);
 
       const content = createElement('div', {}, '');  // 
       return createElement('div', {}, menu, content); // retrun cont include menu and content 

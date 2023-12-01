@@ -154,21 +154,25 @@
     ];
     const memberData = {
       "kim": {
+        name: "김우진",
         url: "https://github.com/kimwoojin123/",
         hobby: "음악감상, 자전거 타기",
         resolution: "팀원들의 스트레스를 줄이겠습니다!"
       },
       "bang": {
+        name: "방승희",
         url: "https://github.com/seunghee1108/",
         hobby: "음악감상, 산책",
         resolution: "빡세게 열심히 하겠습니다!"
       },
       "jung": {
+        name: "정영식",
         url: "https://github.com/JungYoungSick",
         hobby: "독서, 영화감상, 클래식감상, 자전거타기",
         resolution: "맡은 바 최선을 다 하겠습니다!"
       },
       "choi": {
+        name: "최성민",
         url: "https://github.com/csm009177",
         hobby: "컴퓨터 하드웨어 조립",
         resolution: "재밌게 같이 하겠습니다!"
@@ -310,28 +314,28 @@
         kimboad.innerHTML = 
           component2('div', { id:"cont1", 
             style: 'color:black; font-weight:bold '}, 
-            [component2('p', {}, [`Url : ${memberData.kim.url}<br> Hobby : ${memberData.kim.hobby}<br> Resolution : ${memberData.kim.resolution}`])])
+            [component2('p', {}, [`${memberData.kim.name}<br> Url : ${memberData.kim.url}<br> Hobby : ${memberData.kim.hobby}<br> Resolution : ${memberData.kim.resolution}`])])
           break;
         case 'bang' : 
         const bangboad = document.getElementById("boad")
         bangboad.innerHTML = 
           component2('div', { id:"cont2", 
             style: 'color:black; font-weight:bold '}, 
-            [component2('p', {}, [`Url : ${memberData.bang.url}<br> Hobby : ${memberData.bang.hobby}<br> Resolution : ${memberData.bang.resolution}`])])
+            [component2('p', {}, [`${memberData.bang.name}<br> Url : ${memberData.bang.url}<br> Hobby : ${memberData.bang.hobby}<br> Resolution : ${memberData.bang.resolution}`])])
           break;
         case 'jung' : 
         const jungboad = document.getElementById("boad")
         jungboad.innerHTML = 
           component2('div', { id:"cont3", 
             style: 'color:black; font-weight:bold '}, 
-            [component2('p', {}, [`Url : ${memberData.jung.url}<br> Hobby : ${memberData.jung.hobby}<br> Resolution : ${memberData.jung.resolution}`])])
+            [component2('p', {}, [`${memberData.jung.name}<br> Url : ${memberData.jung.url}<br> Hobby : ${memberData.jung.hobby}<br> Resolution : ${memberData.jung.resolution}`])])
           break;
         case 'choi' : 
         const choiboad = document.getElementById("boad")
         choiboad.innerHTML = 
           component2('div', { id:"cont4", 
             style: 'color:black;  font-weight:bold '}, 
-            [component2('p', {}, [`Url : ${memberData.choi.url}<br> Hobby : ${memberData.choi.hobby}<br> Resolution : ${memberData.choi.resolution}`])])
+            [component2('p', {}, [`${memberData.choi.name}<br> Url : ${memberData.choi.url}<br> Hobby : ${memberData.choi.hobby}<br> Resolution : ${memberData.choi.resolution}`])])
           break;
         default : 
           board.innerHTML = component2('h1', {style:"font-weight:bold "}, ["반갑습니다. 저희는 DyaBya 팀 입니다"]);

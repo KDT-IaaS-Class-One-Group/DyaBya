@@ -187,7 +187,7 @@
         title: document.getElementById('title'),
         content: document.getElementById('content'),
         saveBtn: document.getElementById('saveBtn'),
-        memoList: document.getElementById('memo-list')
+        memoList: document.getElementById('memo-list'),
       };
 
 
@@ -242,8 +242,11 @@
         localStorage.setItem('memos', JSON.stringify(memos));
       }
 
-
-      
+      const clearBtn = document.getElementById('clear');
+      clearBtn.addEventListener('click', function() {
+        localStorage.removeItem('memos'); // localStorage에서 'memos' 항목 제거
+        selectors.memoList.innerHTML = ''; // memo-list 부분을 비움
+      });
       
       function loadMemosFromLocalStorage() {
         const memos = JSON.parse(localStorage.getItem('memos')) || [];
@@ -251,11 +254,15 @@
         memos.forEach((memo) => createMemo(memo.title, memo.content, memo.timestamp));
       }
       loadMemosFromLocalStorage();
+      
       })
+
+ 
+
+
     });
 
-
-
+ 
 
 
     

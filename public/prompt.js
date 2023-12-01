@@ -7,6 +7,7 @@ const prompt = `<div id="prompt">
       <textarea id="content" placeholder="내용"></textarea>
       <button type="button" id="saveBtn">저장</button>
     </form>
+    <button id="clear">초기화</button>
   </section>
 </div>`;
 

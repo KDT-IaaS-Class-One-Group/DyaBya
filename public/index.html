@@ -95,6 +95,12 @@
         resolution: "재밌게 같이 하겠습니다!"
       }
     };
+    // load mem data
+    function mem(member){
+      return component2("div", { id: `${memberData.member}`
+        
+      },[])
+    }
 
     const headvirtualDom = component(headstateData);
     const headcontainer = document.getElementById('head');
@@ -119,6 +125,7 @@
       // '모두 읽지 않아도' 어떤 작용을 해낸다는 것을 알게 된다
 
       switch (hash) {
+        // home page with prompt
         case 'home' : 
           board.innerHTML = 
           component2('div', { id:"cont", 
@@ -162,14 +169,14 @@
         kimboad.innerHTML = 
           component2('div', { id:"cont1", 
             style: 'color:blue;'}, 
-            ["this is Page kim"])
+            [  `${mem('kim')}`      ])
           break;
         case 'bang' : 
         const bangboad = document.getElementById("boad")
         bangboad.innerHTML = 
           component2('div', { id:"cont2", 
             style: 'color:blue;'}, 
-            ["this is Page bang"])
+            [])
           break;
         case 'jung' : 
         const jungboad = document.getElementById("boad")
@@ -196,5 +203,4 @@
     window.dispatchEvent(new Event('hashchange'));
   </script>
 </body>
-
 </html>

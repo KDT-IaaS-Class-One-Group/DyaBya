@@ -120,7 +120,7 @@
     </section>
   </div>
   
- <script>
+<script>
   document.addEventListener("DOMContentLoaded", () => {
       const selectors = {
         memoForm: document.getElementById('memo-Form'),
@@ -129,6 +129,108 @@
         saveBtn: document.getElementById('saveBtn'),
         memoList: document.querySelector('.memo-list')
       };
+
+      // Add your styles here
+      const styles = `
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f0f0f0;
+        }
+
+        div {
+          font-size: 3rem;
+        }
+
+        form {
+          background-color: #fff;
+          width: 80vw;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          margin: 20px auto; 
+        }
+
+        input, textarea {
+          padding: 10px;
+          box-sizing: border-box;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+
+        input {
+          width: 5vw;
+          height: 5vh;
+          margin-right: 2px; 
+          vertical-align: top;
+        }
+
+        textarea {
+          width: 60vw;
+          height: 5vh;
+          vertical-align: top;
+        }
+
+        button {
+          background-color: #4caf50;
+          color: #fff;
+          width: 5vw;
+          height: 5vh;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          vertical-align: top;
+        }
+
+        button:hover {
+          background-color: #45a049;
+        }
+
+        #root {
+          text-align: center;
+          justify-content: center;
+          padding: 20px;
+        }
+
+        .container {
+          width: 80vw;
+          justify-content: center;
+          align-items: center;
+          margin: 20px auto;
+        }
+
+        .memo-list {
+          width: 80vw;
+          max-height: 70vh;
+          overflow-y: auto;
+          border: 1px solid #ccc;
+          padding: 30px;
+          background-color: #fff; 
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          margin: 20px auto; 
+          text-align: start;
+        }
+
+        .memo-item {
+          font-size: 1rem; 
+          margin-bottom: 15px;
+          border-bottom: 1px solid #ddd;
+          padding-bottom: 10px;
+        }
+      `;
+
+      // Create a style tag and append the styles
+      const styleTag = document.createElement('style');
+      styleTag.textContent = styles;
+      document.head.appendChild(styleTag);
 
       selectors.saveBtn.addEventListener('click', function (event) {
         // event.preventDefault() : form에서 button 눌렀을때 동작을 중단시킴
@@ -171,7 +273,16 @@
         // memo 요소에 'memo-item' 클래스를 추가 (CSS 적용하기 위해)
         memo.classList.add('memo-item');
         // 템플릿 리터럴을 사용하여 HTML 문자열을 동적으로 생성
-        memo.innerHTML = `<h2>${title}</h2><p>${content}</p><p>${timestamp}</p>`;
+        const h2Tag = document.createElement('h2')
+        h2Tag.innerHTML = title
+        const PTag = document.createElement('p')
+        PTag.innerHTML = content
+        const P2Tag = document.createElement('p')
+        P2Tag.innerHTML = timestamp
+        memo.appendChild(h2Tag)
+        memo.appendChild(PTag)
+        memo.appendChild(P2Tag)
+
         // 작성한 메모를 표시 할 부모 요소 = memoList
         // memo를 부모 요소의 자식으로 추가
         selectors.memoList.appendChild(memo);
@@ -205,7 +316,7 @@
       loadMemosFromLocalStorage();
 
       // 로컬에 저장된 내용 삭제하고 싶을 때 사용하는 함수
-      localStorage.clear()
+      // localStorage.clear()
     });
 
 </script>

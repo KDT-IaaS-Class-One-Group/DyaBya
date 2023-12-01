@@ -49,6 +49,78 @@
       width: 25vw;
       cursor: pointer;
     }
+
+    form {
+          background-color: #fff;
+          width: 80vw;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          margin: 20px auto; 
+        }
+
+        input, textarea {
+          padding: 10px;
+          box-sizing: border-box;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+
+        input {
+          width: 5vw;
+          height: 5vh;
+          margin-right: 2px; 
+          vertical-align: top;
+        }
+
+        textarea {
+          width: 60vw;
+          height: 5vh;
+          vertical-align: top;
+        }
+
+        button {
+          background-color: #4caf50;
+          color: #fff;
+          width: 5vw;
+          height: 5vh;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          vertical-align: top;
+        }
+
+        button:hover {
+          background-color: #45a049;
+        }
+
+
+        .container {
+          width: 80vw;
+          justify-content: center;
+          align-items: center;
+          margin: 20px auto;
+        }
+
+        .memo-list {
+          width: 80vw;
+          max-height: 70vh;
+          overflow-y: auto;
+          border: 1px solid #ccc;
+          padding: 30px;
+          background-color: #fff; 
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          margin: 20px auto; 
+          text-align: start;
+        }
+
+        .memo-item {
+          font-size: 1rem; 
+          margin-bottom: 15px;
+          border-bottom: 1px solid #ddd;
+          padding-bottom: 10px;
+        }
   </style>
 </head>
 
@@ -59,6 +131,9 @@
   </div>
   <script type="module">
     import {createElement, component, component2, render} from './index.js';
+    import prompt from './prompt.js'
+    
+    
     // date
     const timestamp = new Date().toLocaleString();
   // Find elements by ID
@@ -127,10 +202,7 @@
       switch (hash) {
         // home page with prompt
         case 'home' : 
-          board.innerHTML = 
-          component2('div', { id:"cont", 
-            style: 'color:blue;'}, 
-            ["this is Page 1"])
+          board.innerHTML = prompt
           break;
         case 'team' :
           board.innerHTML = 
@@ -141,7 +213,7 @@
         case 'member' :
           board.innerHTML = 
           component2('div', {style:"display:flex; flex-direction:row; width: 100vw; height: 90vh; background-color: darkgray"}, 
-            [ // side bar for member
+              [ // side bar for member
               component2("div", { id:"side",
                 style: ' display:flex; flex-direction:column; justifly-content:center; color:#ff2222; width: 25vw; height: 85vh; color: aliceblue;'},
                 // member list

@@ -133,9 +133,6 @@
     import {createElement, component, component2, render} from './index.js';
     import prompt from './prompt.js'
     
-    
-    // date
-    const timestamp = new Date().toLocaleString();
   // Find elements by ID
     const root = document.getElementById('root');
     const head = document.getElementById('head');
@@ -180,11 +177,11 @@
         saveBtn: document.getElementById('saveBtn'),
         memoList: document.querySelector('.memo-list')
       };
+    // append 
+    const headvirtualDom = component(headstateData);
+    const headcontainer = document.getElementById('head');
+    headcontainer.appendChild(render(headvirtualDom));
 
-      // Create a style tag and append the styles
-      const styleTag = document.createElement('style');
-      styleTag.textContent = styles;
-      document.head.appendChild(styleTag);
 
       selectors.saveBtn.addEventListener('click', function (event) {
         // event.preventDefault() : form에서 button 눌렀을때 동작을 중단시킴
@@ -240,7 +237,7 @@
         // memo를 부모 요소의 자식으로 추가
         selectors.memoList.appendChild(memo);
       }
-      
+
      // 로컬 스토리지에서 이전에 저장된 메모 목록을 불러옴
       function saveMemoToJson(memo) {
         // localStorage.getItem('memos') : 로컬 스토리지에서 'memos' 키에 해당하는 값을 가져옴
@@ -275,9 +272,6 @@
 
 
 
-    const headvirtualDom = component(headstateData);
-    const headcontainer = document.getElementById('head');
-    headcontainer.appendChild(render(headvirtualDom));
 
     
   // board 

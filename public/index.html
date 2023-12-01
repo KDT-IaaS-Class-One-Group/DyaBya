@@ -181,6 +181,7 @@
 
     // #home prompt 
     document.addEventListener("DOMContentLoaded", () => {
+      window.addEventListener("hashchange", ()=> {
       const selectors = {
         memoForm: document.getElementById('memo-Form'),
         title: document.getElementById('title'),
@@ -250,6 +251,7 @@
         memos.forEach((memo) => createMemo(memo.title, memo.content, memo.timestamp));
       }
       loadMemosFromLocalStorage();
+      })
     });
 
 

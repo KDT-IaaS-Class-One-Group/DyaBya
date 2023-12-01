@@ -169,6 +169,10 @@
         resolution: "재밌게 같이 하겠습니다!"
       }
     };
+    // append 
+    const headvirtualDom = component(headstateData);
+    const headcontainer = document.getElementById('head');
+    headcontainer.appendChild(render(headvirtualDom));
     
     function mem(member){
       return component2("div", { id: `${memberData.member}`
@@ -184,10 +188,6 @@
         saveBtn: document.getElementById('saveBtn'),
         memoList: document.getElementById('memo-list')
       };
-    // append 
-    const headvirtualDom = component(headstateData);
-    const headcontainer = document.getElementById('head');
-    headcontainer.appendChild(render(headvirtualDom));
 
 
       if (!selectors.memoList) {

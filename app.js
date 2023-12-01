@@ -1,15 +1,30 @@
-const express = require("express");
+// const express = require("express");
+// const app = express();
+// const router = require("./routes");
+
+// app.use(express.static("public"));
+
+// app.use("/", router);
+
+// app.listen(3000, () => {
+//   console.log("http://localhost:3000/");
+// });
+
+
+const express = require('express');
 const app = express();
-const router = require("./routes");
+const router = require('./routes');
+const path = require('path');
 
-app.use(express.static("./public"));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/index3.html");
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index3.html'));
 });
 
-app.use("/", router);
+app.use('/', router);
 
 app.listen(3000, () => {
-  console.log("http://localhost:3000/");
+  console.log('Server is running on http://localhost:3000/');
 });

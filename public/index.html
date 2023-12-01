@@ -169,28 +169,45 @@
         kimboad.innerHTML = 
           component2('div', { id:"cont1", 
             style: 'color:blue;'}, 
-            [  `${mem('kim')}`      ])
+            [`${Object.keys(memberData)[0]} <br>
+              url: "https://github.com/kimwoojin123/" <br>
+              hobby: "음악감상, 자전거 타기" <br>
+              resolution: "팀원들의 스트레스를 줄이겠습니다!" <br>
+            `])
           break;
         case 'bang' : 
         const bangboad = document.getElementById("boad")
         bangboad.innerHTML = 
           component2('div', { id:"cont2", 
             style: 'color:blue;'}, 
-            [])
+            [`방승희 <br>
+              url: "https://github.com/seunghee1108/",<br>
+              hobby: "음악감상, 산책" <br>
+              resolution: "빡세게 열심히 하겠습니다!" <br>
+            `])
           break;
         case 'jung' : 
         const jungboad = document.getElementById("boad")
         jungboad.innerHTML = 
           component2('div', { id:"cont3", 
             style: 'color:blue;'}, 
-            ["this is Page jung"])
+            [ `정영식": <br>
+              url: "https://github.com/JungYoungSick" <br>
+              hobby: "독서, 영화감상, 클래식감상, 자전거타기" <br>
+              resolution: "맡은 바 최선을 다 하겠습니다! <br>
+            `])
           break;
         case 'choi' : 
         const choiboad = document.getElementById("boad")
         choiboad.innerHTML = 
           component2('div', { id:"cont4", 
             style: 'color:blue;'}, 
-            ["this is Page choi"])
+            [`
+            choi": <br>
+            url: "https://github.com/csm009177" <br> 
+            hobby: "컴퓨터 하드웨어 조립" <br>
+            resolution: "재밌게 같이 하겠습니다! <br>
+            `])
           break;
         default : 
           // 조건이 모두 다 부합하지 않을때, 즉 false 일때 default가 실행된다. 

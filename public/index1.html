@@ -19,12 +19,15 @@
         align-items: center;
         justify-content: space-around;
       }
-      .categoryButton {
+      button {
         width: 20vw;
         height: 10vh;
         border-radius: 20px;
 
         font-size: 30px;
+      }
+      button:hover {
+        background-color: #45a049;
       }
 
       #bord {
@@ -77,7 +80,7 @@
         vertical-align: top; /* 상단 정렬 추가 */
       }
 
-      button {
+      #saveBtn {
         background-color: #4caf50;
         color: #fff;
         width: 5vw;
@@ -86,10 +89,6 @@
         border-radius: 4px;
         cursor: pointer;
         vertical-align: top; /* 상단 정렬 추가 */
-      }
-
-      button:hover {
-        background-color: #45a049;
       }
 
       /* id */
@@ -133,19 +132,19 @@
       <!-- 카테고리 레이아웃(간단한 스타일 작업 완료) -->
       <div id="CategoryBox">
         <!-- 카테고리 : 부가기능으로 채팅을 할 수 있는 기능을 넣을까 한다. -->
-        <button .class="categoryButton" name="home" id="Home">
+        <button name="home" id="Home">
           <a href="index1.html">Home</a>
         </button>
         <!-- 팀명의 소개와 팀에 대한 내용들을 소개한다 -->
-        <button .class="categoryButton" name="Team" id="Team">
+        <button name="Team" id="Team">
           <a href="index2.html">Team</a>
         </button>
         <!-- 카테고리 : 팀원에 대한 소개를 한다. -->
-        <button .class="categoryButton" name="Teamplayer" id="Teamplayer">
+        <button name="Teamplayer" id="Teamplayer">
           <a href="index3.html">Teamplayer</a>
         </button>
         <!-- 팀의 목표에 대해 설명한다. -->
-        <button .class="categoryButton" name="Target" id="Target">
+        <button name="Target" id="Target">
           <a href="index4.html">Target</a>
         </button>
       </div>

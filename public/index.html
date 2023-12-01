@@ -10,7 +10,6 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      background-color: gray;
       font-size: 3vh;
     }
 
@@ -26,7 +25,7 @@
     }
 
     #board {
-      width: 100vw;height: 90vh;background-color: darkgray;display: flex;flex-direction: row; justify-content: center;align-items: center;
+      width: 100vw;height: 90vh;background-color: white;display: flex;flex-direction: row; justify-content: center;align-items: center;
     }
 
     #home {
@@ -120,6 +119,12 @@
           margin-bottom: 15px;
           border-bottom: 1px solid #ddd;
           padding-bottom: 10px;
+        }
+
+        a {
+          text-decoration: none;
+          color : black;
+          font-weight:bold
         }
   </style>
 </head>
@@ -284,29 +289,29 @@
           break;
         case 'member' :
           board.innerHTML = 
-          component2('div', {style:"display:flex; flex-direction:row; width: 100vw; height: 90vh; background-color: darkgray"}, 
+          component2('div', {style:"display:flex; flex-direction:row; width: 100vw; height: 90vh;"}, 
               [ 
               component2("div", { id:"side",
                 style: ' display:flex; flex-direction:column; justifly-content:center; color:#ff2222; width: 25vw; height: 85vh; color: aliceblue;'},
                 
                 [
-                component2('div', { style : "width:25vw; height:21vh;" }, 
+                component2('div', { style : "display:flex; justify-content:center; align-items: center; width:25vw; height:21vh;" }, 
                   [component2("a", {href:"#kim",  style:"margin:auto "}, [`${Object.keys(memberData)[0]}`])]),
-                component2('div', { style : "width:25vw; height:21vh " }, 
+                component2('div', { style : "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh " }, 
                   [component2("a", {href:"#bang", style:"margin:auto "}, [`${Object.keys(memberData)[1]}`])]),
-                component2('div', { style : "width:25vw; height:21vh " }, 
+                component2('div', { style : "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh " }, 
                   [component2("a", {href:"#jung", style:"margin:auto "}, [`${Object.keys(memberData)[2]}`])]),
-                component2('div', { style : "width:25vw; height:21vh " }, 
+                component2('div', { style : "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh " }, 
                   [component2("a", {href:"#choi", style:"margin:auto "}, [`${Object.keys(memberData)[3]}`])]),
                 ]),
               
               component2("div", { id:"boad",
-                style: ' display:flex; flex-direction:row; justifly-content:center; color:#ff2222; width: 75vw; height: 85vh; color: aliceblue;'}),
+                style: ' display:flex; align-items:center; justify-content:center; color:#ff2222; width: 75vw; height: 85vh; color: aliceblue;'}),
               ]
             )
           break;
         case 'purpose' :
-          board.innerHTML = component2('div', { style: 'display:flex; justifly-content:center; color:#333;'}, [component2('h1', {}, ['this is page4'])])
+          board.innerHTML = component2('div', { style: 'display:flex; justify-content:center; color:#333;'}, [component2('h1', {}, ['this is page4'])])
             break;
         case 'kim' : 
         const kimboad = document.getElementById("boad")

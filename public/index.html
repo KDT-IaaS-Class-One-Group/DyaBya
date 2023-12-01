@@ -59,20 +59,20 @@
   </div>
   <script type="module">
     import {createElement, component, component2, render} from './index.js';
+    // date
+    const timestamp = new Date().toLocaleString();
   // Find elements by ID
     const root = document.getElementById('root');
     const head = document.getElementById('head');
     const board = document.getElementById('board');
 
   // head 
-
     const headstateData = [
       { hash: '#home', text: 'Home', name: "Home" },
       { hash: '#team', text: 'Team', name: "Team" },
       { hash: '#member', text: 'Member', name: "Member" },
       { hash: '#purpose', text: 'Purpose', name: "Purpose" },
     ];
-
     const memberData = {
       "kim": {
         url: "https://github.com/kimwoojin123/",

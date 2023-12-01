@@ -19,7 +19,7 @@
         align-items: center;
         justify-content: space-around;
       }
-      button {
+      .categoryButton {
         width: 20vw;
         height: 10vh;
         border-radius: 20px;
@@ -35,6 +35,97 @@
         align-items: end;
         justify-content: space-around;
       }
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+      }
+
+      div {
+        font-size: 3rem;
+      }
+
+      form {
+        background-color: #fff;
+        width: 80vw;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+      }
+
+      input,
+      textarea {
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      input {
+        width: 5vw;
+        height: 5vh;
+        margin-right: 2px;
+        vertical-align: top; /* 상단 정렬 추가 */
+      }
+
+      textarea {
+        width: 60vw;
+        height: 5vh;
+        vertical-align: top; /* 상단 정렬 추가 */
+      }
+
+      button {
+        background-color: #4caf50;
+        color: #fff;
+        width: 5vw;
+        height: 5vh;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        vertical-align: top; /* 상단 정렬 추가 */
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      /* id */
+      #root {
+        text-align: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      /* class */
+      .container {
+        width: 80vw;
+        justify-content: center;
+        align-items: center;
+        margin: 20px auto; /* 수정된 부분 */
+      }
+
+      .memo-list {
+        width: 80vw;
+        max-height: 70vh;
+        overflow-y: auto; /* 내용이 넘칠 경우 스크롤 생성 */
+        border: 1px solid #ccc;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        text-align: start;
+      }
+
+      .memo-item {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+      }
     </style>
   </head>
   <body>
@@ -42,19 +133,124 @@
       <!-- 카테고리 레이아웃(간단한 스타일 작업 완료) -->
       <div id="CategoryBox">
         <!-- 카테고리 : 부가기능으로 채팅을 할 수 있는 기능을 넣을까 한다. -->
-        <button name="home" id="Home"><a href="index1.html">Home</a></button>
+        <button .class="categoryButton" name="home" id="Home">
+          <a href="index1.html">Home</a>
+        </button>
         <!-- 팀명의 소개와 팀에 대한 내용들을 소개한다 -->
-        <button name="Team" id="Team"><a href="index2.html">Team</a></button>
+        <button .class="categoryButton" name="Team" id="Team">
+          <a href="index2.html">Team</a>
+        </button>
         <!-- 카테고리 : 팀원에 대한 소개를 한다. -->
-        <button name="Teamplayer" id="Teamplayer">
+        <button .class="categoryButton" name="Teamplayer" id="Teamplayer">
           <a href="index3.html">Teamplayer</a>
         </button>
         <!-- 팀의 목표에 대해 설명한다. -->
-        <button name="Target" id="Target">
+        <button .class="categoryButton" name="Target" id="Target">
           <a href="index4.html">Target</a>
         </button>
       </div>
     </div>
-    <script></script>
+    <div id="root">
+      <div>DYABYA</div>
+
+      <section class="memo-list"></section>
+
+      <section class="container">
+        <form id="memo-Form" method="POST">
+          <input type="text" id="title" placeholder="이름" />
+          <textarea id="content" placeholder="내용"></textarea>
+          <button type="submit" id="saveBtn">저장</button>
+        </form>
+      </section>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const selectors = {
+          memoForm: document.getElementById("memo-Form"),
+          title: document.getElementById("title"),
+          content: document.getElementById("content"),
+          saveBtn: document.getElementById("saveBtn"),
+          memoList: document.querySelector(".memo-list"),
+        };
+
+        selectors.saveBtn.addEventListener("click", function (event) {
+          // event.preventDefault() : form에서 button 눌렀을때 동작을 중단시킴
+          event.preventDefault();
+
+          const title = selectors.title.value;
+          const content = selectors.content.value;
+
+          if (!title) {
+            alert("이름을 입력하세요.");
+          } else if (!content) {
+            alert("내용을 입력하세요.");
+            return;
+          }
+
+          // 현재 시간
+          const timestamp = new Date().toLocaleString();
+
+          // 새로운 메모 객체 생성
+          const newMemo = {
+            title: title,
+            content: content,
+            timestamp: timestamp,
+          };
+
+          // 새로운 메모를 JSON 파일에 저장
+          saveMemoToJson(newMemo);
+
+          // createMemo : 새로운 메모 생성하고 화면에 표시
+          createMemo(newMemo.title, newMemo.content, newMemo.timestamp);
+
+          // name, content 입력 후 content 는 초기화
+          selectors.content.value = "";
+        });
+
+        // 메모를 동적으로 생성
+        function createMemo(title, content, timestamp) {
+          const memo = document.createElement("div");
+          // memo 요소에 'memo-item' 클래스를 추가 (CSS 적용하기 위해)
+          memo.classList.add("memo-item");
+          // 템플릿 리터럴을 사용하여 HTML 문자열을 동적으로 생성
+          memo.innerHTML = `<h2>${title}</h2><p>${content}</p><p>${timestamp}</p>`;
+          // 작성한 메모를 표시 할 부모 요소 = memoList
+          // memo를 부모 요소의 자식으로 추가
+          selectors.memoList.appendChild(memo);
+        }
+
+        // 로컬 스토리지에서 이전에 저장된 메모 목록을 불러옴
+        function saveMemoToJson(memo) {
+          // localStorage.getItem('memos') : 로컬 스토리지에서 'memos' 키에 해당하는 값을 가져옴
+          // 가져온 값을 JSON 형식에서 JavaScript 객체로 변환
+          // 이전에 저장된 메모가 없는 경우 빈 배열을 사용 || [];
+          const memos = JSON.parse(localStorage.getItem("memos")) || [];
+          // 이전에 작성했던 메모들에 새로 작성한 메모를 push
+          memos.push(memo);
+          // 업데이트된 배열을 다시 JSON 문자열로 변환하고, 이를 로컬 스토리지에 'memos' 키에 저장
+          localStorage.setItem("memos", JSON.stringify(memos));
+        }
+
+        // 아래 함수 => 새로고침하면 초기화 됨
+        // 로컬 스토리지에서 메모를 불러와 화면에 표시하는 함수
+        function loadMemosFromLocalStorage() {
+          // localStorage.getItem('memos') : 로컬 스토리지에서 'memos' 키에 해당하는 값을 가져옴
+          // 가져온 값을 JSON 형식에서 JavaScript 객체로 변환
+          const memos = JSON.parse(localStorage.getItem("memos"));
+          // 메모 목록을 초기화
+          selectors.memoList.innerHTML = "";
+          // 배열 순회하면서 memo에 대해 createMemo 함수를 호출
+          memos.forEach((memo) =>
+            createMemo(memo.title, memo.content, memo.timestamp)
+          );
+        }
+
+        loadMemosFromLocalStorage();
+
+        // 로컬에 저장된 내용 삭제하고 싶을 때 사용하는 함수
+        localStorage.clear();
+      });
+    </script>
   </body>
 </html>

@@ -170,16 +170,9 @@
         resolution: "재밌게 같이 하겠습니다!"
       }
     };
-    // load mem data
-    function mem(member){
-      return component2("div", { id: `${memberData.member}`
-        
-      },[])
-    }
 
-
-
-  document.addEventListener("DOMContentLoaded", () => {
+    // #home prompt 
+    document.addEventListener("DOMContentLoaded", () => {
       const selectors = {
         memoForm: document.getElementById('memo-Form'),
         title: document.getElementById('title'),
@@ -247,7 +240,7 @@
         // memo를 부모 요소의 자식으로 추가
         selectors.memoList.appendChild(memo);
       }
-
+      
      // 로컬 스토리지에서 이전에 저장된 메모 목록을 불러옴
       function saveMemoToJson(memo) {
         // localStorage.getItem('memos') : 로컬 스토리지에서 'memos' 키에 해당하는 값을 가져옴

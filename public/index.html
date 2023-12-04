@@ -206,7 +206,7 @@
     }
       selectors.saveBtn.addEventListener('click', function (event) {
         event.preventDefault();
- 
+
         const title = selectors.title.value;
         const content = selectors.content.value;
 
@@ -267,24 +267,25 @@
     });
     window.addEventListener('hashchange', () => { 
       // window.location 객체는 현재 url에 대한 정보를 제공한다
-      const board = document.getElementById('board');  
+      const board = document.getElementById('board');        
+      const boad = document.getElementById("boad");
       const hash = window.location.hash.substr(1);
       // #을 제외한 문자열을 반환하기 위해 substr(1)을 사용한다
 
       switch (hash) {
-        
         case 'home' : 
-          board.innerHTML = prompt
+        board.innerHTML = prompt
           break;
-        case 'team' :
-          board.innerHTML = 
+        case 'team' : 
+        const team = 
           createElement('div', { id:"cont", 
             style:'background-color:white;'}, 
             [createElement('h1', {style : 'color:black; border-radius: 2vw; width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center'}, [`저희는 이제 DB, 데이터 베이스 구축을 진행 할 예정입니다.<br> 만드는 프로그램이 데이터 베이스를 
               꺼내는 역할을 해주기에 프로그램의 마음을 <br>이어받아 D를 꺼내줄지 B를 꺼내줄지 물어보는 것을 팀명으로 정했습니다.`])]);
+              board.appendChild(render(team));
           break;
         case 'member' :
-          const member = 
+        const member = 
           createElement('div', {style:"display:flex; flex-direction:row; width: 100vw; height: 90vh;"}, 
               [ 
               createElement("div", { id:"side",
@@ -305,42 +306,44 @@
                 style: ' display:flex; align-items:center; justify-content:center; color:#ff2222; width: 75vw; height: 85vh; color: aliceblue;'}),
               ]
             )
-          const boardcontainer = document.getElementById('board');
-          boardcontainer.appendChild(render(member));
+            board.appendChild(render(member));
           break;
         case 'purpose' :
-          board.innerHTML = createElement('div', { style: 'display:flex; justify-content:center; color:#333;'}, [createElement('h1', {style : 'width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center; border-radius: 2vw;color:black'}, [`1. 후회가 남지 않도록 최선을 다하자.<br>
+        const purpose = 
+          createElement('div', { style: 'display:flex; justify-content:center; color:#333;'}, [createElement('h1', {style : 'width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center; border-radius: 2vw;color:black'}, [`1. 후회가 남지 않도록 최선을 다하자.<br>
           2. 쉽게 오지 않는 기회를 잡고 나아가자. <br>
           3. 나의 것을 만들 때까지 포기하지 말자.`])])
             break;
+            board.appendChild(render(purpose));
         case 'kim' : 
-        const kimboad = document.getElementById("boad")
-        kimboad.innerHTML = 
+        
+        const kimboad = 
           createElement('div', { id:"cont1", 
             style: 'color:black; font-weight:bold '}, 
             [createElement('p', {}, [`${memberData.kim.name}<br> Url : ${memberData.kim.url}<br> Hobby : ${memberData.kim.hobby}<br> Resolution : ${memberData.kim.resolution}`])])
+            boad.appendChild(render(kimboad));
           break;
         case 'bang' : 
-        const bangboad = document.getElementById("boad")
-        bangboad.innerHTML = 
+        const bangboad = 
           createElement('div', { id:"cont2", 
             style: 'color:black; font-weight:bold '}, 
             [createElement('p', {}, [`${memberData.bang.name}<br> Url : ${memberData.bang.url}<br> Hobby : ${memberData.bang.hobby}<br> Resolution : ${memberData.bang.resolution}`])])
+            boad.appendChild(render(bangboad));
           break;
         case 'jung' : 
-        const jungboad = document.getElementById("boad")
-        jungboad.innerHTML = 
+        const jungboad = 
           createElement('div', { id:"cont3", 
             style: 'color:black; font-weight:bold '}, 
             [createElement('p', {}, [`${memberData.jung.name}<br> Url : ${memberData.jung.url}<br> Hobby : ${memberData.jung.hobby}<br> Resolution : ${memberData.jung.resolution}`])])
-          break;
-        case 'choi' : 
-        const choiboad = document.getElementById("boad")
-        choiboad.innerHTML = 
-          createElement('div', { id:"cont4", 
+            boad.appendChild(render(jungboad));
+            break;
+            case 'choi' : 
+            const choiboad = 
+            createElement('div', { id:"cont4", 
             style: 'color:black;  font-weight:bold '}, 
             [createElement('p', {}, [`${memberData.choi.name}<br> Url : ${memberData.choi.url}<br> Hobby : ${memberData.choi.hobby}<br> Resolution : ${memberData.choi.resolution}`])])
-          break;
+            boad.appendChild(render(choiboad));
+            break;
         default : 
         // 조건이 모두 다 부합하지 않을때, 즉 false 일때 default가 실행된다. 최초 접속에는 hash가 없기 때문에 default가 실행된다
           board.innerHTML = createElement('h1', {style:"font-weight:bold "}, ["반갑습니다. 저희는 DyaBya 팀 입니다"]);

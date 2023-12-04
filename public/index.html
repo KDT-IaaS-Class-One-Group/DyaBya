@@ -135,7 +135,7 @@
     <div id="board"></div>
   </div>
   <script type="module">
-    import {createElement, component, component2, render} from './index.js';
+    import {component, createElement, render} from './index.js';
     import prompt from './prompt.js'
     
     //
@@ -184,7 +184,7 @@
     headcontainer.appendChild(render(headvirtualDom));
     
     function mem(member){
-      return component2("div", { id: `${memberData.member}`
+      return createElement("div", { id: `${memberData.member}`
       },[])
     }
 
@@ -278,70 +278,72 @@
           break;
         case 'team' :
           board.innerHTML = 
-          component2('div', { id:"cont", 
+          createElement('div', { id:"cont", 
             style:'background-color:white;'}, 
-            [component2('h1', {style : 'color:black; border-radius: 2vw; width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center'}, [`저희는 이제 DB, 데이터 베이스 구축을 진행 할 예정입니다.<br> 만드는 프로그램이 데이터 베이스를 
+            [createElement('h1', {style : 'color:black; border-radius: 2vw; width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center'}, [`저희는 이제 DB, 데이터 베이스 구축을 진행 할 예정입니다.<br> 만드는 프로그램이 데이터 베이스를 
               꺼내는 역할을 해주기에 프로그램의 마음을 <br>이어받아 D를 꺼내줄지 B를 꺼내줄지 물어보는 것을 팀명으로 정했습니다.`])]);
           break;
         case 'member' :
-          board.innerHTML = 
-          component2('div', {style:"display:flex; flex-direction:row; width: 100vw; height: 90vh;"}, 
+          const member = 
+          createElement('div', {style:"display:flex; flex-direction:row; width: 100vw; height: 90vh;"}, 
               [ 
-              component2("div", { id:"side",
+              createElement("div", { id:"side",
                 style: ' display:flex; flex-direction:column; justifly-content:center; color:#ff2222; width: 25vw; height: 85vh; color: aliceblue;'},
                 
                 [
-                component2('div', { style : "display:flex; justify-content:center; align-items: center; width:25vw; height:21vh;" }, 
-                  [component2("a", {href:"#kim",  style:"width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;"}, [`${Object.keys(memberData)[0]}`])]),
-                component2('div', { style : "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh " }, 
-                  [component2("a", {href:"#bang", style:"width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;"}, [`${Object.keys(memberData)[1]}`])]),
-                component2('div', { style : "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh " }, 
-                  [component2("a", {href:"#jung", style:"width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;"}, [`${Object.keys(memberData)[2]}`])]),
-                component2('div', { style : "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh " }, 
-                  [component2("a", {href:"#choi", style:"width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;"}, [`${Object.keys(memberData)[3]}`])]),
+                createElement('div', { style : "display:flex; justify-content:center; align-items: center; width:25vw; height:21vh;" }, 
+                  [createElement("a", {href:"#kim",  style:"width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;"}, [`${Object.keys(memberData)[0]}`])]),
+                createElement('div', { style : "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh " }, 
+                  [createElement("a", {href:"#bang", style:"width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;"}, [`${Object.keys(memberData)[1]}`])]),
+                createElement('div', { style : "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh " }, 
+                  [createElement("a", {href:"#jung", style:"width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;"}, [`${Object.keys(memberData)[2]}`])]),
+                createElement('div', { style : "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh " }, 
+                  [createElement("a", {href:"#choi", style:"width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;"}, [`${Object.keys(memberData)[3]}`])]),
                 ]),
               
-              component2("div", { id:"boad",
+              createElement("div", { id:"boad",
                 style: ' display:flex; align-items:center; justify-content:center; color:#ff2222; width: 75vw; height: 85vh; color: aliceblue;'}),
               ]
             )
+          const boardcontainer = document.getElementById('board');
+          boardcontainer.appendChild(render(member));
           break;
         case 'purpose' :
-          board.innerHTML = component2('div', { style: 'display:flex; justify-content:center; color:#333;'}, [component2('h1', {style : 'width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center; border-radius: 2vw;color:black'}, [`1. 후회가 남지 않도록 최선을 다하자.<br>
+          board.innerHTML = createElement('div', { style: 'display:flex; justify-content:center; color:#333;'}, [createElement('h1', {style : 'width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center; border-radius: 2vw;color:black'}, [`1. 후회가 남지 않도록 최선을 다하자.<br>
           2. 쉽게 오지 않는 기회를 잡고 나아가자. <br>
           3. 나의 것을 만들 때까지 포기하지 말자.`])])
             break;
         case 'kim' : 
         const kimboad = document.getElementById("boad")
         kimboad.innerHTML = 
-          component2('div', { id:"cont1", 
+          createElement('div', { id:"cont1", 
             style: 'color:black; font-weight:bold '}, 
-            [component2('p', {}, [`${memberData.kim.name}<br> Url : ${memberData.kim.url}<br> Hobby : ${memberData.kim.hobby}<br> Resolution : ${memberData.kim.resolution}`])])
+            [createElement('p', {}, [`${memberData.kim.name}<br> Url : ${memberData.kim.url}<br> Hobby : ${memberData.kim.hobby}<br> Resolution : ${memberData.kim.resolution}`])])
           break;
         case 'bang' : 
         const bangboad = document.getElementById("boad")
         bangboad.innerHTML = 
-          component2('div', { id:"cont2", 
+          createElement('div', { id:"cont2", 
             style: 'color:black; font-weight:bold '}, 
-            [component2('p', {}, [`${memberData.bang.name}<br> Url : ${memberData.bang.url}<br> Hobby : ${memberData.bang.hobby}<br> Resolution : ${memberData.bang.resolution}`])])
+            [createElement('p', {}, [`${memberData.bang.name}<br> Url : ${memberData.bang.url}<br> Hobby : ${memberData.bang.hobby}<br> Resolution : ${memberData.bang.resolution}`])])
           break;
         case 'jung' : 
         const jungboad = document.getElementById("boad")
         jungboad.innerHTML = 
-          component2('div', { id:"cont3", 
+          createElement('div', { id:"cont3", 
             style: 'color:black; font-weight:bold '}, 
-            [component2('p', {}, [`${memberData.jung.name}<br> Url : ${memberData.jung.url}<br> Hobby : ${memberData.jung.hobby}<br> Resolution : ${memberData.jung.resolution}`])])
+            [createElement('p', {}, [`${memberData.jung.name}<br> Url : ${memberData.jung.url}<br> Hobby : ${memberData.jung.hobby}<br> Resolution : ${memberData.jung.resolution}`])])
           break;
         case 'choi' : 
         const choiboad = document.getElementById("boad")
         choiboad.innerHTML = 
-          component2('div', { id:"cont4", 
+          createElement('div', { id:"cont4", 
             style: 'color:black;  font-weight:bold '}, 
-            [component2('p', {}, [`${memberData.choi.name}<br> Url : ${memberData.choi.url}<br> Hobby : ${memberData.choi.hobby}<br> Resolution : ${memberData.choi.resolution}`])])
+            [createElement('p', {}, [`${memberData.choi.name}<br> Url : ${memberData.choi.url}<br> Hobby : ${memberData.choi.hobby}<br> Resolution : ${memberData.choi.resolution}`])])
           break;
         default : 
         // 조건이 모두 다 부합하지 않을때, 즉 false 일때 default가 실행된다. 최초 접속에는 hash가 없기 때문에 default가 실행된다
-          board.innerHTML = component2('h1', {style:"font-weight:bold "}, ["반갑습니다. 저희는 DyaBya 팀 입니다"]);
+          board.innerHTML = createElement('h1', {style:"font-weight:bold "}, ["반갑습니다. 저희는 DyaBya 팀 입니다"]);
         }
       });
     // 초기 로딩을 위한 코드

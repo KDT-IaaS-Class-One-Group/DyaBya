@@ -258,10 +258,13 @@
       function saveMemoToJson(memo) {
         // / 이전에 저장된 메모가 없는 경우 빈 배열을 사용
         const memos = JSON.parse(localStorage.getItem('memos')) || [];
+        // 새로 작성한 메모를 추가
         memos.push(memo);
+        // 배열을 JSON 문자열로 변환하여 로컬 스토리지에 저장
         localStorage.setItem('memos', JSON.stringify(memos));
       }
 
+      // 초기화 버튼
       const clearBtn = document.getElementById('clear');
       clearBtn.addEventListener('click', function() {
         localStorage.removeItem('memos'); // localStorage에서 'memos' 항목 제거
@@ -273,6 +276,7 @@
         // // 이전에 저장된 메모 목록을 불러오고, 없으면 빈 배열 생성
         const memos = JSON.parse(localStorage.getItem('memos')) || [];
         // selectors.memoList.innerHTML = '';
+        //  배열 순회하면서 memo에 대해 createMemo 함수를 호출 
         memos.forEach((memo) => createMemo(memo.title, memo.content, memo.timestamp));
       }
       loadMemosFromLocalStorage();

@@ -138,7 +138,7 @@
     import {createElement, component, component2, render} from './index.js';
     import prompt from './prompt.js'
     
-    //
+    // 현재 날짜와 시간을 나타내는 메서드 + 문자열로 변환
     const timestamp = new Date().toLocaleString();
 
     const root = document.getElementById('root');
@@ -162,19 +162,19 @@
       "bang": {
         name: "방승희",
         url: "https://github.com/seunghee1108/",
-        hobby: "음악감상, 산책",
+        hobby: ["음악감상", "산책",],
         resolution: "빡세게 열심히 하겠습니다!"
       },
       "jung": {
         name: "정영식",
         url: "https://github.com/JungYoungSick",
-        hobby: "독서, 영화감상, 클래식감상, 자전거타기",
+        hobby: ["독서", "영화감상", "클래식감상", "자전거타기"],
         resolution: "맡은 바 최선을 다 하겠습니다!"
       },
       "choi": {
         name: "최성민",
         url: "https://github.com/csm009177",
-        hobby: "컴퓨터 하드웨어 조립",
+        hobby: ["컴퓨터 하드웨어 조립"],
         resolution: "재밌게 같이 하겠습니다!"
       }
     };
@@ -189,6 +189,7 @@
     }
 
     // #home prompt 
+      // DOMContentLoaded : 돔이 다 만들어진 후에 이벤트가 발생하기 때문에 돔이 만들어지기 전에 자바스크립트 코드가 실행되는 오류를 방지
       document.addEventListener("DOMContentLoaded", () => {
         window.addEventListener("hashchange", ()=> {
       const selectors = {
@@ -202,14 +203,16 @@
 
       if (!selectors.memoList) {
         console.error("Memo list element not found!");
-        return; // memoList를 찾을 수 없는 경우 함수를 종료합니다.
+        return; // memoList를 찾을 수 없는 경우 함수를 종료한다.
     }
       selectors.saveBtn.addEventListener('click', function (event) {
+        // 이벤트의 기본 동작을 수행하지 않도록 막음
         event.preventDefault();
  
         const title = selectors.title.value;
         const content = selectors.content.value;
 
+        // title, content 부분 입력이 되지 않았을 때 알림창 띄움
         if (!title) {
           alert('이름을 입력하세요.');
         } else if (!content) {
@@ -217,18 +220,24 @@
           return;
         }
 
-        const timestamp = new Date().toLocaleString();
+        // 위 코드와 중복되어 주석처리 함(확인 후 삭제할것)
+        // const timestamp = new Date().toLocaleString();
+
+        // 새로운 메모 객체 생성
         const newMemo = {
           title: title,
           content: content,
           timestamp: timestamp
         };
+        // JSON 저장 
         saveMemoToJson(newMemo);
+        // creaetMemo : 새로운 메모 생성하고 화면에 표시
         createMemo(newMemo.title, newMemo.content, newMemo.timestamp);
+        // 내용 부분만 초기화 (이름은 저장되어 있음)
         selectors.content.value = '';
       });
 
-      
+      // 메모 작성하면 저장되는 memo-item 동적으로 생성
       function createMemo(title, content, timestamp) {
         const memo = document.createElement('div');
         memo.classList.add('memo-item');
@@ -245,7 +254,9 @@
         selectors.memoList.appendChild(memo);
       }
 
+      // 로컬 스토리지에서 이전에 저장된 메모 목록을 불러옴
       function saveMemoToJson(memo) {
+        // / 이전에 저장된 메모가 없는 경우 빈 배열을 사용
         const memos = JSON.parse(localStorage.getItem('memos')) || [];
         memos.push(memo);
         localStorage.setItem('memos', JSON.stringify(memos));
@@ -256,10 +267,12 @@
         localStorage.removeItem('memos'); // localStorage에서 'memos' 항목 제거
         selectors.memoList.innerHTML = ''; // memo-list 부분을 비움
       });
-      
+
+      // 로컬 스토리지에서 메모를 불러와 화면에 표시하는 함수
       function loadMemosFromLocalStorage() {
+        // // 이전에 저장된 메모 목록을 불러오고, 없으면 빈 배열 생성
         const memos = JSON.parse(localStorage.getItem('memos')) || [];
-        selectors.memoList.innerHTML = '';
+        // selectors.memoList.innerHTML = '';
         memos.forEach((memo) => createMemo(memo.title, memo.content, memo.timestamp));
       }
       loadMemosFromLocalStorage();

@@ -137,15 +137,14 @@
   <script type="module">
     import {createElement, component, component2, render} from './index.js';
     import prompt from './prompt.js'
-    
-    //
+    // 
     const timestamp = new Date().toLocaleString();
-
+    // declare target
     const root = document.getElementById('root');
     const head = document.getElementById('head');
     const board = document.getElementById('board');
 
-  
+    // stateDate -------------------------------------------------------------
     const headstateData = [
       { hash: '#home', text: 'Home', name: "Home" },
       { hash: '#team', text: 'Team', name: "Team" },
@@ -178,19 +177,16 @@
         resolution: "재밌게 같이 하겠습니다!"
       }
     };
-    // append 
-    const headvirtualDom = component(headstateData);
-    const headcontainer = document.getElementById('head');
-    headcontainer.appendChild(render(headvirtualDom));
-    
-    function mem(member){
-      return component2("div", { id: `${memberData.member}`
-      },[])
-    }
 
+    // component render & append
+    const headvirtualDom = component(headstateData);       // make component with state
+    const headcontainer = document.getElementById('head'); // taget 
+    headcontainer.appendChild(render(headvirtualDom));     // rendering component
     // #home prompt 
+      // DOM(Document Object Model)이 완전히 로드되었을 때의 이벤트를 리슨
       document.addEventListener("DOMContentLoaded", () => {
-        window.addEventListener("hashchange", ()=> {
+        // hash가 변경 되었을 때의 이벤트를 리슨
+        window.addEventListener("hashchange", ()=> { 
       const selectors = {
         memoForm: document.getElementById('memo-Form'),
         title: document.getElementById('title'),
@@ -199,14 +195,14 @@
         memoList: document.getElementById('memo-list'),
       };
 
-
-      if (!selectors.memoList) {
+      
+      if (!selectors.memoList) { // if not selectors.memoList
         console.error("Memo list element not found!");
         return; // memoList를 찾을 수 없는 경우 함수를 종료합니다.
-    }
+    } 
       selectors.saveBtn.addEventListener('click', function (event) {
         event.preventDefault();
- 
+
         const title = selectors.title.value;
         const content = selectors.content.value;
 
@@ -271,8 +267,7 @@
       const hash = window.location.hash.substr(1);
       // #을 제외한 문자열을 반환하기 위해 substr(1)을 사용한다
 
-      switch (hash) {
-        
+      switch (hash) {         
         case 'home' : 
           board.innerHTML = prompt
           break;

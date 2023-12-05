@@ -222,21 +222,40 @@
       });
 
       
-      function createMemo(title, content, timestamp) {
-        const memo = document.createElement('div');
-        memo.classList.add('memo-item');
-        const h2Tag = document.createElement('h2')
-        h2Tag.innerHTML = title
-        const PTag = document.createElement('p')
-        PTag.innerHTML = content
-        const P2Tag = document.createElement('p')
-        P2Tag.innerHTML = timestamp
-        memo.appendChild(h2Tag)
-        memo.appendChild(PTag)
-        memo.appendChild(P2Tag)
+      // function createMemo(title, content, timestamp) {
+      //   const memo = document.createElement('div');
+      //   memo.classList.add('memo-item');
+      //   const h2Tag = document.createElement('h2')
+      //   h2Tag.innerHTML = title
+      //   const PTag = document.createElement('p')
+      //   PTag.innerHTML = content
+      //   const P2Tag = document.createElement('p')
+      //   P2Tag.innerHTML = timestamp
+      //   memo.appendChild(h2Tag)
+      //   memo.appendChild(PTag)
+      //   memo.appendChild(P2Tag)
 
+      //   selectors.memoList.appendChild(memo);
+      // }
+      // 코드 간략화를 위해 createMemo함수 아래 코드로 수정
+      
+      function createMemo(title, content, timestamp) {
+        const memo = document.createElement("div");
+        memo.classList.add("memo-item");
+        // 일일이 동적 생성하고 추가해주는 부분을 innerHTML이기에 특성을 이용해서 탬플릿으로 한번에 작성하고 추가해주었음.
+        const memoContent = `
+          <h2>${title}</h2>
+          <p>${content}</p>
+          <p>${timestamp}</p>
+        `;
+
+        memo.innerHTML = memoContent;
         selectors.memoList.appendChild(memo);
       }
+
+
+
+
 
       function saveMemoToJson(memo) {
         const memos = JSON.parse(localStorage.getItem('memos')) || [];

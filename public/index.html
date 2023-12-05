@@ -21,7 +21,7 @@
     }
 
     #head {
-      width: 100vw;height: 10vh;background-color: blue;display: flex;flex-direction: row;text-align: center;justify-content: center;align-items: center;
+      width: 100vw;height: 10vh;display: flex;flex-direction: row;text-align: center;justify-content: center;align-items: center;
     }
 
     #board {
@@ -137,6 +137,7 @@
   <script type="module">
     import {createElement, component, component2, render} from './index.js';
     import prompt from './prompt.js'
+    import {style} from './style.js'
     
     
     
@@ -356,6 +357,21 @@
         console.error("적절한 해쉬가 아닙니다.")
       }
       }
+
+      
+      fetch("/style.json")
+        .then((response) => response.json())
+        .then((data => {
+          style(data)
+        }))
+      
+
+  
+
+
+
+
+
     window.dispatchEvent(new Event('hashchange'));
   </script>
 </body>

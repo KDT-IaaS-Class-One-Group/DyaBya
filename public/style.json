@@ -1,20 +1,11 @@
 {
-  "colors": {
-    "head" : "#00cc33",
-    "home": {
-      "title" : "black",
-      "prompt" : "lightgreen",
-      "memoform" : "yellogreen",
-      "button" : "#4caf50"
-    },
-    "team" : {
-      "container" : "lightgreen"
-    },
-    "member" : {
-      "button" : "#4caf50"
-    },
-    "purpose" : {
-      "container" : "lightgreen"
-    }
+  "textBigDiv": {
+    "style": "color:black; border-radius: 2vw; width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center"
+  },
+  "memNameDiv": {
+    "style": "display:flex; justify-content:center; align-items: center; width:25vw; height:21vh;"
+  },
+  "memHashDiv": {
+    "style": "width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;"
   }
 }

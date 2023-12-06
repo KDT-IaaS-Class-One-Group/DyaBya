@@ -249,10 +249,10 @@
             memo.classList.add("memo-item");
             // 일일이 동적 생성하고 추가해주는 부분을 innerHTML이기에 특성을 이용해서 탬플릿으로 한번에 작성하고 추가해주었음.
             const memoContent = `
-          <h2>${title}</h2>
-          <p>${content}</p>
-          <p>${timestamp}</p>
-        `;
+                <h2>${title}</h2>
+                <p>${content}</p>
+                <p>${timestamp}</p>
+              `;
 
             memo.innerHTML = memoContent;
             selectors.memoList.appendChild(memo);
@@ -296,12 +296,11 @@
                 component2(
                   "h1",
                   {
-                    style:
-                      "color:black; border-radius: 2vw; width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center",
+                    style: cssJson.textBigDiv.style,
                   },
                   [
-                    `저희는 이제 DB, 데이터 베이스 구축을 진행 할 예정입니다.<br> 만드는 프로그램이 데이터 베이스를 
-              꺼내는 역할을 해주기에 프로그램의 마음을 <br>이어받아 D를 꺼내줄지 B를 꺼내줄지 물어보는 것을 팀명으로 정했습니다.`,
+                    `저희는 이제 DB, 데이터 베이스 구축을 진행 할 예정입니다.<br> 만드는 프로그램이 데이터 베이스를
+                    꺼내는 역할을 해주기에 프로그램의 마음을 <br>이어받아 D를 꺼내줄지 B를 꺼내줄지 물어보는 것을 팀명으로 정했습니다.`,
                   ]
                 ),
               ]
@@ -327,16 +326,14 @@
                     component2(
                       "div",
                       {
-                        style:
-                          "display:flex; justify-content:center; align-items: center; width:25vw; height:21vh;",
+                        style: cssJson.memNameDiv.style,
                       },
                       [
                         component2(
                           "a",
                           {
                             href: "#kim",
-                            style:
-                              "width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;",
+                            style: cssJson.memHashDiv.style,
                           },
                           [`${Object.keys(memberData)[0]}`]
                         ),
@@ -345,16 +342,14 @@
                     component2(
                       "div",
                       {
-                        style:
-                          "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh ",
+                        style: cssJson.memNameDiv.style,
                       },
                       [
                         component2(
                           "a",
                           {
                             href: "#bang",
-                            style:
-                              "width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;",
+                            style: cssJson.memHashDiv.style,
                           },
                           [`${Object.keys(memberData)[1]}`]
                         ),
@@ -363,16 +358,14 @@
                     component2(
                       "div",
                       {
-                        style:
-                          "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh ",
+                        style: cssJson.memNameDiv.style,
                       },
                       [
                         component2(
                           "a",
                           {
                             href: "#jung",
-                            style:
-                              "width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;",
+                            style: cssJson.memHashDiv.style,
                           },
                           [`${Object.keys(memberData)[2]}`]
                         ),
@@ -381,16 +374,14 @@
                     component2(
                       "div",
                       {
-                        style:
-                          "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh ",
+                        style: cssJson.memNameDiv.style,
                       },
                       [
                         component2(
                           "a",
                           {
                             href: "#choi",
-                            style:
-                              "width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;",
+                            style: cssJson.memHashDiv.style,
                           },
                           [`${Object.keys(memberData)[3]}`]
                         ),
@@ -415,13 +406,12 @@
                 component2(
                   "h1",
                   {
-                    style:
-                      "width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center; border-radius: 2vw;color:black",
+                    style: cssJson.textBigDiv.style,
                   },
                   [
                     `1. 후회가 남지 않도록 최선을 다하자.<br>
-          2. 쉽게 오지 않는 기회를 잡고 나아가자. <br>
-          3. 나의 것을 만들 때까지 포기하지 말자.`,
+                2. 쉽게 오지 않는 기회를 잡고 나아가자. <br>
+                3. 나의 것을 만들 때까지 포기하지 말자.`,
                   ]
                 ),
               ]
@@ -493,13 +483,14 @@
 
       xhr.onreadystatechange = function () {
         // 상태 체크 readystat==4 : 요청완료 응답받음 xhr.status == 200
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          // JSON parse response text and put in variation
-          let json = JSON.parse(xhr.responseText);
-        }
+        // if (xhr.readyState == 4 && xhr.status == 200) {
+        // JSON parse response text and put in variation
+        let cssJson = JSON.parse(xhr.responseText);
+        // }
+        return cssJson;
       };
 
-      xhr.open("GET", "name.json", true);
+      xhr.open("GET", "style.json", true);
       xhr.send();
 
       window.dispatchEvent(new Event("hashchange"));

@@ -1,20 +1,54 @@
 {
   "colors": {
-    "head" : "#00cc33",
+    "head": "#00cc33",
     "home": {
-      "title" : "black",
-      "prompt" : "lightgreen",
-      "memoform" : "yellogreen",
-      "button" : "#4caf50"
+      "title": "black",
+      "prompt": "lightgreen",
+      "memoform": "yellogreen",
+      "button": "#4caf50"
     },
-    "team" : {
-      "container" : "lightgreen"
+    "team": {
+      "container": "lightgreen"
     },
-    "member" : {
-      "button" : "#4caf50"
+    "member": {
+      "button": "#4caf50"
     },
-    "purpose" : {
-      "container" : "lightgreen"
+    "purpose": {
+      "container": "lightgreen"
     }
+  },
+
+  "width": {
+    "root": "100vw",
+    "head": "100vw",
+    "board": "100vw",
+    "home": "25vw",
+    "team": "25vw",
+    "member": "25vw",
+    "purpose": "25vw",
+    "memo-list": "80vw"
+  },
+  "height": {
+    "root": "100vh",
+    "head": "10vh",
+    "board": "90vh"
+  },
+  "display": {
+    "root": "flex",
+    "head": "flex",
+    "board": "flex"
+  },
+  "flex-direction": {
+    "root": "column",
+    "head": "row",
+    "board": "row"
+  },
+  "align-items": {
+    "head": "center",
+    "board": "center"
+  },
+  "justify-content": {
+    "head": "center",
+    "board": "center"
   }
 }

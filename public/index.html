@@ -381,10 +381,10 @@
       fetch("/style.json")
         .then((response) => response.json())
         .then((data => {
-          const colors = data.colors;
-          const head = document.getElementById("head");
-          head.style.backgroundColor = colors.head;
-          // style(data)
+          // const colors = data.colors;
+          // const head = document.getElementById("head");
+          // head.style.backgroundColor = colors.head;
+          style(data)
         }))
       
 

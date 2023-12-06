@@ -2,13 +2,13 @@
   "colors": {
     "head" : "#00cc33",
     "home": {
-      "title" : "black",
+      "title" : "red",
       "prompt" : "lightgreen",
       "memoform" : "yellogreen",
       "button" : "#4caf50"
     },
     "team" : {
-      "container" : "lightgreen"
+      "container" : "yellow"
     },
     "member" : {
       "button" : "#4caf50"

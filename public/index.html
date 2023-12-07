@@ -157,14 +157,11 @@
           case hashCheck(1):
             board.innerHTML = component2(
               "div",
-              { id: "cont", style: "background-color:white;" },
+              { id: "cont"},
               [
                 component2(
                   "h1",
-                  {
-                    style:
-                      "color:black; border-radius: 2vw; width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center",
-                  },
+                  {},
                   [
                     `저희는 이제 DB, 데이터 베이스 구축을 진행 할 예정입니다.<br> 만드는 프로그램이 데이터 베이스를 
               꺼내는 역할을 해주기에 프로그램의 마음을 <br>이어받아 D를 꺼내줄지 B를 꺼내줄지 물어보는 것을 팀명으로 정했습니다.`,
@@ -174,104 +171,15 @@
             );
             break;
           case hashCheck(2):
-            board.innerHTML = component2(
-              "div",
-              {
-                style:
-                  "display:flex; flex-direction:row; width: 100vw; height: 90vh;",
-              },
-              [
-                component2(
-                  "div",
-                  {
-                    id: "side",
-                    style:
-                      " display:flex; flex-direction:column; justifly-content:center; color:#ff2222; width: 25vw; height: 85vh; color: aliceblue;",
-                  },
-
-                  [
-                    component2(
-                      "div",
-                      {
-                        style:
-                          "display:flex; justify-content:center; align-items: center; width:25vw; height:21vh;",
-                      },
-                      [
-                        component2(
-                          "a",
-                          {
-                            href: "#kim",
-                            style:
-                              "width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;",
-                          },
-                          [`${Object.keys(memberData)[0]}`]
-                        ),
-                      ]
-                    ),
-                    component2(
-                      "div",
-                      {
-                        style:
-                          "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh ",
-                      },
-                      [
-                        component2(
-                          "a",
-                          {
-                            href: "#bang",
-                            style:
-                              "width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;",
-                          },
-                          [`${Object.keys(memberData)[1]}`]
-                        ),
-                      ]
-                    ),
-                    component2(
-                      "div",
-                      {
-                        style:
-                          "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh ",
-                      },
-                      [
-                        component2(
-                          "a",
-                          {
-                            href: "#jung",
-                            style:
-                              "width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;",
-                          },
-                          [`${Object.keys(memberData)[2]}`]
-                        ),
-                      ]
-                    ),
-                    component2(
-                      "div",
-                      {
-                        style:
-                          "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh ",
-                      },
-                      [
-                        component2(
-                          "a",
-                          {
-                            href: "#choi",
-                            style:
-                              "width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;",
-                          },
-                          [`${Object.keys(memberData)[3]}`]
-                        ),
-                      ]
-                    ),
-                  ]
-                ),
-
-                component2("div", {
-                  id: "boad",
-                  style:
-                    " display:flex; align-items:center; justify-content:center; color:#ff2222; width: 75vw; height: 85vh; color: aliceblue;",
-                }),
-              ]
+            const memberLinks = Object.keys(memberData).map((key) =>
+              component2("div", {class : "member-board"}, [
+                component2("a", { href: `#${key}` }, [`${key}`]),
+              ])
             );
+            board.innerHTML = component2("div", {}, [
+              component2("div", { id: "side" }, memberLinks),
+              component2("div", { id: "boad" }),
+            ]);
             break;
           case hashCheck(3):
             board.innerHTML = component2(
@@ -286,8 +194,8 @@
                   },
                   [
                     `1. 후회가 남지 않도록 최선을 다하자.<br>
-          2. 쉽게 오지 않는 기회를 잡고 나아가자. <br>
-          3. 나의 것을 만들 때까지 포기하지 말자.`,
+                    2. 쉽게 오지 않는 기회를 잡고 나아가자. <br>
+                    3. 나의 것을 만들 때까지 포기하지 말자.`,
                   ]
                 ),
               ]
@@ -297,7 +205,7 @@
             const kimboad = document.getElementById("boad");
             kimboad.innerHTML = component2(
               "div",
-              { id: "cont1", style: "color:black; font-weight:bold " },
+              { id: "cont1"},
               [component2("p", {}, [dataCheck("kim")])]
             );
             break;
@@ -305,7 +213,7 @@
             const bangboad = document.getElementById("boad");
             bangboad.innerHTML = component2(
               "div",
-              { id: "cont2", style: "color:black; font-weight:bold " },
+              { id: "cont2"},
               [component2("p", {}, [dataCheck("bang")])]
             );
             break;
@@ -313,7 +221,7 @@
             const jungboad = document.getElementById("boad");
             jungboad.innerHTML = component2(
               "div",
-              { id: "cont3", style: "color:black; font-weight:bold " },
+              { id: "cont3"},
               [component2("p", {}, [dataCheck("jung")])]
             );
             break;
@@ -321,7 +229,7 @@
             const choiboad = document.getElementById("boad");
             choiboad.innerHTML = component2(
               "div",
-              { id: "cont4", style: "color:black;  font-weight:bold " },
+              { id: "cont4"},
               [component2("p", {}, [dataCheck("choi")])]
             );
             break;

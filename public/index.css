@@ -131,3 +131,11 @@ a {
   color: black;
   font-weight: bold;
 }
+
+#teamCont{
+  background-color:white;
+}
+
+#h1TeamText{
+  color:black; border-radius: 2vw; width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center
+}

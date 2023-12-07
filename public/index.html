@@ -155,18 +155,9 @@
             board.innerHTML = prompt;
             break;
           case hashCheck(1):
-            board.innerHTML = component2(
-              "div",
-              { id: "cont", style: "background-color:white;" },
-              [
-                component2(
-                  "h1",
-                  {
-                    style:
-                      "color:black; border-radius: 2vw; width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center",
-                  },
-                  [
-                    `저희는 이제 DB, 데이터 베이스 구축을 진행 할 예정입니다.<br> 만드는 프로그램이 데이터 베이스를 
+            board.innerHTML = component2("div", { id: "teamCont" },
+              [ component2("h1", {id:"h1TeamText"},
+                  [`저희는 이제 DB, 데이터 베이스 구축을 진행 할 예정입니다.<br> 만드는 프로그램이 데이터 베이스를 
               꺼내는 역할을 해주기에 프로그램의 마음을 <br>이어받아 D를 꺼내줄지 B를 꺼내줄지 물어보는 것을 팀명으로 정했습니다.`,
                   ]
                 ),
@@ -174,9 +165,7 @@
             );
             break;
           case hashCheck(2):
-            board.innerHTML = component2(
-              "div",
-              {
+            board.innerHTML = component2("div", {id:"",
                 style:
                   "display:flex; flex-direction:row; width: 100vw; height: 90vh;",
               },

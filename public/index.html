@@ -13,14 +13,9 @@
       <div id="board"></div>
     </div>
     <script type="module">
-      import { createElement, component, component2, render } from "./module/component.js";
-      import prompt from "./module/prompt.js";
+      import { component, render } from "./module/component.js";
 
-
-      const timestamp = new Date().toLocaleString();
-      const root = document.getElementById("root");
       const head = document.getElementById("head");
-      const board = document.getElementById("board");
 
       const headstateData = [
         { hash: "#home", text: "Home", name: "Home" },
@@ -28,43 +23,12 @@
         { hash: "#member", text: "Member", name: "Member" },
         { hash: "#purpose", text: "Purpose", name: "Purpose" },
       ];
-      const memberData = {
-        kim: {
-          url: "https://github.com/kimwoojin123/",
-          hobby: ["음악감상", "자전거 타기"],
-          resolution: "팀원들의 스트레스를 줄이겠습니다!",
-        },
-        bang: {
-          url: "https://github.com/seunghee1108/",
-          hobby: ["음악감상", "산책"],
-          resolution: "빡세게 열심히 하겠습니다!",
-        },
-        jung: {
-          url: "https://github.com/JungYoungSick",
-          hobby: ["독서", "영화감상", "클래식감상", "자전거타기"],
-          resolution: "맡은 바 최선을 다 하겠습니다!",
-        },
-        choi: {
-          url: "https://github.com/csm009177",
-          hobby: ["컴퓨터 하드웨어 조립"],
-          resolution: "재밌게 같이 하겠습니다!",
-        },
-      };
       // append
       const headvirtualDom = component(headstateData);
       const headcontainer = document.getElementById("head");
       headcontainer.appendChild(render(headvirtualDom));
 
-      const selectors = {
-        memoForm: document.getElementById("memo-Form"),
-        title: document.getElementById("title"),
-        content: document.getElementById("content"),
-        saveBtn: document.getElementById("saveBtn"),
-        memoList: document.getElementById("memo-list"),
-      };
 
-
-      window.dispatchEvent(new Event("hashchange"));
     </script>
     <script type="module" src="./module/memoProcess.js"></script>
     <script type="module" src="./module/hashChanger.js"></script>

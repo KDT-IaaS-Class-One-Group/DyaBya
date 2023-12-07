@@ -1,33 +1,35 @@
 // init createElement
-export function createElement(type, props, ...children) {
-  return { type, props, children };
-}
+import { createElement } from "./module/createElement";
+// export function createElement(type, props, ...children) {
+//   return { type, props, children };
+// }
 // head comoponent
 //! ---------
-export function component(stateData) {
-  const menuItems = [];
-  for (let i = 0; i < stateData.length; i++) {
-    const item = stateData[i];
-    const menuItem = createElement(
-      "li",
-      { style: "margin:auto; list-style:none;" },
-      createElement("a", { href: item.hash }, item.text)
-    );
-    menuItems.push(menuItem);
-  }
+import { component } from "./module/component";
+// export function component(stateData) {
+//   const menuItems = [];
+//   for (let i = 0; i < stateData.length; i++) {
+//     const item = stateData[i];
+//     const menuItem = createElement(
+//       "li",
+//       { style: "margin:auto; list-style:none;" },
+//       createElement("a", { href: item.hash }, item.text)
+//     );
+//     menuItems.push(menuItem);
+//   }
 
-  const menu = createElement(
-    "ul",
-    {
-      style:
-        "width: 100vw; height: 10vh; display: flex;  flex-direction: row; text-align: center; justify-content: center;      align-items: center;",
-    },
-    ...menuItems
-  );
+//   const menu = createElement(
+//     "ul",
+//     {
+//       style:
+//         "width: 100vw; height: 10vh; display: flex;  flex-direction: row; text-align: center; justify-content: center;      align-items: center;",
+//     },
+//     ...menuItems
+//   );
 
-  const content = createElement("div", {}, ""); //
-  return createElement("div", {}, menu, content); // retrun cont include menu and content
-}
+//   const content = createElement("div", {}, ""); //
+//   return createElement("div", {}, menu, content); // retrun cont include menu and content
+// }
 //! ------------
 import { component2 } from "./module/component2";
 // export function component2(elementNode, attributes, children) {

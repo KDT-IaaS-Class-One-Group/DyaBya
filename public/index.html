@@ -93,23 +93,6 @@
             selectors.content.value = "";
           });
 
-          // function createMemo(title, content, timestamp) {
-          //   const memo = document.createElement('div');
-          //   memo.classList.add('memo-item');
-          //   const h2Tag = document.createElement('h2')
-          //   h2Tag.innerHTML = title
-          //   const PTag = document.createElement('p')
-          //   PTag.innerHTML = content
-          //   const P2Tag = document.createElement('p')
-          //   P2Tag.innerHTML = timestamp
-          //   memo.appendChild(h2Tag)
-          //   memo.appendChild(PTag)
-          //   memo.appendChild(P2Tag)
-
-          //   selectors.memoList.appendChild(memo);
-          // }
-          // 코드 간략화를 위해 createMemo함수 아래 코드로 수정
-
           function createMemo(title, content, timestamp) {
             const memo = document.createElement("div");
             memo.classList.add("memo-item");
@@ -202,36 +185,16 @@
             );
             break;
           case "#kim":
-            const kimboad = document.getElementById("boad");
-            kimboad.innerHTML = component2(
-              "div",
-              { id: "cont1"},
-              [component2("p", {}, [dataCheck("kim")])]
-            );
+            boadComponent("cont1", "kim")
             break;
           case "#bang":
-            const bangboad = document.getElementById("boad");
-            bangboad.innerHTML = component2(
-              "div",
-              { id: "cont2"},
-              [component2("p", {}, [dataCheck("bang")])]
-            );
+            boadComponent("cont2", "bang")
             break;
           case "#jung":
-            const jungboad = document.getElementById("boad");
-            jungboad.innerHTML = component2(
-              "div",
-              { id: "cont3"},
-              [component2("p", {}, [dataCheck("jung")])]
-            );
+            boadComponent("cont3", "jung")
             break;
           case "#choi":
-            const choiboad = document.getElementById("boad");
-            choiboad.innerHTML = component2(
-              "div",
-              { id: "cont4"},
-              [component2("p", {}, [dataCheck("choi")])]
-            );
+            boadComponent("cont4", "choi")
             break;
           default:
             board.innerHTML = component2("h1", { style: "font-weight:bold " }, [
@@ -239,6 +202,17 @@
             ]);
         }
       });
+
+
+      function boadComponent(id, firsName){
+        const boad = document.getElementById('boad')
+        boad.innerHTML = component2(
+          'div',
+          {id:id},
+          [component2('p', {}, [dataCheck(firsName)])]
+        )
+      }
+
 
       function dataCheck(firstName) {
         const url = memberData[firstName].url;

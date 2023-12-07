@@ -60,14 +60,14 @@
 }
 
 
-#cont {
+.cont {
   background-color:white; 
   display:flex;
   justify-content: center;
   align-items: center;
 }
 
-#cont > h1 {
+.cont > h1 {
   color:black; border-radius: 2vw; width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center;
 }
 

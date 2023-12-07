@@ -76,7 +76,7 @@
           case hashCheck(1):
             board.innerHTML = component2(
               "div",
-              { id: "cont"},
+              { class: "cont"},
               [
                 component2(
                   "h1",
@@ -103,14 +103,11 @@
           case hashCheck(3):
             board.innerHTML = component2(
               "div",
-              { style: "display:flex; justify-content:center; color:#333;" },
+              {class:"cont"},
               [
                 component2(
                   "h1",
-                  {
-                    style:
-                      "width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center; border-radius: 2vw;color:black",
-                  },
+                  {},
                   [
                     `1. 후회가 남지 않도록 최선을 다하자.<br>
                     2. 쉽게 오지 않는 기회를 잡고 나아가자. <br>

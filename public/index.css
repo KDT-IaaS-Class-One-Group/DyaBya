@@ -140,21 +140,20 @@ button:hover {
 
 .container {
   width: 80vw;
+  height: 5vh;
   justify-content: center;
   align-items: center;
-  margin: 20px auto;
 }
 
 #memo-list {
   width: 80vw;
-  max-height: 70vh;
+  max-height: 65vh;
   overflow-y: auto;
   border: 1px solid #ccc;
   padding: 30px;
   background-color: lightgreen;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 20px auto;
   text-align: start;
 }
 

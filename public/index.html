@@ -85,7 +85,7 @@
                   {},
                   [
                     `저희는 이제 DB, 데이터 베이스 구축을 진행 할 예정입니다.<br> 만드는 프로그램이 데이터 베이스를 
-                     꺼내는 역할을 해주기에 프로그램의 마음을 <br>이어받아 D를 꺼내줄지 B를 꺼내줄지 물어보는 것을 팀명으로 정했습니다.`,
+              꺼내는 역할을 해주기에 프로그램의 마음을 <br>이어받아 D를 꺼내줄지 B를 꺼내줄지 물어보는 것을 팀명으로 정했습니다.`,
                   ]
                 ),
               ]
@@ -132,11 +132,9 @@
             boadComponent("cont4", "choi")
             break;
           default:
-            board.innerHTML = component2("h1", { id : "cont1" },
-            [
+            board.innerHTML = component2("h1", { style: "font-weight:bold " }, [
               "반갑습니다. 저희는 DyaBya 팀 입니다",
-            ]
-          );
+            ]);
         }
       });
 
@@ -159,4 +157,3 @@
 
   </body>
 </html>
-

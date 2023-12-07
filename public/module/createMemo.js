@@ -1,4 +1,4 @@
-export default function createMemo(title, content, timestamp) {
+export function createMemo(title, content, timestamp) {
   const selectors = {
     memoForm: document.getElementById("memo-Form"),
     title: document.getElementById("title"),

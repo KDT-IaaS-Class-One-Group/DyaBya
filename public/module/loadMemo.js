@@ -1,4 +1,4 @@
-import createMemo from "./createMemo";
+import {createMemo} from "./createMemo.js";
 
 export function loadMemo() {
   const selectors = {

@@ -139,3 +139,7 @@ a {
 #h1TeamText{
   color:black; border-radius: 2vw; width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center
 }
+
+#memberCont{
+  display:flex; flex-direction:row; width: 100vw; height: 90vh;
+}

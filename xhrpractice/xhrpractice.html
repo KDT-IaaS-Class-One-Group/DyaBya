@@ -12,7 +12,7 @@
   <script type="text/javascript">
     // Create XMLHttpRequest object
     const xhr = new XMLHttpRequest();
-
+    
     xhr.onreadystatechange = function () {
       // 상태 체크 readystat==4 : 요청완료 응답받음 xhr.status == 200
       if (xhr.readyState == 4 && xhr.status == 200) {
@@ -31,7 +31,7 @@
           // json 파일의 i번째 객체에 있는 key name의 정보를 불러온다
           li.textContent = json[i].name;
           // json 파일의 i번째 객체에 있는 key age의 정보를 불러온다
-          p.textContent = json[i].age;
+          p.textContent = json[1].age;
           div.textContent = json[i].Id;
 
           ul.appendChild(li);

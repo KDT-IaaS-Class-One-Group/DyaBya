@@ -138,15 +138,6 @@
       });
 
 
-      function boadComponent(id, firsName){
-        const boad = document.getElementById('boad')
-        boad.innerHTML = component2(
-          'div',
-          {id:id},
-          [component2('p', {}, [dataCheck(firsName)])]
-        )
-      }
-
 
       function dataCheck(firstName) {
         const url = memberData[firstName].url;
@@ -174,6 +165,6 @@
       window.dispatchEvent(new Event("hashchange"));
     </script>
     <script type="module" src="./module/memoProcess.js"></script>
-
+    <script type="module" src="./module/boadComponent.js"></script>
   </body>
 </html>

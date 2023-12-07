@@ -155,3 +155,7 @@ a {
 .memTag{
   width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw; margin: auto;
 }
+
+#boad{
+  display:flex; align-items:center; justify-content:center; color:#ff2222; width: 75vw; height: 90vh; color: aliceblue;
+}

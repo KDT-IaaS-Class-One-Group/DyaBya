@@ -168,7 +168,6 @@
             board.innerHTML = 
             component2("div", {id:"memberCont" },
               [ component2("div", {id: "side" },
-              
                 [ component2("div", { class:"sideinnerCont"},
                   [ component2("a", { class:"memTag", href: "#kim"},
                     [ `${Object.keys(memberData)[0]}` ]
@@ -193,13 +192,10 @@
                       ),
                     ]
                   ),
-                  ]
+                ]
                 ),
-                component2("div", {
-                  id: "boad",
-                  style:
-                    " display:flex; align-items:center; justify-content:center; color:#ff2222; width: 75vw; height: 90vh; color: aliceblue;",
-                }),
+                component2("div", { id: "boad"} 
+                ),
               ]
             );
             break;

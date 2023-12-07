@@ -132,11 +132,11 @@ a {
   font-weight: bold;
 }
 
-#id {
-  background-color:red;
+#cont {
+  background-color: white;
 }
 
-#contTest {
+.team {
   color:black; 
   border-radius: 2vw; 
   width:80vw; 
@@ -144,5 +144,72 @@ a {
   background-color: lightgreen; 
   display:flex; 
   justify-content:center; 
-  align-items: center"
+  align-items: center;
+}
+
+#contTwo {
+  display:flex; 
+  flex-direction:row; 
+  width: 100vw; 
+  height: 90vh;
+}
+
+.teamMember{
+  display:flex; 
+  flex-direction:column; 
+  justify-content:center; 
+  width: 25vw; 
+  height: 85vh; 
+  color: aliceblue;
+}
+
+.nameDiv {
+  display:flex; 
+  justify-content:center; 
+  align-items: center; 
+  width:25vw; 
+  height:21vh;
+}
+
+.smallDiv {
+  width:10vw; 
+  height:10vh; 
+  background-color: #00cc33; 
+  display:flex; 
+  justify-content:center; 
+  align-items: center; 
+  border-radius: 2vw;
+}
+
+#boad {
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  width: 75vw; 
+  height: 85vh; 
+  color: aliceblue;
+}
+
+#purpose{
+  width:80vw; 
+  height:80vh; 
+  display:flex; 
+  justify-content:center; 
+  color:#333;
+}
+
+.innerDiv{
+  width:80vw; 
+  height:80vh; 
+  background-color: lightgreen; 
+  display:flex; 
+  justify-content:center; 
+  align-items: center;
+  border-radius: 2vw;
+  color:black
+}
+
+#cont1{
+  color:black; 
+  font-weight:bold
 }

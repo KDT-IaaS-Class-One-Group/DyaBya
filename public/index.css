@@ -159,3 +159,7 @@ a {
 #boad{
   display:flex; align-items:center; justify-content:center; color:#ff2222; width: 75vw; height: 90vh; color: aliceblue;
 }
+
+#purposeCont{
+  display:flex; justify-content:center; color:#333;
+}

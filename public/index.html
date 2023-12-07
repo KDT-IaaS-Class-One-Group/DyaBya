@@ -155,105 +155,50 @@
             board.innerHTML = prompt;
             break;
           case hashCheck(1):
-            board.innerHTML = component2("div", { id: "teamCont" },
+            board.innerHTML = 
+            component2("div", { id: "teamCont" },
               [ component2("h1", {id:"h1TeamText"},
-                  [`저희는 이제 DB, 데이터 베이스 구축을 진행 할 예정입니다.<br> 만드는 프로그램이 데이터 베이스를 꺼내는 역할을 해주기에 <br>프로그램의 마음을 이어받아 D를 꺼내줄지 B를 꺼내줄지 물어보는 것을 팀명으로 정했습니다.`,
+                [`저희는 이제 DB, 데이터 베이스 구축을 진행 할 예정입니다.<br> 만드는 프로그램이 데이터 베이스를 꺼내는 역할을 해주기에 <br>프로그램의 마음을 이어받아 D를 꺼내줄지 B를 꺼내줄지 물어보는 것을 팀명으로 정했습니다.`,
                   ]
                 ),
               ]
             );
             break;
           case hashCheck(2):
-            board.innerHTML = component2("div", {id:"memberCont" },
-              [
-                component2(
-                  "div",
-                  {
-                    id: "side",
-                    style:
-                      " display:flex; flex-direction:column; justifly-content:center; color:#ff2222; width: 25vw; height: 85vh; color: aliceblue;",
-                  },
-
-                  [
-                    component2(
-                      "div",
-                      {
-                        style:
-                          "display:flex; justify-content:center; align-items: center; width:25vw; height:21vh;",
-                      },
-                      [
-                        component2(
-                          "a",
-                          {
-                            href: "#kim",
-                            style:
-                              "width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;",
-                          },
-                          [`${Object.keys(memberData)[0]}`]
-                        ),
-                      ]
-                    ),
-                    component2(
-                      "div",
-                      {
-                        style:
-                          "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh ",
-                      },
-                      [
-                        component2(
-                          "a",
-                          {
-                            href: "#bang",
-                            style:
-                              "width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;",
-                          },
-                          [`${Object.keys(memberData)[1]}`]
-                        ),
-                      ]
-                    ),
-                    component2(
-                      "div",
-                      {
-                        style:
-                          "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh ",
-                      },
-                      [
-                        component2(
-                          "a",
-                          {
-                            href: "#jung",
-                            style:
-                              "width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;",
-                          },
-                          [`${Object.keys(memberData)[2]}`]
-                        ),
-                      ]
-                    ),
-                    component2(
-                      "div",
-                      {
-                        style:
-                          "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh ",
-                      },
-                      [
-                        component2(
-                          "a",
-                          {
-                            href: "#choi",
-                            style:
-                              "width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;",
-                          },
-                          [`${Object.keys(memberData)[3]}`]
-                        ),
-                      ]
-                    ),
+            board.innerHTML = 
+            component2("div", {id:"memberCont" },
+              [ component2("div", {id: "side" },
+              
+                [ component2("div", { class:"sideinnerCont"},
+                  [ component2("a", { class:"memTag", href: "#kim"},
+                    [ `${Object.keys(memberData)[0]}` ]
+                      ),
+                    ]
+                  ),
+                  component2("div", { class:"sideinnerCont"},
+                  [ component2("a", { class:"memTag", href: "#bang"},
+                    [ `${Object.keys(memberData)[1]}` ]
+                      ),
+                    ]
+                  ),
+                  component2("div", { class:"sideinnerCont"},
+                  [ component2("a", { class:"memTag", href: "#jung"},
+                    [ `${Object.keys(memberData)[2]}` ]
+                      ),
+                    ]
+                  ),
+                  component2("div", { class:"sideinnerCont"},
+                  [ component2("a", { class:"memTag", href: "#choi"},
+                    [ `${Object.keys(memberData)[3]}` ]
+                      ),
+                    ]
+                  ),
                   ]
                 ),
-
                 component2("div", {
                   id: "boad",
                   style:
-                    " display:flex; align-items:center; justify-content:center; color:#ff2222; width: 75vw; height: 85vh; color: aliceblue;",
+                    " display:flex; align-items:center; justify-content:center; color:#ff2222; width: 75vw; height: 90vh; color: aliceblue;",
                 }),
               ]
             );

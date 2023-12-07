@@ -1,4 +1,4 @@
-export function component2(elementNode, attributes, children) {
+export default function component2(elementNode, attributes, children) {
   let elementStr = `<${elementNode}`;
   for (let key in attributes) {
     elementStr += ` ${key} = "${attributes[key]}"`;

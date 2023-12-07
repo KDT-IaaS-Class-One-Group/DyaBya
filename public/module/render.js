@@ -1,4 +1,4 @@
-export function render(virtualDom) {
+export default function render(virtualDom) {
   if (typeof virtualDom === "string") {
     return document.createTextNode(virtualDom);
   }

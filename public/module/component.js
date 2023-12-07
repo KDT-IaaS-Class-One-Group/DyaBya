@@ -1,4 +1,4 @@
-export function component(stateData) {
+export default function component(stateData) {
   const menuItems = [];
   for (let i = 0; i < stateData.length; i++) {
     const item = stateData[i];

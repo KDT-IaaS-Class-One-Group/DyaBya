@@ -20,11 +20,7 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
-  background-color: #45a049;
-=======
   background-color: lightgreen;
->>>>>>> origin/Refact1
 }
 
 #board {
@@ -175,43 +171,10 @@ a {
   font-weight: bold;
 }
 
-<<<<<<< HEAD
-#teamCont{
-  background-color:white;
-}
-
-#h1TeamText{
-  color:black; border-radius: 2vw; width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center
-}
-
-#memberCont{
-  display:flex; flex-direction:row; width: 100vw; height: 90vh;
-}
-
-#side{
-  display:flex; flex-direction:column; justify-content:center; color:#ff2222; width: 25vw; height: 85vh; color: aliceblue;
-}
-
-.sideinnerCont{
-  display:flex; justify-content:center; align-items: center; width:25vw; height:21vh; 
-}
-
-.memTag{
-  width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw; margin: auto;
-}
-
-#boad{
-  display:flex; align-items:center; justify-content:center; color:#ff2222; width: 75vw; height: 90vh; color: aliceblue;
-}
-
-#purposeCont{
-  display:flex; justify-content:center; color:#333;
-=======
 
 
 
 #prompt {
   display:flex;
   flex-direction: column
->>>>>>> origin/Refact1
 }

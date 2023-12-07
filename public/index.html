@@ -1,397 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HASH STATE</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HASH STATE</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-size: 3vh;
-    }
+  <body>
+    <div id="root">
+      <div id="head"><!-- Will dynamically add MenuItems here --></div>
+      <div id="board"></div>
+    </div>
+    <script type="module">
+      import { createElement, component, component2, render } from "./index.js";
+      import prompt from "./module/prompt.js";
 
-    #root {
-      display: flex;
-      flex-direction: column;
-      width: 100vw;
-      height: 100vh;
-    }
+      const timestamp = new Date().toLocaleString();
+      const root = document.getElementById("root");
+      const head = document.getElementById("head");
+      const board = document.getElementById("board");
 
-    #head {
-      width: 100vw;height: 10vh;display: flex;flex-direction: row;text-align: center;justify-content: center;align-items: center;
-    }
-
-    #board {
-      width: 100vw;height: 90vh;background-color: white;display: flex;flex-direction: row; justify-content: center;align-items: center;
-    }
-
-    #home {
-      width: 25vw;
-      cursor: pointer;
-      margin: auto;
-    }
-
-    #team {
-      width: 25vw;
-      cursor: pointer;
-    }
-
-    #member {
-      width: 25vw;
-      cursor: pointer;
-    }
-
-    #purpose {
-      width: 25vw;
-      cursor: pointer;
-    }
-
-    form {
-          background-color: yellowgreen;
-          width: 80vw;
-          padding: 20px;
-          border-radius: 8px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          margin: 20px auto; 
-        }
-
-        input, textarea {
-          padding: 10px;
-          box-sizing: border-box;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-
-        input {
-          width: 5vw;
-          height: 5vh;
-          margin-right: 2px; 
-          vertical-align: top;
-        }
-
-        textarea {
-          width: 60vw;
-          height: 5vh;
-          vertical-align: top;
-        }
-
-        button {
-          background-color: #4caf50;
-          color: #fff;
-          width: 5vw;
-          height: 5vh;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          vertical-align: top;
-        }
-
-        button:hover {
-          background-color: #45a049;
-        }
-
-
-        .container {
-          width: 80vw;
-          justify-content: center;
-          align-items: center;
-          margin: 20px auto;
-        }
-
-        #memo-list {
-          width: 80vw;
-          max-height: 70vh;
-          overflow-y: auto;
-          border: 1px solid #ccc;
-          padding: 30px;
-          background-color: lightgreen;
-          border-radius: 8px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          margin: 20px auto; 
-          text-align: start;
-        }
-
-        .memo-item {
-          font-size: 1rem; 
-          margin-bottom: 15px;
-          border-bottom: 1px solid #ddd;
-          padding-bottom: 10px;
-        }
-
-        a {
-          text-decoration: none;
-          color : black;
-          font-weight:bold
-        }
-  </style>
-</head>
-
-<body>
-  <div id="root">
-    <div id="head"><!-- Will dynamically add MenuItems here --></div>
-    <div id="board"></div>
-  </div>
-  <script type="module">
-    import {createElement, component, component2, render} from './index.js';
-    import prompt from './prompt.js'
-    import {style} from './style.js'
-    
-    
-    
-    const timestamp = new Date().toLocaleString();
-    const root = document.getElementById('root');
-    const head = document.getElementById('head');
-    const board = document.getElementById('board');
-
-  
-    const headstateData = [
-      { hash: '#home', text: 'Home', name: "Home" },
-      { hash: '#team', text: 'Team', name: "Team" },
-      { hash: '#member', text: 'Member', name: "Member" },
-      { hash: '#purpose', text: 'Purpose', name: "Purpose" },
-    ];
-    const memberData = {
-      "kim": {
-        url: "https://github.com/kimwoojin123/",
-        hobby: ["음악감상", "자전거 타기"],
-        resolution: "팀원들의 스트레스를 줄이겠습니다!"
-      },
-      "bang": {
-        url: "https://github.com/seunghee1108/",
-        hobby: ["음악감상", "산책"],
-        resolution: "빡세게 열심히 하겠습니다!"
-      },
-      "jung": {
-        url: "https://github.com/JungYoungSick",
-        hobby: ["독서", "영화감상", "클래식감상", "자전거타기"],
-        resolution: "맡은 바 최선을 다 하겠습니다!"
-      },
-      "choi": {
-        url: "https://github.com/csm009177",
-        hobby: ["컴퓨터 하드웨어 조립"],
-        resolution: "재밌게 같이 하겠습니다!"
-      }
-    };
-    // append 
-    const headvirtualDom = component(headstateData);
-    const headcontainer = document.getElementById('head');
-    headcontainer.appendChild(render(headvirtualDom));
-    
-
-    // #home prompt 
-      document.addEventListener("DOMContentLoaded", () => {
-        window.addEventListener("hashchange", ()=> {
-      const selectors = {
-        memoForm: document.getElementById('memo-Form'),
-        title: document.getElementById('title'),
-        content: document.getElementById('content'),
-        saveBtn: document.getElementById('saveBtn'),
-        memoList: document.getElementById('memo-list'),
+      const headstateData = [
+        { hash: "#home", text: "Home", name: "Home" },
+        { hash: "#team", text: "Team", name: "Team" },
+        { hash: "#member", text: "Member", name: "Member" },
+        { hash: "#purpose", text: "Purpose", name: "Purpose" },
+      ];
+      const memberData = {
+        kim: {
+          url: "https://github.com/kimwoojin123/",
+          hobby: ["음악감상", "자전거 타기"],
+          resolution: "팀원들의 스트레스를 줄이겠습니다!",
+        },
+        bang: {
+          url: "https://github.com/seunghee1108/",
+          hobby: ["음악감상", "산책"],
+          resolution: "빡세게 열심히 하겠습니다!",
+        },
+        jung: {
+          url: "https://github.com/JungYoungSick",
+          hobby: ["독서", "영화감상", "클래식감상", "자전거타기"],
+          resolution: "맡은 바 최선을 다 하겠습니다!",
+        },
+        choi: {
+          url: "https://github.com/csm009177",
+          hobby: ["컴퓨터 하드웨어 조립"],
+          resolution: "재밌게 같이 하겠습니다!",
+        },
       };
+      // append
+      const headvirtualDom = component(headstateData);
+      const headcontainer = document.getElementById("head");
+      headcontainer.appendChild(render(headvirtualDom));
 
+      // #home prompt
+      document.addEventListener("DOMContentLoaded", () => {
+        window.addEventListener("hashchange", () => {
+          const selectors = {
+            memoForm: document.getElementById("memo-Form"),
+            title: document.getElementById("title"),
+            content: document.getElementById("content"),
+            saveBtn: document.getElementById("saveBtn"),
+            memoList: document.getElementById("memo-list"),
+          };
 
-      if (!selectors.memoList) {
-        console.error("Memo list element not found!");
-        return; // memoList를 찾을 수 없는 경우 함수를 종료합니다.
-    }
-      selectors.saveBtn.addEventListener('click', function (event) {
-        event.preventDefault();
- 
-        const title = selectors.title.value;
-        const content = selectors.content.value;
+          if (!selectors.memoList) {
+            console.error("Memo list element not found!");
+            return; // memoList를 찾을 수 없는 경우 함수를 종료합니다.
+          }
+          selectors.saveBtn.addEventListener("click", function (event) {
+            event.preventDefault();
 
-        if (!title) {
-          alert('이름을 입력하세요.');
-        } else if (!content) {
-          alert('내용을 입력하세요.');
-          return;
-        }
+            const title = selectors.title.value;
+            const content = selectors.content.value;
 
-        const timestamp = new Date().toLocaleString();
-        const newMemo = {
-          title: title,
-          content: content,
-          timestamp: timestamp
-        };
-        saveMemoToJson(newMemo);
-        createMemo(newMemo.title, newMemo.content, newMemo.timestamp);
-        selectors.content.value = '';
-      });
+            if (!title) {
+              alert("이름을 입력하세요.");
+            } else if (!content) {
+              alert("내용을 입력하세요.");
+              return;
+            }
 
-      
-      // function createMemo(title, content, timestamp) {
-      //   const memo = document.createElement('div');
-      //   memo.classList.add('memo-item');
-      //   const h2Tag = document.createElement('h2')
-      //   h2Tag.innerHTML = title
-      //   const PTag = document.createElement('p')
-      //   PTag.innerHTML = content
-      //   const P2Tag = document.createElement('p')
-      //   P2Tag.innerHTML = timestamp
-      //   memo.appendChild(h2Tag)
-      //   memo.appendChild(PTag)
-      //   memo.appendChild(P2Tag)
+            const timestamp = new Date().toLocaleString();
+            const newMemo = {
+              title: title,
+              content: content,
+              timestamp: timestamp,
+            };
+            saveMemoToJson(newMemo);
+            createMemo(newMemo.title, newMemo.content, newMemo.timestamp);
+            selectors.content.value = "";
+          });
 
-      //   selectors.memoList.appendChild(memo);
-      // }
-      // 코드 간략화를 위해 createMemo함수 아래 코드로 수정
-      
-      function createMemo(title, content, timestamp) {
-        const memo = document.createElement("div");
-        memo.classList.add("memo-item");
-        // 일일이 동적 생성하고 추가해주는 부분을 innerHTML이기에 특성을 이용해서 탬플릿으로 한번에 작성하고 추가해주었음.
-        const memoContent = `
+          // function createMemo(title, content, timestamp) {
+          //   const memo = document.createElement('div');
+          //   memo.classList.add('memo-item');
+          //   const h2Tag = document.createElement('h2')
+          //   h2Tag.innerHTML = title
+          //   const PTag = document.createElement('p')
+          //   PTag.innerHTML = content
+          //   const P2Tag = document.createElement('p')
+          //   P2Tag.innerHTML = timestamp
+          //   memo.appendChild(h2Tag)
+          //   memo.appendChild(PTag)
+          //   memo.appendChild(P2Tag)
+
+          //   selectors.memoList.appendChild(memo);
+          // }
+          // 코드 간략화를 위해 createMemo함수 아래 코드로 수정
+
+          function createMemo(title, content, timestamp) {
+            const memo = document.createElement("div");
+            memo.classList.add("memo-item");
+            // 일일이 동적 생성하고 추가해주는 부분을 innerHTML이기에 특성을 이용해서 탬플릿으로 한번에 작성하고 추가해주었음.
+            const memoContent = `
           <h2>${title}</h2>
           <p>${content}</p>
           <p>${timestamp}</p>
         `;
 
-        memo.innerHTML = memoContent;
-        selectors.memoList.appendChild(memo);
-      }
+            memo.innerHTML = memoContent;
+            selectors.memoList.appendChild(memo);
+          }
 
+          function saveMemoToJson(memo) {
+            const memos = JSON.parse(localStorage.getItem("memos")) || [];
+            memos.push(memo);
+            localStorage.setItem("memos", JSON.stringify(memos));
+          }
 
+          const clearBtn = document.getElementById("clear");
+          clearBtn.addEventListener("click", function () {
+            localStorage.removeItem("memos"); // localStorage에서 'memos' 항목 제거
+            selectors.memoList.innerHTML = ""; // memo-list 부분을 비움
+          });
 
-
-
-      function saveMemoToJson(memo) {
-        const memos = JSON.parse(localStorage.getItem('memos')) || [];
-        memos.push(memo);
-        localStorage.setItem('memos', JSON.stringify(memos));
-      }
-
-      const clearBtn = document.getElementById('clear');
-      clearBtn.addEventListener('click', function() {
-        localStorage.removeItem('memos'); // localStorage에서 'memos' 항목 제거
-        selectors.memoList.innerHTML = ''; // memo-list 부분을 비움
+          function loadMemosFromLocalStorage() {
+            const memos = JSON.parse(localStorage.getItem("memos")) || [];
+            selectors.memoList.innerHTML = "";
+            memos.forEach((memo) =>
+              createMemo(memo.title, memo.content, memo.timestamp)
+            );
+          }
+          loadMemosFromLocalStorage();
+        });
       });
-      
-      function loadMemosFromLocalStorage() {
-        const memos = JSON.parse(localStorage.getItem('memos')) || [];
-        selectors.memoList.innerHTML = '';
-        memos.forEach((memo) => createMemo(memo.title, memo.content, memo.timestamp));
-      }
-      loadMemosFromLocalStorage();
-      })
-    });
-    window.addEventListener('hashchange', () => { 
-      const board = document.getElementById('board');  
-      const hash = window.location.hash;
+      window.addEventListener("hashchange", () => {
+        const board = document.getElementById("board");
+        const hash = window.location.hash;
 
-      switch (hash) {
-        case hashCheck(0) : 
-          board.innerHTML = prompt
-          break;
-        case hashCheck(1) :
-          board.innerHTML = 
-          component2('div', { id:"cont", 
-            style:'background-color:white;'}, 
-            [component2('h1', {style : 'color:black; border-radius: 2vw; width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center'}, [`저희는 이제 DB, 데이터 베이스 구축을 진행 할 예정입니다.<br> 만드는 프로그램이 데이터 베이스를 
-              꺼내는 역할을 해주기에 프로그램의 마음을 <br>이어받아 D를 꺼내줄지 B를 꺼내줄지 물어보는 것을 팀명으로 정했습니다.`])]);
-          break;
-        case hashCheck(2) :
-          board.innerHTML = 
-          component2('div', {style:"display:flex; flex-direction:row; width: 100vw; height: 90vh;"}, 
-              [ 
-              component2("div", { id:"side",
-                style: ' display:flex; flex-direction:column; justifly-content:center; color:#ff2222; width: 25vw; height: 85vh; color: aliceblue;'},
-                
-                [
-                component2('div', { style : "display:flex; justify-content:center; align-items: center; width:25vw; height:21vh;" }, 
-                  [component2("a", {href:"#kim",  style:"width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;"}, [`${Object.keys(memberData)[0]}`])]),
-                component2('div', { style : "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh " }, 
-                  [component2("a", {href:"#bang", style:"width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;"}, [`${Object.keys(memberData)[1]}`])]),
-                component2('div', { style : "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh " }, 
-                  [component2("a", {href:"#jung", style:"width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;"}, [`${Object.keys(memberData)[2]}`])]),
-                component2('div', { style : "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh " }, 
-                  [component2("a", {href:"#choi", style:"width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;"}, [`${Object.keys(memberData)[3]}`])]),
-                ]),
-              
-              component2("div", { id:"boad",
-                style: ' display:flex; align-items:center; justify-content:center; color:#ff2222; width: 75vw; height: 85vh; color: aliceblue;'}),
-              ]
-            )
-          break;
-        case hashCheck(3) :
-          board.innerHTML = component2('div', { style: 'display:flex; justify-content:center; color:#333;'}, [component2('h1', {style : 'width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center; border-radius: 2vw;color:black'}, [`1. 후회가 남지 않도록 최선을 다하자.<br>
-          2. 쉽게 오지 않는 기회를 잡고 나아가자. <br>
-          3. 나의 것을 만들 때까지 포기하지 말자.`])])
+        switch (hash) {
+          case hashCheck(0):
+            board.innerHTML = prompt;
             break;
-        case '#kim' : 
-        const kimboad = document.getElementById("boad")
-        kimboad.innerHTML = 
-          component2('div', { id:"cont1", 
-            style: 'color:black; font-weight:bold '}, 
-            [component2('p', {}, [dataCheck("kim")])])
-          break;
-        case '#bang' : 
-        const bangboad = document.getElementById("boad")
-        bangboad.innerHTML = 
-          component2('div', { id:"cont2", 
-            style: 'color:black; font-weight:bold '}, 
-            [component2('p', {}, [dataCheck("bang")])])
-          break;
-        case '#jung' : 
-        const jungboad = document.getElementById("boad")
-        jungboad.innerHTML = 
-          component2('div', { id:"cont3", 
-            style: 'color:black; font-weight:bold '}, 
-            [component2('p', {}, [dataCheck("jung")])])
-          break;
-        case '#choi' : 
-        const choiboad = document.getElementById("boad")
-        choiboad.innerHTML = 
-          component2('div', { id:"cont4", 
-            style: 'color:black;  font-weight:bold '}, 
-            [component2('p', {}, [dataCheck("choi")])])
-          break;
-          default : 
-          board.innerHTML = component2('h1', {style:"font-weight:bold "}, ["반갑습니다. 저희는 DyaBya 팀 입니다"]);
+          case hashCheck(1):
+            board.innerHTML = component2(
+              "div",
+              { id: "cont", style: "background-color:white;" },
+              [
+                component2(
+                  "h1",
+                  {
+                    style:
+                      "color:black; border-radius: 2vw; width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center",
+                  },
+                  [
+                    `저희는 이제 DB, 데이터 베이스 구축을 진행 할 예정입니다.<br> 만드는 프로그램이 데이터 베이스를 
+              꺼내는 역할을 해주기에 프로그램의 마음을 <br>이어받아 D를 꺼내줄지 B를 꺼내줄지 물어보는 것을 팀명으로 정했습니다.`,
+                  ]
+                ),
+              ]
+            );
+            break;
+          case hashCheck(2):
+            board.innerHTML = component2(
+              "div",
+              {
+                style:
+                  "display:flex; flex-direction:row; width: 100vw; height: 90vh;",
+              },
+              [
+                component2(
+                  "div",
+                  {
+                    id: "side",
+                    style:
+                      " display:flex; flex-direction:column; justifly-content:center; color:#ff2222; width: 25vw; height: 85vh; color: aliceblue;",
+                  },
+
+                  [
+                    component2(
+                      "div",
+                      {
+                        style:
+                          "display:flex; justify-content:center; align-items: center; width:25vw; height:21vh;",
+                      },
+                      [
+                        component2(
+                          "a",
+                          {
+                            href: "#kim",
+                            style:
+                              "width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;",
+                          },
+                          [`${Object.keys(memberData)[0]}`]
+                        ),
+                      ]
+                    ),
+                    component2(
+                      "div",
+                      {
+                        style:
+                          "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh ",
+                      },
+                      [
+                        component2(
+                          "a",
+                          {
+                            href: "#bang",
+                            style:
+                              "width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;",
+                          },
+                          [`${Object.keys(memberData)[1]}`]
+                        ),
+                      ]
+                    ),
+                    component2(
+                      "div",
+                      {
+                        style:
+                          "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh ",
+                      },
+                      [
+                        component2(
+                          "a",
+                          {
+                            href: "#jung",
+                            style:
+                              "width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;",
+                          },
+                          [`${Object.keys(memberData)[2]}`]
+                        ),
+                      ]
+                    ),
+                    component2(
+                      "div",
+                      {
+                        style:
+                          "display:flex; justify-content:center; align-items: center;width:25vw; height:21vh ",
+                      },
+                      [
+                        component2(
+                          "a",
+                          {
+                            href: "#choi",
+                            style:
+                              "width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;",
+                          },
+                          [`${Object.keys(memberData)[3]}`]
+                        ),
+                      ]
+                    ),
+                  ]
+                ),
+
+                component2("div", {
+                  id: "boad",
+                  style:
+                    " display:flex; align-items:center; justify-content:center; color:#ff2222; width: 75vw; height: 85vh; color: aliceblue;",
+                }),
+              ]
+            );
+            break;
+          case hashCheck(3):
+            board.innerHTML = component2(
+              "div",
+              { style: "display:flex; justify-content:center; color:#333;" },
+              [
+                component2(
+                  "h1",
+                  {
+                    style:
+                      "width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center; border-radius: 2vw;color:black",
+                  },
+                  [
+                    `1. 후회가 남지 않도록 최선을 다하자.<br>
+          2. 쉽게 오지 않는 기회를 잡고 나아가자. <br>
+          3. 나의 것을 만들 때까지 포기하지 말자.`,
+                  ]
+                ),
+              ]
+            );
+            break;
+          case "#kim":
+            const kimboad = document.getElementById("boad");
+            kimboad.innerHTML = component2(
+              "div",
+              { id: "cont1", style: "color:black; font-weight:bold " },
+              [component2("p", {}, [dataCheck("kim")])]
+            );
+            break;
+          case "#bang":
+            const bangboad = document.getElementById("boad");
+            bangboad.innerHTML = component2(
+              "div",
+              { id: "cont2", style: "color:black; font-weight:bold " },
+              [component2("p", {}, [dataCheck("bang")])]
+            );
+            break;
+          case "#jung":
+            const jungboad = document.getElementById("boad");
+            jungboad.innerHTML = component2(
+              "div",
+              { id: "cont3", style: "color:black; font-weight:bold " },
+              [component2("p", {}, [dataCheck("jung")])]
+            );
+            break;
+          case "#choi":
+            const choiboad = document.getElementById("boad");
+            choiboad.innerHTML = component2(
+              "div",
+              { id: "cont4", style: "color:black;  font-weight:bold " },
+              [component2("p", {}, [dataCheck("choi")])]
+            );
+            break;
+          default:
+            board.innerHTML = component2("h1", { style: "font-weight:bold " }, [
+              "반갑습니다. 저희는 DyaBya 팀 입니다",
+            ]);
         }
       });
-    
+
       function dataCheck(firstName) {
         const url = memberData[firstName].url;
         const hobby = memberData[firstName].hobby;
         const urlCheck = url.includes("https://github.com/");
         const hobbyCheck = Object.keys(hobby).length !== 0;
 
-      if(urlCheck && hobbyCheck){
-        return `Url : ${memberData[firstName].url}<br> Hobby : ${memberData[firstName].hobby}<br> Resolution : ${memberData[firstName].resolution}`;
-      } else {
-        return `적절한 데이터를 입력해주세요`
+        if (urlCheck && hobbyCheck) {
+          return `Url : ${memberData[firstName].url}<br> Hobby : ${memberData[firstName].hobby}<br> Resolution : ${memberData[firstName].resolution}`;
+        } else {
+          return `적절한 데이터를 입력해주세요`;
+        }
       }
-    }
 
-
-      function hashCheck(num){
+      function hashCheck(num) {
         const hashData = headstateData[num].hash;
         const hashDataCheck = hashData.includes("#");
-        if(hashDataCheck){
-        return headstateData[num].hash
-      } else {
-        console.error("적절한 해쉬가 아닙니다.")
+        if (hashDataCheck) {
+          return headstateData[num].hash;
+        } else {
+          console.error("적절한 해쉬가 아닙니다.");
+        }
       }
-      }
 
-      
-      fetch("/style.json")
-        .then((response) => response.json())
-        .then((data => {
-          style(data)
-        }))
-      
-
-  
-
-
-
-
-
-    window.dispatchEvent(new Event('hashchange'));
-  </script>
-</body>
+      window.dispatchEvent(new Event("hashchange"));
+    </script>
+  </body>
 </html>

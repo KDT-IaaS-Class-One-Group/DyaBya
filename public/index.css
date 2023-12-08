@@ -175,5 +175,6 @@ a {
 
 #prompt {
   display:flex;
-  flex-direction: column
+  flex-direction: column;
+  width:80vw; height:85vh
 }

@@ -13,12 +13,8 @@ export function component(stateData) {
     menuItems.push(menuItem); // 아이템들을 menuItems에 푸시
   }
 
-  const menu = createElement("ul", {id:"menu"},
-    ...menuItems
-  );
-
-  const content = createElement("div", {}, ""); //
-  return createElement("div", {}, menu, content); // retrun cont include menu and content
+  const menu = createElement("ul", {id:"menu"}, ...menuItems); // all item put in menu
+  return createElement("div", {}, menu); // result cont is including menu
 }
 
 export function component2(elementNode, attributes, children) {

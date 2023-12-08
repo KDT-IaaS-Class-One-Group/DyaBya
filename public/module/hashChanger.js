@@ -68,8 +68,8 @@ export function hashChanger() {
           ]),
         ]);
         break;
-      case "#kim":
-        boadComponent("cont1", "kim");
+      case "#kim": 
+      boadComponent("cont1", "kim");
         break;
       case "#bang":
         boadComponent("cont2", "bang");

@@ -1,8 +1,8 @@
-export function createElement(type, props, ...children) {
+export function createElement(type, props, ...children) { // bone of component
   return {type, props, children};
 }
 // head comoponent
-export function component(stateData) {
+export function component(stateData) {  // cant make menuitem list with use stateData
   const menuItems = [];
   for (let i = 0; i < stateData.length; i++) {
     const item = stateData[i];

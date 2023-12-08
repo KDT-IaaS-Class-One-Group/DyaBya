@@ -1,6 +1,8 @@
+// head component 모듈화 작업
 export function createElement(type, props, ...children) {
   return {type, props, children};
 }
+
 // head comoponent
 export function component(stateData) {
   const menuItems = [];
@@ -8,7 +10,7 @@ export function component(stateData) {
     const item = stateData[i];
     const menuItem = createElement(
       "li",
-      {style: "margin:auto; list-style:none;"},
+      { id : "menuLi"},
       createElement("a", {href: item.hash}, item.text)
     );
     menuItems.push(menuItem);
@@ -16,10 +18,7 @@ export function component(stateData) {
 
   const menu = createElement(
     "ul",
-    {
-      style:
-        "width: 100vw; height: 10vh; display: flex;  flex-direction: row; text-align: center; justify-content: center;      align-items: center;",
-    },
+    { id : "menuUl" },
     ...menuItems
   );
 

@@ -172,6 +172,20 @@ a {
   height:85vh
 }  
 
+#menuLi{
+  margin: auto;
+  list-style: none;
+}
+
+#menuUl {
+  width: 100vw; 
+  height: 10vh; 
+  display: flex;  
+  flex-direction: row; 
+  text-align: center; 
+  justify-content: center;      
+  align-items: center;
+}
 
 /* class */
 .cont {

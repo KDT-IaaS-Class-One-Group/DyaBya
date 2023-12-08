@@ -3,95 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-size: 3vh;
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-}
-
-#head {
-  width: 100vw;
-  height: 10vh;
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  background-color: lightgreen;
-}
-
-#board {
-  width: 100vw;
-  height: 90vh;
-  background-color: white;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-#board > div {
-  display: flex;
-}
-
-
-#side {
-  display:flex; flex-direction:column; justify-content:center; width: 25vw; height: 85vh; color: aliceblue;
- }
-
-
-#side > div {
-  display:flex; justify-content:center; align-items: center;width:25vw; height:21vh;
-}
-
-#side > div > a{
-  width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;
-}
-
-#boad {
-  display:flex; align-items:center; justify-content:center; color:#ff2222; width: 75vw; height: 85vh; color: aliceblue;
-}
-
-#boad > div {
-  color:black; font-weight:bold;
-}
-
-
-.cont {
-  background-color:white; 
-  display:flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.cont > h1 {
-  color:black; border-radius: 2vw; width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center;
-}
-
-
-#home {
-  width: 25vw;
-  cursor: pointer;
-  margin: auto;
-}
-
-#team {
-  width: 25vw;
-  cursor: pointer;
-}
-
-#member {
-  width: 25vw;
-  cursor: pointer;
-}
-
-#purpose {
-  width: 25vw;
-  cursor: pointer;
-}
+}  
 
 form {
   background-color: yellowgreen;
@@ -138,43 +50,158 @@ button:hover {
   background-color: #45a049;
 }
 
-.container {
-  width: 80vw;
-  height: 5vh;
-  justify-content: center;
-  align-items: center;
-}
-
-#memo-list {
-  width: 80vw;
-  max-height: 65vh;
-  overflow-y: auto;
-  border: 1px solid #ccc;
-  padding: 30px;
-  background-color: lightgreen;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: start;
-}
-
-.memo-item {
-  font-size: 1rem;
-  margin-bottom: 15px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-}
-
 a {
   text-decoration: none;
   color: black;
   font-weight: bold;
 }
 
+/* id */
+#root {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}  
+
+#head {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgreen;
+}  
+
+#home {
+  width: 25vw;
+  cursor: pointer;
+  margin: auto;
+}  
+
+#team {
+  width: 25vw;
+  cursor: pointer;
+}  
+
+#member {
+  width: 25vw;
+  cursor: pointer;
+}  
+
+#purpose {
+  width: 25vw;
+  cursor: pointer;
+}  
+
+#board {
+  width: 100vw;
+  height: 90vh;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}  
+
+#board > div {
+  display: flex;
+}  
+
+#side {
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center;
+  width: 25vw; 
+  height: 85vh; 
+  color: aliceblue;
+ } 
+
+#side > div {
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  width: 25vw; 
+  height: 21vh;
+}  
+
+#side > div > a {
+  width: 10vw; 
+  height: 10vh; 
+  background-color: #00cc33; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  border-radius: 2vw;
+}  
+
+#boad {
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 75vw; 
+  height: 85vh; 
+  color: aliceblue;
+}  
+
+#boad > div {
+  color: black; 
+  font-weight: bold;
+}  
 
 
+#memo-list {
+  width: 80vw;
+  max-height: 70vh;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 30px;
+  background-color: lightgreen;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  text-align: start;
+}  
 
 #prompt {
-  display:flex;
+  display: flex;
   flex-direction: column;
-  width:80vw; height:85vh
-}
+  width:80vw; 
+  height:85vh
+}  
+
+
+/* class */
+.cont {
+  background-color: white; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}  
+
+.cont > h1 {
+  color: black; 
+  border-radius: 2vw; 
+  width: 80vw; 
+  height: 80vh; 
+  background-color: lightgreen; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}  
+
+.container {
+  width: 80vw;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+}  
+
+.memo-item {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}  

@@ -10,15 +10,10 @@ export function component(stateData) {
       style: "margin:auto; list-style:none;"},
       createElement("a", {href: item.hash}, item.text) // menuitem include a tag include hash and text 
     );
-    menuItems.push(menuItem);
+    menuItems.push(menuItem); // 아이템들을 menuItems에 푸시
   }
 
-  const menu = createElement(
-    "ul",
-    {
-      style:
-        "width: 100vw; height: 10vh; display: flex;  flex-direction: row; text-align: center; justify-content: center;      align-items: center;",
-    },
+  const menu = createElement("ul", {id:"menu"},
     ...menuItems
   );
 

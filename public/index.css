@@ -33,42 +33,71 @@
   align-items: center;
 }
 
-#board > div {
+#board>div {
   display: flex;
 }
 
 
 #side {
-  display:flex; flex-direction:column; justify-content:center; width: 25vw; height: 85vh; color: aliceblue;
- }
-
-
-#side > div {
-  display:flex; justify-content:center; align-items: center;width:25vw; height:21vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25vw;
+  height: 85vh;
+  color: aliceblue;
 }
 
-#side > div > a{
-  width:10vw; height:10vh; background-color: #00cc33; display:flex; justify-content:center; align-items: center; border-radius: 2vw;
+
+#side>div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25vw;
+  height: 21vh;
+}
+
+#side>div>a {
+  width: 10vw;
+  height: 10vh;
+  background-color: #00cc33;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2vw;
 }
 
 #boad {
-  display:flex; align-items:center; justify-content:center; color:#ff2222; width: 75vw; height: 85vh; color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff2222;
+  width: 75vw;
+  height: 85vh;
+  color: aliceblue;
 }
 
-#boad > div {
-  color:black; font-weight:bold;
+#boad>div {
+  color: black;
+  font-weight: bold;
 }
 
 
 .cont {
-  background-color:white; 
-  display:flex;
+  background-color: white;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.cont > h1 {
-  color:black; border-radius: 2vw; width:80vw; height:80vh; background-color: lightgreen; display:flex; justify-content:center; align-items: center;
+.cont>h1 {
+  color: black;
+  border-radius: 2vw;
+  width: 80vw;
+  height: 80vh;
+  background-color: lightgreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -170,11 +199,19 @@ a {
   font-weight: bold;
 }
 
-
-
-
 #prompt {
-  display:flex;
+  display: flex;
   flex-direction: column;
-  width:80vw; height:85vh
+  width: 80vw;
+  height: 85vh
+}
+
+#menu {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }

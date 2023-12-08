@@ -1,4 +1,4 @@
-const memberData = {
+export const memberData = {
   kim: {
     name:"김우진",
     url: "https://github.com/kimwoojin123/",
@@ -24,7 +24,6 @@ const memberData = {
     resolution: "재밌게 같이 하겠습니다!",
   },
 };
-
 export function dataCheck(firstName) {
   const url = memberData[firstName].url;
   const hobby = memberData[firstName].hobby;

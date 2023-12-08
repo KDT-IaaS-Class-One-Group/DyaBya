@@ -1,4 +1,4 @@
-const headstateData = [
+export const headstateData = [
   {hash: "#home", text: "Home", name: "Home"},
   {hash: "#team", text: "Team", name: "Team"},
   {hash: "#member", text: "Member", name: "Member"},

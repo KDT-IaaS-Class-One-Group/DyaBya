@@ -2,11 +2,11 @@ import {createMemo} from "./createMemo.js";
 import {saveMemo} from "./saveMemo.js";
 import {loadMemo} from "./loadMemo.js";
 
-export function memoProcess() {
-  document.addEventListener("DOMContentLoaded", () => {
-    window.addEventListener("hashchange", () => {
-      const selectors = {
-        memoForm: document.getElementById("memo-Form"),
+export function memoProcess() { 
+  document.addEventListener("DOMContentLoaded", () => { // when after dom loaded
+    window.addEventListener("hashchange", () => {       // when hash change
+      const selectors = { 
+        memoForm: document.getElementById("memo-Form"), // 
         title: document.getElementById("title"),
         content: document.getElementById("content"),
         saveBtn: document.getElementById("saveBtn"),

@@ -5,21 +5,25 @@ import prompt from "./prompt.js";
 
 const memberData = {
   Kim: {
+    name: "김우진",
     url: "https://github.com/kimwoojin123/",
     hobby: ["음악감상", "자전거 타기"],
     resolution: "팀원들의 스트레스를 줄이겠습니다!",
   },
   Bang: {
+    name: "방승희",
     url: "https://github.com/seunghee1108/",
     hobby: ["음악감상", "산책"],
     resolution: "빡세게 열심히 하겠습니다!",
   },
   Jung: {
+    name: "정영식",
     url: "https://github.com/JungYoungSick",
     hobby: ["독서", "영화감상", "클래식감상", "자전거타기"],
     resolution: "맡은 바 최선을 다 하겠습니다!",
   },
   Choi: {
+    name: "최성민",
     url: "https://github.com/csm009177",
     hobby: ["컴퓨터 하드웨어 조립"],
     resolution: "재밌게 같이 하겠습니다!",
@@ -58,23 +62,23 @@ export function hashChanger() {
       case hashCheck(3):
         board.innerHTML = component2("div", {class: "cont"}, [
           component2("h1", {}, [
-            `1. 후회가 남지 않도록 최선을 다하자.<br>
+             `1. 후회가 남지 않도록 최선을 다하자.<br>
               2. 쉽게 오지 않는 기회를 잡고 나아가자. <br>
               3. 나의 것을 만들 때까지 포기하지 말자.`,
           ]),
         ]);
         break;
       case "#Kim":
-        boadComponent("cont1", "kim");
+        boadComponent("cont1", "Kim");
         break;
       case "#Bang":
-        boadComponent("cont2", "bang");
+        boadComponent("cont2", "Bang");
         break;
       case "#Jung":
-        boadComponent("cont3", "jung");
+        boadComponent("cont3", "Jung");
         break;
       case "#Choi":
-        boadComponent("cont4", "choi");
+        boadComponent("cont4", "Choi");
         break;
       default:
         board.innerHTML = component2("h1", {style: "font-weight:bold "}, ["반갑습니다. 저희는 DyaBya 팀 입니다"]);

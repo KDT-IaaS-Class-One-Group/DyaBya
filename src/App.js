@@ -121,7 +121,16 @@ function Home() {
 }
 
 function Team() {
-  return <p>Team</p>;
+  return (
+    <div className="teamContainer">
+      <h1>
+        저희는 이제 DB, 데이터 베이스 구축을 진행 할 예정입니다. <br />
+        만드는 프로그램이 데이터 베이스를 꺼내는 역할을 해주기에 프로그램의 마음을
+        <br />
+        이어받아 D를 꺼내줄지 B를 꺼내줄지 물어보는 것을 팀명으로 정했습니다.
+      </h1>
+    </div>
+  );
 }
 
 function Member() {
@@ -153,9 +162,17 @@ function Member() {
   );
 }
 function Purpose() {
-  return <p>Purpose</p>;
+  return (
+    <div className="purposeContainer">
+      <h1>
+        1. 후회가 남지 않도록 최선을 다하자.
+        <br />
+        2. 쉽게 오지 않는 기회를 잡고 나아가자. <br />
+        3. 나의 것을 만들 때까지 포기하지 말자.
+      </h1>
+    </div>
+  );
 }
-
 function Head() {
   return (
     <div className="head">

@@ -1,6 +1,5 @@
 const prompt = `<div id="prompt">
-  <div style="color : white; background-color:black;   font-weight:bold;
-  ">DYABYA</div>
+  <div style="color : white; background-color:black;   font-weight:bold;">DYABYA</div>
   <section id="memo-list"></section>
   <section class="container">
     <form id="memo-Form" method="POST">

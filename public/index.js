@@ -1,56 +1,17 @@
-    // init createElement
-    export function createElement(type, props, ...children) {
-      return { type, props, children};
-    }
-    // head comoponent
-    export function component(stateData) {
-      const menuItems = [];
-      for (let i=0; i<stateData.length; i++){
-        const item = stateData[i];
-        const menuItem = createElement('li', {style:'margin:auto; list-style:none;'}, createElement('a', {href:item.hash}, item.text));
-        menuItems.push(menuItem);
-      }
+import {component, render} from "./module/component.js";
+import {memoProcess} from "./module/memoProcess.js";
+import {hashChanger} from "./module/hashChanger.js";
 
-      const menu = createElement('ul', {
-        style:'width: 100vw; height: 10vh;background-color: #00cc33; display: flex;  flex-direction: row; text-align: center; justify-content: center;      align-items: center;'}, ...menuItems);
+const headstateData = [
+  {hash: "#home", text: "Home", name: "Home"},
+  {hash: "#team", text: "Team", name: "Team"},
+  {hash: "#member", text: "Member", name: "Member"},
+  {hash: "#purpose", text: "Purpose", name: "Purpose"},
+];
+// append
+const headvirtualDom = component(headstateData);
+const headcontainer = document.getElementById("head");
+headcontainer.appendChild(render(headvirtualDom));
 
-      const content = createElement('div', {}, '');  // 
-      return createElement('div', {}, menu, content); // retrun cont include menu and content 
-    }
-
-    export function component2(elementNode, attributes, children) {
-      let elementStr = `<${elementNode}`;
-      for (let key in attributes) {
-        elementStr += ` ${key} = "${attributes[key]}"`;
-      }
-      elementStr += '>';
-      if (children) {
-        children.forEach((child)=> {
-          if (typeof child === 'string') {
-            elementStr += child;
-          } else {
-            elementStr += component(child.elementNode, child.attributes, child.children);
-          }
-        });
-      }
-      elementStr += `</${elementNode}>`;
-      return elementStr;
-    }
-
-    export function render(virtualDom) {
-      if(typeof virtualDom === 'string') {
-        return document.createTextNode(virtualDom);
-      }
-      const element = document.createElement(virtualDom.type);
-      if(virtualDom.props) {
-        for( const [key,value] of Object.entries(virtualDom.props)) {
-          element.setAttribute(key,value);
-        }
-      }
-      for(let i=0; i<virtualDom.children.length; i++) {
-        const child = virtualDom.children[i];
-        element.appendChild(render(child));
-      }
-      return element;
-    }
-
+memoProcess();
+hashChanger();

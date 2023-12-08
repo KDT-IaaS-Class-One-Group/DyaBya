@@ -1,24 +1,25 @@
-import {dataCheck, hashCheck} from "./checkModules.js";
+import {dataCheck} from "./dataCheck.js";
+import {hashCheck} from "./hashCheck.js";
 import {component2} from "./component.js";
 import prompt from "./prompt.js";
 
 const memberData = {
-  kim: {
+  Kim: {
     url: "https://github.com/kimwoojin123/",
     hobby: ["음악감상", "자전거 타기"],
     resolution: "팀원들의 스트레스를 줄이겠습니다!",
   },
-  bang: {
+  Bang: {
     url: "https://github.com/seunghee1108/",
     hobby: ["음악감상", "산책"],
     resolution: "빡세게 열심히 하겠습니다!",
   },
-  jung: {
+  Jung: {
     url: "https://github.com/JungYoungSick",
     hobby: ["독서", "영화감상", "클래식감상", "자전거타기"],
     resolution: "맡은 바 최선을 다 하겠습니다!",
   },
-  choi: {
+  Choi: {
     url: "https://github.com/csm009177",
     hobby: ["컴퓨터 하드웨어 조립"],
     resolution: "재밌게 같이 하겠습니다!",
@@ -63,16 +64,16 @@ export function hashChanger() {
           ]),
         ]);
         break;
-      case "#kim":
+      case "#Kim":
         boadComponent("cont1", "kim");
         break;
-      case "#bang":
+      case "#Bang":
         boadComponent("cont2", "bang");
         break;
-      case "#jung":
+      case "#Jung":
         boadComponent("cont3", "jung");
         break;
-      case "#choi":
+      case "#Choi":
         boadComponent("cont4", "choi");
         break;
       default:

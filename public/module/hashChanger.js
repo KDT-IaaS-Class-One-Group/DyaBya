@@ -4,19 +4,19 @@ import {component2} from "./component.js";
 import prompt from "./prompt.js";
 
 
-export function hashChanger() {
-  window.addEventListener("hashchange", () => {
-    const board = document.getElementById("board");
-    const hash = window.location.hash;
+export function hashChanger() { 
+  window.addEventListener("hashchange", () => {     // when hash change
+    const board = document.getElementById("board"); // target is board
+    const hash = window.location.hash;              // 
 
-    switch (hash) {
-      case hashCheck(0):
+    switch (hash) { 
+      case hashCheck(0):      // home hash
         board.innerHTML = ""; // 비우기
         const promptDiv = document.createElement("div");
         promptDiv.innerHTML = prompt; // prompt 문자열을 HTML로 변환하여 div 안에 삽입
         board.appendChild(promptDiv); // board에 추가
         break;
-      case hashCheck(1):
+      case hashCheck(1):     // team hash
         board.innerHTML = component2("div", {class: "cont"}, [
           component2("h1", {}, [
             `저희는 이제 DB, 데이터 베이스 구축을 진행 할 예정입니다.<br> 만드는 프로그램이 데이터 베이스를 
@@ -24,7 +24,7 @@ export function hashChanger() {
           ]),
         ]);
         break;
-      case hashCheck(2):
+      case hashCheck(2):    // member hash
         const memberLinks = Object.keys(memberData).map((key) =>
           component2("div", {class: "member-board"}, [component2("a", {href: `#${key}`}, [`${key}`])])
         );
@@ -33,7 +33,7 @@ export function hashChanger() {
           component2("div", {id: "boad"}),
         ]);
         break;
-      case hashCheck(3):
+      case hashCheck(3):    // purpose hash 
         board.innerHTML = component2("div", {class: "cont"}, [
           component2("h1", {}, [
             `1. 후회가 남지 않도록 최선을 다하자.<br>

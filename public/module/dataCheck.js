@@ -1,5 +1,4 @@
-//? 변수 데이터를 이용한 데이터 호출 및 유효성 검사.
-const memberData = { // memberData라는 변수에 성씨와 깃허브 주소와 취미, 각오를 객체 안 데이터로 작성.
+export const memberData = {
   kim: {
     url: "https://github.com/kimwoojin123/",
     hobby: ["음악감상", "자전거 타기"],
@@ -35,3 +34,4 @@ export function dataCheck(firstName) { // 모듈화 진행. dataCheck함수에 �
     return `적절한 데이터를 입력해주세요`; // 해당하는 데이터가 없을 경우 `적절한 데이터를 입력해주세요` 라고 데이터를 출력시킨다.
   }
 }
+

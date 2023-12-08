@@ -1,15 +1,14 @@
-export function createElement(type, props, ...children) {
+export function createElement(type, props, ...children) { // bone of component
   return {type, props, children};
 }
-// head comoponent
-export function component(stateData) {
-  const menuItems = [];
-  for (let i = 0; i < stateData.length; i++) {
-    const item = stateData[i];
-    const menuItem = createElement(
-      "li",
-      {style: "margin:auto; list-style:none;"},
-      createElement("a", {href: item.hash}, item.text)
+// head comoponent // can make menuitem list with use stateData
+export function component(stateData) {  
+  const menuItems = []; // init menuItems
+  for (let i = 0; i < stateData.length; i++) { 
+    const item = stateData[i]; // declare item is each state
+    const menuItem = createElement("li", { // declare menuitem is create litag 
+      style: "margin:auto; list-style:none;"},
+      createElement("a", {href: item.hash}, item.text) // menuitem include a tag include hash and text 
     );
     menuItems.push(menuItem);
   }

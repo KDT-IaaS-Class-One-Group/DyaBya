@@ -1,4 +1,5 @@
-import {dataCheck, hashCheck} from "./checkModules.js";
+import {dataCheck} from "./dataCheck.js";
+import {hashCheck} from "./hashCheck.js";
 import {component2} from "./component.js";
 import prompt from "./prompt.js";
 
